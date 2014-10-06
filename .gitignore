@@ -1,0 +1,8 @@
+*.swp
+*.aux
+*.log
+*.toc
+*.bbl
+*.blg
+*~
+*.backup
