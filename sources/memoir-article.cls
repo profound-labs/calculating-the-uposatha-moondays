@@ -46,6 +46,9 @@
 
 \RequirePackage[british]{babel}
 
+\RequirePackage{amsmath}
+\RequirePackage[bitstream-charter]{mathdesign}
+
 \RequirePackage{fontspec}
 \defaultfontfeatures{Ligatures={TeX}}
 \setmainfont[
@@ -59,7 +62,6 @@
 \RequirePackage{graphicx}
 \RequirePackage{enumitem}
 \RequirePackage{multicol}
-\RequirePackage{amsmath}
 
 %\graphicspath{}
 
@@ -176,23 +178,30 @@
   \end{minipage}%
 }
 
+\renewcommand{\backmatter}{%
+  \@mainmatterfalse
+  \setcounter{secnumdepth}{-10}
+  \ifartopt\else
+    \@memback@floats
+  \fi}
+
 \hangsecnum
 
 \gdef\clearforchapter{\par\bigskip}
 
 \makechapterstyle{vinaya-class}{%
   \chapterstyle{default}
-  \renewcommand*{\chaptitlefont}{\LARGE\scshape\MakeTextLowercase}
+  \renewcommand*{\chaptitlefont}{\LARGE\scshape}
   \renewcommand*{\chapnumfont}{\chaptitlefont}
   \settowidth{\chapindent}{\normalsize 999}
   \renewcommand*{\chapterheadstart}{}
   \renewcommand*{\printchaptername}{}
   \renewcommand*{\chapternamenum}{}
   \renewcommand*{\printchapternum}{%
-    \noindent\llap{\makebox[\chapindent][l]{\chapnumfont \thechapter}}}
+    \noindent\llap{\makebox[\chapindent][l]{\chapnumfont \MakeTextLowercase{\thechapter}}}}
   \renewcommand*{\afterchapternum}{}
   \renewcommand*{\printchaptertitle}[1]{%
-    \memRTLraggedright\chaptitlefont ##1}
+    \memRTLraggedright\chaptitlefont\MakeTextLowercase{##1}}
   \renewcommand*{\afterchaptertitle}{}}
 
 \makeheadstyles{vinaya-class}{%
