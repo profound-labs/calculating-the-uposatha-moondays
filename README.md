@@ -5,10 +5,9 @@ Download the [PDF](https://github.com/profound-labs/calculating-the-uposatha-moo
 
 Unresolved questions:
 
-- Did 2014 have adhikavāra?
-- The formulas predict 2016 to have an adhikavāra, see \ref{adhikvara-prediction}
+- Checkme: The formulas predict 2016 to have an adhikavāra
 - Where in the year is the adhikavāra inserted?
 - Only Mahānikāya adds adhikavāra?
-- Where is the Pāli method in sec.\ref{pali-method} used?
+- Where is the Pāli method for inserting the adhikamāsa used?
 - Thai text in [references folder](https://github.com/profound-labs/calculating-the-uposatha-moondays/tree/master/references): Calendar and Era use in Thailand from /The Journal of the Royal Institute of Thailand/ -- does it have relevant notes?
 
