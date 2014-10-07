@@ -30,7 +30,7 @@ endured my questions and described their experience.
 *Unresolved Questions:*
 
 - The formulas predict 2016 to have an adhikavāra, see \ref{adhikavara-prediction}
-- Where in the year is the adhikavāra inserted?
+- Anyone seen an adhikavāra lately? When in the year is it inserted?
 - Only Mahānikāya adds adhikavāra?
 - Where is the Pāli method in sec.\ref{pali-method} used?
 - Thai text in [[https://github.com/profound-labs/calculating-the-uposatha-moondays/tree/master/references][references folder]]: Calendar and Era use in Thailand
@@ -100,44 +100,10 @@ uposatha of 8/8.
 
 The extra day (adhikavāra) is added 11 times in every 57 year.
 
-*** COMMENT possibilities
-
-(i) If the moon is only one day’s journey short of Sagittarius
-(i.e. is located in the [roe:k] 19, i.e. in [mu:la], the tail stars of
-Scorpio) then the year is to be [athikawa:n], with an extra day to be
-added at the end of the 7th month. This extra day effectively allows
-the moon to progress and be relocated in [roe:k] 20 on the day of
-beginning the Rains Retreat, as the rule specifies. (This would entail
-the astronomical Full Moon occurring somewhat earlier than usual in
-the 1-15 waxing sequence, as the particular 8th month would begin
-somewhat later.)
-
-(ii) If instead the 8th Full Moon of the year is calculated to fall
-further short (i.e . is located farther back in Scorpio than one
-[roe:k]), then the year is [athikama:t] with an extra 8th month of 30
-days decreed, referred to as [du’an pae:t 2 hon] or [du’an pae:t
-lang]. The festival A:sa:lahabu:cha: is then held on the Full Moon day
-of this second 8th month and the beginning the Rains Retreat is then
-be set at the day after, in which the moon would be in Sagittarius as
-specified.
-
-#+begin_quote
-/Ajahn Vajiro comments:/ ... So an extra day added on average every
-5.25 years. In place of 29-30-29-30-29 we have
-29-30-\emph{30}-30-29-30.\cite{vajiro-adhikamasa}
-
-/Ajahn Hāsapañño comments:/ It appears to be
-added every few years in the 3rd uposatha of the Hot Season -- making
-it a fifteen-day uposatha instead of the expected fourteen-day. King
-Mongkut apparently devised a method to abandon this practice, but the
-issue remains a mystery...\cite{hasapannyo-zodiac}
-#+end_quote
-
-*** Checkme: Adhikavāra prediction
+*** Check: Adhikavāra prediction
 \label{adhikavara-prediction}
 
-The formulas predict 2016 to have an
-adhikavāra. See below for the
+The formulas predict 2016 to have an adhikavāra. See below for the
 /kammacubala/ (K), /avoman/ (A) and /thaloengsok/ (T) values produced
 with the formulas \ref{fig-suriyayatra}.
 
@@ -148,19 +114,8 @@ sec.\ref{adhikawan-years}.
 adhikawan would be carried on to 2016.
 
 |   AD |   CS | type |   K |   A |  T |
-| 2014 | 1376 | d    | 395 | 137 | 17 |
 | 2015 | 1377 | m    | 188 |   0 | 28 |
 | 2016 | 1378 | d    | 781 | 566 |  9 |
-
-Also weird because two years in succession (2014 and 2015) would
-qualify for adhikawan.
-
-2014 is /edge-case/, having avoman 137, perhaps the condition is $A <
-137$ and not $A <= 137$? Possible, if the interpretation of the rule
-is to index day values from 0, not from 1.
-
-More past calendars with adhikawan are needed to look-up and formalize
-testing.
 
 ** Major Moondays
 
