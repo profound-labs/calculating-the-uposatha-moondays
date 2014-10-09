@@ -10,5 +10,6 @@ Download the [PDF](https://github.com/profound-labs/calculating-the-uposatha-moo
   - adhikavāra clarified
   - first and last day of a lunar month
   - occurrence of major moondays with the Pāli method
+
 2014-10-07
 - ready for feedback
