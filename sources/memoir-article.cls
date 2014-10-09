@@ -63,7 +63,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{multicol}
 
-%\graphicspath{}
+\graphicspath{{./includes/}}
 
 \RequirePackage{hyperref}
 

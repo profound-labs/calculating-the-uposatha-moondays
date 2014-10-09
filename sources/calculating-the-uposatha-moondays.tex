@@ -1,7 +1,7 @@
-% Created 2014-10-07 Tue 06:24
+% Created 2014-10-09 Thu 17:42
 \documentclass[11pt,oneside]{memoir-article}
 \usepackage{calculating-the-uposatha-moondays}
-\renewcommand{\docVersion}{v0.1}
+\renewcommand{\docVersion}{v0.2}
 \renewcommand{\docUrl}{\href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{link}}
 \hypersetup{ pdfauthor={Gambhiro Bhikkhu}, }
 \author{Gambhiro Bhikkhu}
@@ -16,43 +16,49 @@
 \maketitle
 \begin{tldr}
 \begin{itemize}
-\item The aim here is to describe the practical steps to calculate the
-uposatha Full- and New Moon days, and indicate the astronomical
-cycles that underlie the method.
+\item This is composed as a manual on how to calculate the Full- and New
+Moon day \emph{uposathas}, indicating the astronomical cycles that
+underlie the method.
+\item The method is based on a set of formulas called \emph{suriyayatra},
+including additional rules observed in Thailand.
 \item Alternate 30 and 29 day lunar months, 12 months make one year. Add
 an extra month 7 times in every 19 years, add an extra day 11 times
 in every 57 years.
 \item Conventions on how to practise this can differ by countries and
-groups, resulting in consistent but different calendars.
-\item Unforeseen adjustments to the predicted uposatha days in the
-published Royal Thai Calendar can be expected.
+groups, resulting in self-consistent but different calendars.
+\item The Royal Thai Calendar defies exact prediction with unforeseen
+adjustments, the different monastic groups simply adjust the major
+moondays in their calendars for concord.
 \end{itemize}
 \end{tldr}
 
 \begin{quote}
 Much appreciation for the answers from the Venerable Ajahns who
-endured my questions and described their experience.
+endured my questions. Comprehension and consistency was only possible
+with their experience and understanding.
 
-\textbf{Unresolved Questions:}
+Download \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/blob/master/calculating-the-uposatha-moondays.pdf}{this PDF} or a \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/archive/master.zip}{ZIP archive} with references.
 
-\begin{itemize}
-\item The formulas predict 2016 to have an adhikavāra, see \ref{adhikavara-prediction}
-\item Anyone seen an adhikavāra lately? When in the year is it inserted?
-\item Only Mahānikāya adds adhikavāra?
-\item Where is the Pāli method in sec.\ref{pali-method} used?
-\item Thai text in \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/tree/master/references}{references folder}: Calendar and Era use in Thailand
-from \emph{The Journal of the Royal Institute of Thailand} -- does it
-have relevant notes?
-\end{itemize}
-
-This document is work-in-progress and represents only what I've been
-able to find description of. See the Bibliography at sec.\ref{sec-4}
-or \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/archive/master.zip}{download a .zip} of this document with sources.
-
-Comments, corrections or further information would be greatly
+Comments, corrections and further information would be greatly
 appreciated:
 
 \texttt{Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>}
+
+\textbf{Changelog:}
+
+2014-10-09
+\begin{itemize}
+\item Ven. Hāsapañño:
+\begin{itemize}
+\item adhikavāra clarified
+\item first and last day of a lunar month
+\item occurrence of major moondays with the Pāli method
+\end{itemize}
+\end{itemize}
+2014-10-07
+\begin{itemize}
+\item ready for feedback
+\end{itemize}
 \end{quote}
 
 \clearpage
@@ -98,8 +104,8 @@ In Thai practice, the extra month is a 30 day month inserted after the
 8th month (\emph{Āsāḷha}), at the end of the Hot Season. The convention is
 to call this the `second 8th' or `second \emph{Āsāḷha}', marked as 8/8.
 
-Vassa starts after the 2nd Āsāḷha, on the day after the Full Moon
-uposatha of 8/8.
+In adhikamāsa years the Vassa starts 30 days later, after the 2nd
+Āsāḷha, on the day after the Full Moon uposatha of 8/8.
 
 \begin{center}
 \begin{tabular}{rlr}
@@ -116,6 +122,49 @@ order & name & days\\
 
 The extra day (adhikavāra) is added 11 times in every 57 year.
 
+Whether a year should have an extra day can be determined with the
+conditions at sec.\ref{adhikawan-years}.
+
+In Thai practice a year with an extra month is not allowed to also
+have an extra day. If the year should have an extra day, but it
+already has an extra month, the extra day is assigned to one of the
+flanking years (next or previous, in the case of planning several
+years in advance).
+
+In adhikavāra years the Vassa starts one day later.
+
+If the year is going to have an extra day, it is inserted in the month
+\emph{Āsāḷha}, making the 7th uposatha of the Hot Season a 15-day uposatha
+instead of the expected 14-day, and making \emph{Āsāḷha} a 30-day month
+that year.\cite{hasapannyo-zodiac}
+
+\begin{center}
+\begin{tabular}{rlr}
+order & name & days\\
+\hline
+6 & Visākha & 29\\
+7 & Jeṭṭha & 30\\
+8 & Āsāḷha & \textbf{30}\\
+9 & Savaṇa & 30\\
+10 & Bhaddapāda & 29\\
+\end{tabular}
+\end{center}
+
+\includegraphics[width=\linewidth]{adding-the-extra-day.pdf}
+
+However, this is the most unpredictable variable in the calendars
+published for a given year, and the various calendar authorities add
+the extra day in a flexible manner, in some of cases according with
+the formula but differing from it in others.
+
+Nonetheless they observe that:
+
+\begin{itemize}
+\item the count for 11 times in 57 years is maintained to keep the
+calendar at pace
+\item the extra day will not be in years that also have an extra month.
+\end{itemize}
+
 \subsection{Check: Adhikavāra prediction}
 \label{sec-1-3-1}
 \label{adhikavara-prediction}
@@ -127,6 +176,11 @@ with the formulas \ref{fig-suriyayatra}.
 See description at sec.\ref{adhikamat-years} and
 sec.\ref{adhikawan-years}.
 
+The last adhikavāra year has been 2009, which makes 2016 a likely
+candidate. If relatively evenly distributed, the adhikavāra years are
+5-6 years in distance, and 2015 would have probably been adhikavāra if
+not for the adhikamāsa.
+
 2015 qualifies for adhikamat, but also for adhikawan, and so the
 adhikawan would be carried on to 2016.
 
@@ -137,9 +191,9 @@ AD & CS & type & K & A & T\\
 2016 & 1378 & d & 781 & 566 & 9\\
 \end{tabular}
 \end{center}
-
 \section{Major Moondays}
 \label{sec-1-4}
+\label{major-moondays}
 
 Buddhist communities observe key annual events on the Full Moon
 days of four lunar months:
@@ -154,10 +208,18 @@ Assayuja Pūjā & 11th & Pavāraṇā Day, the end of Vassa\\
 \end{tabular}
 \end{center}
 
-The Full Moon day is on the last day of a given month. The next month
-starts on the following day (first day of the waning phase), thus the
-first uposatha will be on a New Moon.
+The Pāli method for adding the adhikamāsa at sec.\ref{pali-method} is
+relevant here.
 
+In adhikamāsa years the extra month is added as the 2nd Āsāḷha, but
+the numbering of months for determining the major moondays moves
+forward as if it was added in the season described by the Pāli method.
+
+If the adhikamāsa falls in the Cold Season, the Sangha still observes
+it in that season when telling the season at the recitation of the
+Pāṭimokkha.
+
+Also see sec.\ref{lunar-month-first-last} on \emph{Thai} lunar months.
 \chapter{Adding the extra month, Pāli method}
 \label{sec-2}
 \label{pali-method}
@@ -171,37 +233,37 @@ Table \ref{tbl-cycle-adhikamasa} shows the 19-year cycle between
 \begin{table}[p]
 \caption{\label{tbl-cycle-adhikamasa} Adhikamāsa years for 1996-2034 and inserting the extra month according to Thai and Pāli method.}\legend{\Delta m for years since last adhikamāsa.}
 \centering
-\begin{tabular}{rrrrl|rlrr}
-$\Delta$ m &  &  &  & Month & Month & Season & New & Full\\
- &  &  &  & (Thai) & (Pāli) &  &  & \\
+\begin{tabular}{rrrr|rlrr}
+$\Delta$ m &  &  &  & Month & Season & New & Full\\
+ &  &  &  & (Thai) &  &  & \\
 \hline
- & 0 & 1996 & 2015 & 8/8 & 8 & Rainy & 8 & 12\\
- & 1 &  &  &  &  &  &  & \\
- & 2 &  &  &  &  &  &  & \\
-3 & 3 & 1999 & 2018 & 8/8 & 5 & Hot & 4 & 8/8\\
- & 4 &  &  &  &  &  &  & \\
- & 5 &  &  &  & 2 & Cold & 12 & 5\\
-3 & 6 & 2002 & 2021 & 8/8 &  & Cold & 12 & 5\\
- & 7 &  &  &  &  &  &  & \\
-2 & 8 & 2004 & 2023 & 8/8 & 10 & Rainy & 8 & 12\\
- & 9 &  &  &  &  &  &  & \\
- & 10 &  &  &  &  &  &  & \\
-3 & 11 & 2007 & 2026 & 8/8 & 7 & Hot & 4 & 8/8\\
- & 12 &  &  &  &  &  &  & \\
- & 13 &  &  &  & 3 & Cold & 12 & 5\\
-3 & 14 & 2010 & 2029 & 8/8 &  & Cold & 12 & 5\\
- & 15 &  &  &  &  &  &  & \\
- & 16 &  &  &  & 12 & Cold & 12 & 5\\
-3 & 17 & 2013 & 2032 & 8/8 &  & Cold & 12 & 5\\
- & 18 &  &  &  &  &  &  & \\
-2 & 19 & 2015 & 2034 & 8/8 & 8 & Rainy & 8 & 12\\
+ & 0 & 1996 & 2015 & 8 & Rainy & 8 & 12\\
+ & 1 &  &  &  &  &  & \\
+ & 2 &  &  &  &  &  & \\
+3 & 3 & 1999 & 2018 & 5 & Hot & 4 & 8/8\\
+ & 4 &  &  &  &  &  & \\
+ & 5 &  &  & 2 & Cold & 12 & 5\\
+3 & 6 & 2002 & 2021 &  & Cold & 12 & 5\\
+ & 7 &  &  &  &  &  & \\
+2 & 8 & 2004 & 2023 & 10 & Rainy & 8 & 12\\
+ & 9 &  &  &  &  &  & \\
+ & 10 &  &  &  &  &  & \\
+3 & 11 & 2007 & 2026 & 7 & Hot & 4 & 8/8\\
+ & 12 &  &  &  &  &  & \\
+ & 13 &  &  & 3 & Cold & 12 & 5\\
+3 & 14 & 2010 & 2029 &  & Cold & 12 & 5\\
+ & 15 &  &  &  &  &  & \\
+ & 16 &  &  & 12 & Cold & 12 & 5\\
+3 & 17 & 2013 & 2032 &  & Cold & 12 & 5\\
+ & 18 &  &  &  &  &  & \\
+2 & 19 & 2015 & 2034 & 8 & Rainy & 8 & 12\\
 \end{tabular}
 \end{table}
 
 \begin{description}
 \item[{$\Delta$ m:}] years science the last adhikamāsa
 \item[{Month:}] the Thai lunar month into which the adhikamāsa is inserted
-\item[{Season:}] the season in which the adhikamāsa fall in that
+\item[{Season:}] the season in which the adhikamāsa falls in that
 particular year
 \item[{New and Full:}] the first and last uposatha of the 5-month season
 in which the adhikamāsa falls, numbered in Thai
@@ -218,7 +280,6 @@ first being the New Moon of the 12th Thai lunar month (2001) and the
 last being the Full Moon of the 5th Thai lunar month, 2002.
 
 \clearpage
-
 \chapter{The Thai luni-solar calendar}
 \label{sec-3}
 
@@ -227,8 +288,8 @@ the \emph{solar} cycle, but to count months according to the \emph{lunar} cycle.
 
 \begin{center}
 \begin{tabular}{ll}
-tropical year\footnotemark of the Earth & 365.24219 days\\
-synodic month\footnotemark of the Moon & \textasciitilde{}29.53 days, can vary up to 7 hours\\
+tropical year\footnotemark\space of the Earth & 365.24219 days\\
+synodic month\footnotemark\space of the Moon & \textasciitilde{}29.53 days, can vary up to 7 hours\\
 \end{tabular}
 \end{center}\footnotetext[1]{tropical year: the time it takes the Earth to
 complete an orbit around the Sun}\footnotetext[2]{synodic month: the time it takes the Moon to reach
@@ -271,7 +332,7 @@ the computer program returns
 
 Nonetheless, the calendar dates published in Thailand (historical or
 recent) in a given year reflect not only these principles, but also
-additional adjustments which cannot be foreseen or retraced.
+adjustments and omissions which cannot be foreseen or retraced.
 
 \begin{quote}
 The historical record however, frequently defies prediction, forcing
@@ -316,8 +377,24 @@ difference & +12 & +11 & -18\\
 
 \end{multicols}
 
-\section{Adhikamat years}
+\section{The first and last day of a lunar month}
 \label{sec-3-2}
+\label{lunar-month-first-last}
+
+In monastic practice, the Full Moon day is on the last day of a given
+month. The next month starts on the following day (first day of the
+waning phase), thus the first uposatha will be on a New Moon.
+
+In many Thai calendars, the New Moon day is the last day of the month,
+and the Full Moon day is in the middle. This only changes the
+numbering of the months, not the actual moondays. In these calendars
+the thresholds of months are shifted two weeks forward relative to the
+monastic calendar.
+
+The New Moon of the 7th \emph{Thai} lunar month is the New Moon (1st
+uposatha) of the 8th \emph{monastic} lunar month.
+\section{Adhikamat years}
+\label{sec-3-3}
 \label{adhikamat-years}
 
 The \emph{suriyayatra} principle to determine adhikamat years is:
@@ -331,7 +408,7 @@ Visākha-māsa), then the year is adhikamat.\cite{prasert-ngan}
 The \emph{thaloengsok} is the value of T in Figure \ref{fig-suriyayatra}.
 
 \section{Adhikawan years}
-\label{sec-3-3}
+\label{sec-3-4}
 \label{adhikawan-years}
 
 \begin{quote}
@@ -352,10 +429,11 @@ The \emph{kammacubala} and \emph{avoman} are the value of K and A in Figure
 \ref{fig-suriyayatra}.
 
 In Thailand, years with an extra month are not allowed to also have an
-extra day, and the adhikawan will be assigned to the next year.
+extra day, and the adhikawan will be assigned to the previous or next
+year.
 
 \section{Suriyayatra formulas}
-\label{sec-3-4}
+\label{sec-3-5}
 
 See Figure \ref{fig-suriyayatra}.
 
@@ -401,35 +479,33 @@ T & = & (b + h) \bmod 30
 19 & 5 &  &  & 1340 & d & 21:05 & \\
 \end{tabular}
 \end{table}
-
-\clearpage
 \section{Names of the months}
-\label{sec-3-5}
+\label{sec-3-6}
 
 The name of a given month is determined by the astrological sign which
 the Full Moon enters at midnight. See Table \ref{tbl-month-names}.
 
 \begin{table}[htb]
-\caption{\label{tbl-month-names}Lunar and Solar Months and Zodiacs\cite{hasapannyo-zodiac}}\legend{\mA{} marks 29 day months having a 14 day New Moon (\emph{amāvasī cātuddasī}).}
+\caption{\label{tbl-month-names}Lunar and Solar Months and Zodiacs\cite{hasapannyo-zodiac}}
 \centering
-\begin{tabular}{llll}
-Season & Lunar Month & Solar Month & Solar Zodiac\\
- &  &  & (Western / Sanskrit)\\
+\begin{tabular}{lrrlll}
+Season &  &  & Lunar Month & Solar Month & Solar Zodiac\\
+ &  & days &  &  & (Western / Sanskrit)\\
 \hline
-Hemanta-utu & Magasira-māsa & December & Sagittarius / Dhanus\\
-Cold Season & Phussa-māsa\mA & January & Capricorn / Makara\\
- & Māgha-māsa & February & Aquarius / Kumbha\\
- & Phagguṇa-māsa\mA & March & Pisces / Mīna\\
+Hemanta-utu & 1 & 30 & Magasira-māsa & December & Sagittarius / Dhanus\\
+Cold Season & 2 & 29 & Phussa-māsa & January & Capricorn / Makara\\
+ & 3 & 30 & Māgha-māsa & February & Aquarius / Kumbha\\
+ & 4 & 29 & Phagguṇa-māsa & March & Pisces / Mīna\\
 \hline
-Gimha-utu & Citta-māsa & April & Aries / Meṣa\\
-Hot Season & Visākha-māsa\mA & May & Taurus / Vṛṣabha\\
- & Jeṭṭha-māsa & June & Gemini / Mithuna\\
- & Āsāḷha-māsa\mA & July & Cancer / Karkaṭa\\
+Gimha-utu & 5 & 30 & Citta-māsa & April & Aries / Meṣa\\
+Hot Season & 6 & 29 & Visākha-māsa & May & Taurus / Vṛṣabha\\
+ & 7 & 30 & Jeṭṭha-māsa & June & Gemini / Mithuna\\
+ & 8 & 29 & Āsāḷha-māsa & July & Cancer / Karkaṭa\\
 \hline
-Vassāna-utu & Savaṇa-māsa & August & Leo / Siṃha\\
-Rainy Season & Bhaddapāda-māsa\mA & September & Virgo / Kanyā\\
- & Assayuja-māsa & October & Libra / Tulā\\
- & Kattika-māsa\mA & November & Scorpio / Vṛścika\\
+Vassāna-utu & 9 & 30 & Savaṇa-māsa & August & Leo / Siṃha\\
+Rainy Season & 10 & 29 & Bhaddapāda-māsa & September & Virgo / Kanyā\\
+ & 11 & 30 & Assayuja-māsa & October & Libra / Tulā\\
+ & 12 & 29 & Kattika-māsa & November & Scorpio / Vṛścika\\
 \end{tabular}
 \end{table}
 
@@ -446,11 +522,11 @@ Rainy Season & Bhaddapāda-māsa\mA & September & Virgo / Kanyā\\
 
 \href{http://orgmode.org/}{Org-mode} and \LaTeX. Sources at \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{Github}.
 
-Comments, corrections or further information would be greatly
+Comments, corrections and further information would be greatly
 appreciated.
 
 \texttt{Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>}
 
-Last updated on 2014-10-07.
+Last updated on 2014-10-09.
 % Emacs 24.4.50.1 (Org mode 8.2.7c)
 \end{document}
