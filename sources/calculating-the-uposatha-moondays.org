@@ -1,6 +1,6 @@
 #+LATEX_CLASS: memoir-article
 #+LATEX_HEADER: \usepackage{calculating-the-uposatha-moondays}
-#+LATEX_HEADER: \renewcommand{\docVersion}{v0.2}
+#+LATEX_HEADER: \renewcommand{\docVersion}{v0.2.1}
 #+LATEX_HEADER: \renewcommand{\docUrl}{\href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{link}}
 #+LATEX_HEADER: \hypersetup{ pdfauthor={Gambhiro Bhikkhu}, }
 #+OPTIONS: toc:nil tasks:nil ':t
@@ -64,8 +64,8 @@ be in January), the first month is 30 days, the second is 29 days:
 
 | 15 days | \GaNewmoon{} New Moon   | First uposatha of the Cold Season |
 | 15 days | \GaFullmoon{} Full Moon | End of first month, 30 days       |
-| 15 days | \GaNewmoon{} New Moon   |                                   |
-| 14 days | \GaFullmoon{} Full Moon | End of second month, 29 days      |
+| 14 days | \GaNewmoon{} New Moon   |                                   |
+| 15 days | \GaFullmoon{} Full Moon | End of second month, 29 days      |
 
 The \GaWaxingmoon{} Waxing- and \GaWaningmoon{} Waning Moons are on the 8th day.
 
