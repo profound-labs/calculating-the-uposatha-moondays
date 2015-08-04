@@ -6,5 +6,6 @@
 *.blg
 *~
 *.backup
+sources/auto
 sources/calculating-the-uposatha-moondays.pdf
 

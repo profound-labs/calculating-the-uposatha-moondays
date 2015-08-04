@@ -2,7 +2,7 @@ LATEX=lualatex
 LATEX_OPTS=-interaction=nonstopmode -halt-on-error
 MAIN=calculating-the-uposatha-moondays
 
-none:
+all:
 	$(LATEX) $(LATEX_OPTS) $(MAIN) &&\
 	bibtex $(MAIN) &&\
 	$(LATEX) $(LATEX_OPTS) $(MAIN) &&\
