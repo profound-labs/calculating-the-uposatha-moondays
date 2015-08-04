@@ -1,10 +1,12 @@
 
 # Calculating the Uposatha Moondays
 
-Download the [PDF](https://github.com/profound-labs/calculating-the-uposatha-moondays/blob/master/calculating-the-uposatha-moondays.pdf) or the whole repository as [zip archive](https://github.com/profound-labs/calculating-the-uposatha-moondays/archive/master.zip).
+Download the [PDF](https://github.com/profound-labs/calculating-the-uposatha-moondays/raw/master/calculating-the-uposatha-moondays.pdf) or the whole repository as [zip archive](https://github.com/profound-labs/calculating-the-uposatha-moondays/archive/master.zip).
 
 *Changelog:*
 
+2015-08-04
+- Uposatha Calendar Tutorial
 2014-10-09
 - Ven. Hāsapañño:
   - adhikavāra clarified
