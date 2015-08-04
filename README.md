@@ -7,6 +7,7 @@ Download the [PDF](https://github.com/profound-labs/calculating-the-uposatha-moo
 
 2015-08-04
 - Uposatha Calendar Tutorial
+
 2014-10-09
 - Ven. Hāsapañño:
   - adhikavāra clarified
