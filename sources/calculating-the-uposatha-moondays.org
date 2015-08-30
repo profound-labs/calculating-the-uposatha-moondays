@@ -54,12 +54,24 @@ appreciated:
 
 \clearpage
 
+*** TODO comment on bot.or.th about Magha Puja 2012
+
+The year 2012 is Atigamas year which is the year that has double 8th months according to Thai lunar calendar. Therefore, the Makha Bucha day which is normally on the Waxing 15 Evening of the 3rd lunar month will be shifted to the Waxing 15 Evening of the 4th lunar month instead.
+
+*** TODO Magha puja 2015
+
+we had 2015-03-04 in the FS Calendar
+
+Anadajoti has 2015-02-03
+
 *** TODO Add thai names of things
 
 adhika-vāra in Thai (อธิกวาร)
 
 *** TODO generate list of years with Ruby and test against calendars
 * Uposatha Calendar Tutorial
+
+*This section is largely work in progress, read with caution and check again later.*
 
 This section is a step-by-step guide for calculating the uposathas for a given
 year. Detailed explanation is left for later sections, we will only reference
