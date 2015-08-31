@@ -81,6 +81,8 @@
   openlevel=2
 ]{bookmark}
 
+\RequirePackage{eso-pic}
+
 \setlist[itemize]{
   itemindent=0pt,
   leftmargin=15pt,
@@ -97,7 +99,7 @@
 
 % === normalsize ===
 
-\definecolor{textbody}{gray}{0.15}
+\definecolor{textbody}{gray}{0.1}
 
 \def\BOOK@apt{11}
 \def\BOOK@bpt{14}
@@ -239,5 +241,20 @@
   \makeoddhead{normalpage}{}{}{\thepage}
 
 \pagestyle{normalpage}
+
+\newcommand\fullpage[1]{%
+\clearpage
+\pagestyle{empty}
+\mbox{}
+\AddToShipoutPictureFG*{\put(0,0)%
+{\begin{minipage}[b][\paperheight][t]{\paperwidth}%
+#1
+\end{minipage}%
+}}%
+}
+
+\newfontfamily\thaiFont{Kinnari}
+
+\newcommand*\thai[1]{{\thaiFont #1}}
 
 \RequirePackage[final,babel=true]{microtype}
