@@ -6,6 +6,7 @@
 *.blg
 *~
 *.backup
+sources/suriya/suriya
 sources/auto
 sources/includes/auto
 sources/calculating-the-uposatha-moondays.pdf

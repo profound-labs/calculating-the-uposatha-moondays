@@ -1,10 +1,10 @@
-% Created 2015-08-31 Mon 19:32
+% Created 2015-09-01 Tue 15:30
 \documentclass[11pt,oneside]{memoir-article}
 \usepackage{calculating-the-uposatha-moondays}
 \renewcommand{\docVersion}{v0.4}
 \renewcommand{\docUrl}{\href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{link}}
-\hypersetup{ pdfauthor={Gambhiro Bhikkhu}, }
-\author{Gambhiro Bhikkhu}
+\hypersetup{ pdfauthor={Hāsapañño Bhikkhu, Gambhiro Bhikkhu}, }
+\author{Hāsapañño Bhikkhu, Gambhiro Bhikkhu}
 \date{\today}
 \title{Calculating the Uposatha Moondays}
 \hypersetup{
@@ -16,19 +16,22 @@
 \maketitle
 \begin{tldr}
 \begin{itemize}
-\item This is composed as a manual on how to calculate the Full- and New
-Moon day \emph{uposathas}, indicating the astronomical cycles that
-underlie the method.
-\item The method is based on a set of formulas called \emph{suriyayatra},
-including additional rules observed in Thailand.
-\item Alternate 30 and 29 day lunar months, 12 months make one year. Add
-an extra month 7 times in every 19 years, add an extra day 11 times
-in every 57 years.
+\item This is composed as a manual on how to calculate the Full- and New Moon day
+\emph{uposathas}, and indicating the astronomical cycles that underlie the method.
+\item The method is based on a set of formulas called \emph{suriyayatra}, originating
+from India and including additional rules observed in Thailand.
+\item A minimal description: Alternate 30 and 29 day lunar months, 12 months make
+one year. Add an extra month 7 times in every 19 years, add an extra day 11
+times in every 57 years.
 \item Conventions on how to practise this can differ by countries and
 groups, resulting in self-consistent but different calendars.
-\item The Royal Thai Calendar defies exact prediction with unforeseen
-adjustments, the different monastic groups simply adjust the major
-moondays in their calendars for concord.
+\item The Royal Thai Calendar sometimes includes unforeseen adjustments. The
+different monastic groups simply adjust the major moondays in their calendars
+for concord.
+\item Prediction: Common years and adhikamāsa (extra month) years follow a regular
+sequence which is generally realiable to predict. Adhikavāra (extra day) years
+occur more rarely and are not realiable to predict, because of the flexibility
+in choosing the year which the extra day will be assigned to.
 \end{itemize}
 \end{tldr}
 
@@ -46,10 +49,12 @@ appreciated:
 
 \textbf{Changelog:}
 
-2015-08-31, v0.4
+2015-09-01, v0.4
 \begin{itemize}
-\item tutorial completed
+\item tutorial ready for review
 \item year diagram, year planners
+\item past years in .csv in \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/tree/master/references/calendar-data-mahanikaya}{references/calendar-data-mahanikaya} folder
+\item more tl,dr
 \item general review
 \end{itemize}
 2015-08-04, v0.3
@@ -71,6 +76,7 @@ appreciated:
 \end{itemize}
 \end{quote}
 
+
 \clearpage
 
 \chapter{Mahānikāya Uposatha Calendar Tutorial}
@@ -84,9 +90,9 @@ I recommend printing the following pages to be able to reference them as you fol
 \begin{itemize}
 \item The diagram on p.\pageref{dia-common-adhikamasa-adhikavara} shows the
 uposathas in a common-, adhikamāsa- and adhikavāra year.
-\item There are A4 format year planners included for 2015 (p.\pageref{year-2015}),
-2016 (p.\pageref{year-2016}) and 2017 (p.\pageref{year-2017}). This is a
-sequence of an adhikamāsa, adhikavāra and a common year.
+\item There are A4 format year planners included for 2014 (p.\pageref{year-2014}),
+2015 (p.\pageref{year-2015}) and 2016 (p.\pageref{year-2016}). This is a
+sequence of a common, adhikamāsa and adhikavāra year.
 \end{itemize}
 
 \section{Collecting information about the year}
@@ -762,12 +768,17 @@ appreciated.
 
 \texttt{Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>}
 
-Last updated on 2015-08-31.
+Last updated on 2015-09-01.
 
 
 \fullpage{%
 \label{dia-common-adhikamasa-adhikavara}%
 \includegraphics[width=\paperwidth]{common-adhikamasa-adhikavara.pdf}%
+}
+
+\fullpage{%
+\label{year-2014}%
+\includegraphics[angle=90,width=\paperwidth]{2014-fs-year-planner-A4.pdf}%
 }
 
 \fullpage{%
@@ -778,11 +789,6 @@ Last updated on 2015-08-31.
 \fullpage{%
 \label{year-2016}%
 \includegraphics[angle=90,width=\paperwidth]{2016-fs-year-planner-A4.pdf}%
-}
-
-\fullpage{%
-\label{year-2017}%
-\includegraphics[angle=90,width=\paperwidth]{2017-fs-year-planner-A4.pdf}%
 }
 % Emacs 25.0.50.1 (Org mode 8.2.10)
 \end{document}
