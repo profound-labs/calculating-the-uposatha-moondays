@@ -723,7 +723,7 @@ Last updated on {{{modification-time(%Y-%m-%d)}}}.
 #+begin_latex
 \fullpage{%
 \label{dia-common-adhikamasa-adhikavara}%
-\includegraphics[width=\paperwidth]{common-adhikamasa-adhikavara.pdf}%
+\includegraphics[width=\paperwidth]{common-adhikamasa-adhikavara.png}%
 }
 
 \fullpage{%
