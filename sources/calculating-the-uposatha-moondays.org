@@ -31,7 +31,8 @@
 
 #+begin_latex
 {\centering
-Just looking for the formulas? Dive in at sec. \ref{suriyayatra-formulas}.
+Just looking for the formulas? Dive in at sec. \ref{suriyayatra-formulas},\\
+or ask the machine to do it in Golang at sec. \ref{suriya-go-example}.
 \par}
 #+end_latex
 
@@ -84,19 +85,13 @@ Please send comments, corrections and further information to:
 \smallskip
 \hrule
 
-# regen inserts with stronger colors
-# asalha at gocode
-
 \clearpage
 
 *** TODO before release
 
-- shorter TL,DR
+- regen inserts with stronger colors
 
 - describe websites and apps
-
-- description for Raek
-- shorter legend for long year table
 
 - get to Raek:
 
@@ -428,11 +423,19 @@ Adhikamāsa year: sec. \ref{marking-the-moondays-adhikamasa-year}
 
 Adhikavāra year: the logic is the same as in common years.
 
-#+latex: \begin{table}[h]
-#+latex: \begin{fullwidth}
-#+latex: \caption{\label{tbl-cycle-adhikamasa-adhikavara} Adhikamāsa and adhikavāra years}
-#+latex: \legend{\Delta M: years since the last adhikamāsa. nM: position in the 19-year cycle. \Delta V: years since the last adhikamāsa. nV: position in the 57-year cycle. 'x' marks years which would qualify for adhikavāra, but there is already an adhikamāsa, and so the adhikavāra shifts to the following year.}
-#+latex: \begin{multicols}{2}
+#+begin_latex
+\begin{table}[h]
+\begin{fullwidth}
+\caption{\label{tbl-cycle-adhikamasa-adhikavara} Adhikamāsa and adhikavāra years}
+
+\legend{\Delta M, \Delta V: years since the last
+adhikamāsa (M) or adhikavāra (V). nM, nV: n-th place in the adhikamāsa
+19-year cycle (M) or the adhikavāra 57 year cycle. 'x' marks years which would
+qualify for adhikavāra, but there is already an adhikamāsa, and so the
+adhikavāra is carried on the following year.}
+
+\begin{multicols}{2}
+#+end_latex
 
 | CE year | BE year | nM | \Delta M | nV | \Delta V |
 |---------+---------+----+----------+----+----------|
@@ -620,48 +623,70 @@ The formulas take two inputs: the year, and the n^th day in the lunar year.
 They go through a series of operations step by step to produce certain values
 which describe properties of the lunar year and the given day.
 
-These results are used to determine whether the year is common, adhikamāsa or
-adhikavāra, and they give the position of the Sun and the Moon on the given day.
-
 #+latex: \marginpar{%
+Only basic operations with pen and paper are necessary to get these results.
+(Although we'll get the machine to do it for us in the end.)
+
+Doing astronomy without looking up the sky does mean there may be inaccuracies
+for a given day, but the long-term calendar remains in sync.
+
 Consider the ancient /hora/ (astronomer / astrologer) in a rural village who is
 practising these steps. He doesn't have the equipment to make precise
 astronomical observations. He is not educated in the underlying theory of the
 complex interaction of the Sun, Earth and the Moon. He is only trained in
 following the steps, and still this allows him to obtain the necessary
-information to mark the progress of the calendar.
+information to describe the progression of these events and plan any calendar
+year.
 #+latex: }
 
-Significant values are assigned names\cite{eade1989ephemeris}. Determining the
-adhikamāsa and adhikavāra will require these three:
+For $\mathbf{day} = 1$, the results are used to determine whether the year is
+common, adhikamāsa or adhikavāra. They can also give us the position of the Sun
+and the Moon on the given day. Thus, if we didn't add an extra month or day
+(i.e. in a common year), $\mathbf{day} = 103$ should tell us that the Full Moon
+in the sky is in Āsāḷha month.
+
+Significant values are assigned names.\cite{eade1989ephemeris} The following
+three will determine the adhikamāsa and adhikavāra:
+
+\savenotes
 
 - Kammacubala :: Remaining 800ths of a day
 - Avoman :: For the Moon's mean motion
-- Tithi :: Age of the moon at the start of the year\footnote{a.k.a. Thaloengsok or New Year's Day}
+- Tithi\footnote{a.k.a. Thaloengsok or New Year's Day} :: Age of the Moon, at the start of the year if $\mathbf{day} = 1$ 
 
 As we follow the steps, we will also obtain:
 
 #+latex: \begin{multicols}{2}
 
 - Horakhun :: Elapsed days of the era
-- Uccabala :: Age of the moon's Apogee
+- Uccabala :: Age of the Moon's Apogee
 - Masaken :: Elapsed months of the era
 
 \columnbreak
 
-- MeanSun :: mean position of the Sun
-- TrueSun :: true position of the Sun
-- MeanMoon :: mean position of the Moon
-- TrueMoon :: true position of the Moon
-- Raek :: raek\footnote{a.k.a. Naksatra}
+- MeanSun :: Mean position of the Sun
+- TrueSun :: True position of the Sun
+- MeanMoon :: Mean position of the Moon
+- TrueMoon :: True position of the Moon
+- Raek\footnote{a.k.a. Naksatra} :: The position of the Moon in the 27 mansions
+     of the Zodiac, which will determine the month
 
 #+latex: \end{multicols}
+
+\spewnotes
 
 \clearpage
 
 *** Calculation
 
-Here we will take the year CE 1963 (CS 1325) as an example and calculate its
+First we will see if we should add and extra month or extra day to keep the
+lunar year in sync with the solar year. We can lookup the Moon phases published
+by NASA and check if the Āsāḷha Pūjā date had in fact been a Full Moon.
+
+Then we will calculate the position of the Moon on that day, and see if we are
+in the correct month, and not at some other Full Moon.
+
+Let's take the year CE 1963 (CS 1325) as an example and calculate its
 properties. We should find that it is an adhikavāra year. As an excercise,
 calculate the following year CE 1964 (CS 1326), and you should find that it is
 adhikamāsa.
@@ -819,13 +844,31 @@ least two irregular years. This can be observed in past calendars (Table
 \ref{tbl-adhikavara-irregularities}), but recently this hasn't been happening,
 and the years follow the prediction of the formulas.
 
+**** Sun, Moon and Raek
+
+Eade describes the formulas at the end of his paper /Rules for interpolation in
+the Thai calendar/\cite{eade2000rules}, but his notation is a puzzle in itself,
+with its implied conversions and obscure progression from one step to the next.
+
+The folks at [[http://astronomy.stackexchange.com/][Astronomy Stack Exchange]] helped to decipher it:
+
+- [[http://astronomy.stackexchange.com/questions/11753/how-to-interpret-this-old-degree-notation][How to interpret this old degree notation?]]
+- [[http://astronomy.stackexchange.com/questions/12052/from-mean-moon-to-true-moon-in-an-old-procedural-calendar][From Mean Moon to True Moon in an old procedural calendar]]
+
+This allows us to continue examining the year CS 1325 as an example.
+
+TODO
+
+**** In Golang
+\label{suriya-go-example}
+
 Going through all this may be intriguing to calculate once, but mention
 repeating it every year, then checking and proofing it, and one is reminded of a
 phrase in Eade's /Calendrical Systems/: "Few would undertake cheerfully the
 task."\cite{eade1995calendrical}
 
-Better tell the computer how to do it and let us get on with living. Using
-[[https://github.com/splendidmoons/suriya-go][suriya-go]] we can write the following Golang code:
+Better tell the machine how to do it and let us get on with living. Let's
+import [[https://github.com/splendidmoons/suriya-go][suriya-go]] and ask the machine in Golang:
 
 #+begin_latex
 \begin{minted}{go}
@@ -863,6 +906,9 @@ Which will print:
 : Adhikavāra: true
 : Āsāḷha: 1963-07-06
 
+# Keep a \clearpage before "Names of the months" section to preserve sensible pagegreaks.
+\clearpage
+
 ***** notes                                                        :noexport:
 
 #+begin_quote
@@ -877,22 +923,21 @@ of the year that determine the matter:
   and extra day\cite{eade-interpolation}
 #+end_quote
 
-**** Sun, Moon and Raek
+***** notes                                                        :noexport:
 
-Eade describes the formulas at the end of his paper /Rules for interpolation in
-the Thai calendar/\cite{eade2000rules}, but his notation is a puzzle in itself,
-with its implied conversions and obscure progression from one step to the next.
+p.9: tithi is 15:00 - sun and moon are 180 degrees apart, it is full moon. Tithi
+is reckoned in base 60, so 0:30 is half a tithi.
 
-The folks at [[http://astronomy.stackexchange.com/][Astronomy Stack Exchange]] helped to decipher it:
+p.27: naksatra: which the moon will occupy at full moon
 
-- [[http://astronomy.stackexchange.com/questions/11753/how-to-interpret-this-old-degree-notation][How to interpret this old degree notation?]]
-- [[http://astronomy.stackexchange.com/questions/12052/from-mean-moon-to-true-moon-in-an-old-procedural-calendar][From Mean Moon to True Moon in an old procedural calendar]]
+p.31: raek: the reference is to the 27 segments into which the moon's orbit is divided
 
-This allows us to continue examining the year CS 1325 as an example.
+each segment is 13 deg 20 min
 
-TODO
+p.34: The names of the lunar months are derived from the name of naksatra that the
+moon will normally be occupying at Full Moon.
 
-\clearpage
+p.78: duang chata / zata
 
 ** Names of the months
 
