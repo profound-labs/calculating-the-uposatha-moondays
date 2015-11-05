@@ -56,7 +56,7 @@
   ItalicFont = Crimson Italic,
   BoldFont = Crimson Bold,
   BoldItalicFont = Crimson BoldItalic,
-  Numbers = OldStyle,
+  Numbers = Lining,
 ]{Crimson Roman}
 
 \newfontfamily\logicFont[
@@ -75,10 +75,10 @@
 
 \hypersetup{
   colorlinks=true,
-  linkcolor=blue,
-  citecolor=blue,
-  filecolor=blue,
-  urlcolor=blue,
+  linkcolor=link,
+  citecolor=link,
+  filecolor=link,
+  urlcolor=link,
   unicode=true,
 }
 
@@ -108,6 +108,9 @@
 % === normalsize ===
 
 \definecolor{textbody}{gray}{0}
+\definecolor{linkred}{HTML}{DC322F}
+% Red is better for printing than blue or dark blue
+\colorlet{link}{linkred}
 
 \def\BOOK@apt{11}
 \def\BOOK@bpt{14}
@@ -151,6 +154,8 @@
 
 \checkandfixthelayout
 
+\setcounter{secnumdepth}{4}
+
 %% abstract
 
 \setlength{\absparindent}{0pt}
@@ -184,8 +189,6 @@
   \includegraphics[width=0.98\paperwidth]{#1}
   \par}
 }
-
-\setcounter{secnumdepth}{4}
 
 \newcommand\mA\textasteriskcentered
 
