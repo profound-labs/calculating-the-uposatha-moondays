@@ -11,7 +11,7 @@
   ItalicFont = Crimson Italic,
   BoldFont = Crimson Semibold,
   BoldItalicFont = Crimson SemiboldItalic,
-  Numbers = OldStyle,
+  Numbers = Lining,
 ]{Crimson Roman}
 
 \usepackage{geometry}
@@ -81,7 +81,7 @@
   month list,
   day xshift=4.5mm,
   month yshift=10mm,
-  every month/.append style={anchor=base, inner xsep=0pt, xshift=-\widthof{\space}},
+  every month/.append style={anchor=base, inner xsep=0pt},
   month text={\monthFont\monthlabelsize\color{primary-content}\%y0 \%m.},
   day text={\datenumFont\datenumsize\%d-},
   every day/.append style={anchor=base, inner xsep=0pt},
