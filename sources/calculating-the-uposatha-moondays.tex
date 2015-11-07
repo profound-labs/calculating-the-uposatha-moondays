@@ -1,10 +1,10 @@
-% Created 2015-11-02 Mon 15:30
+% Created 2015-11-07 Sat 20:47
 \documentclass[11pt,oneside]{memoir-article}
 \usepackage{local}
 \renewcommand{\docVersion}{v1.0}
 \renewcommand{\docUrl}{\href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{link}}
-\hypersetup{ pdfauthor={Hāsapañño Bhikkhu, Gambhiro Bhikkhu}, }
-\author{Hāsapañño Bhikkhu, Gambhiro Bhikkhu}
+\hypersetup{ pdfauthor={Hāsapañño Bhikkhu, Gambhīro Bhikkhu}, }
+\author{Hāsapañño Bhikkhu, Gambhīro Bhikkhu}
 \date{\today}
 \title{Calculating the Uposatha Moondays}
 \hypersetup{
@@ -16,8 +16,9 @@
 \maketitle
 \begin{tldr}
 \begin{itemize}
-\item The method is based on a set of formulas called \emph{suriyayatra}, originating
-from India and including additional rules observed in Southeast Asia.
+\item The method is based on a set of formulas called \emph{suriyayatra} (\thai{สุริยยาตร์}),
+originating from India and including additional rules observed in Southeast
+Asia.
 \item These formulas are now implemented in \href{https://github.com/splendidmoons/suriya-go}{suriya-go} for generating the \emph{uposatha}
   moondays for any arbitrary year.
 \item To keep the lunar year in sync with the solar, add an extra month 7 times in
@@ -25,34 +26,35 @@ from India and including additional rules observed in Southeast Asia.
 years (the adhikavāra, \thai{อธิกวาร}).
 \item Conditions on the values produced by formulas determine if a year should be
 assigned an adhikamāsa or adhikavāra.
-\item The 3-3-2 - 3-3-3-2 shorthand for adhikamāsa years is not sufficient
-\item Conventions on how to practise this can differ by countries and monastic groups
-\item Adhikamāsa years are reliable to predict. Some adhikavāra years have been
-irregular, approx. 1 in 20. However, everything since 1997 have been according
-to the regular pattern.
+\item The 3-3-2 - 3-3-3-2 shorthand for adhikamāsa years is not sufficient.
+\item Conventions on how to practise this can differ by countries and monastic groups.
+\item Common and adhikamāsa years have been regular in past calendars and thus
+reliable to predict. Some adhikavāra years have been irregular, approx. 1
+in 20. However, everything since 1997 have been according to the regular
+pattern.
 \end{itemize}
 \end{tldr}
 
-\vfill
+\thispagestyle{empty}
 
-{\centering
-Just looking for the formulas? Dive in at sec. \ref{suriyayatra-formulas},\\
-or ask the machine to do it in Golang at sec. \ref{suriya-go-example}.
-\par}
-
-\vfill
+\marginpar{%
+Just looking for the formulas? Dive in at sec. \ref{suriyayatra-formulas},
+or see how we can ask the machine to do it in Golang at sec. \ref{suriya-go-example}.
+}
 
 {\centering\large\bfseries
 Reading time:
 \par}
+
+You don't need to read everything here to have a better understanding of the
+\emph{uposathas}. The sections get progressively more involved, drop it when you
+don't need more.
 
 \begin{description}
 \item[{Short}] Read section 1 (3 pages). You will understand how to construct a given year's uposathas.
 \item[{Long}] Up to X, to understand to formulas which determine the adhikamāsa and adhikavāra.
 \item[{Longer}] even more, position of the Sun and Moon, up to the Raek.
 \end{description}
-
-\vfill
 
 {\centering\large\bfseries
 Related:
@@ -67,26 +69,15 @@ Related:
 
 Download \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/raw/master/calculating-the-uposatha-moondays.pdf}{this PDF} or a \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/archive/master.zip}{ZIP archive}. The ZIP contains the PDFs referenced in this document.
 
-\vfill
+\AddToShipoutPictureFG*{\put(0,0){%
+\begin{minipage}[b]{\paperwidth}%
 
-\hrule
+\includegraphics[width=50mm]{formula-sample.pdf}
+\includegraphics[width=50mm]{code-sample.pdf}
+\includegraphics[width=50mm]{duangchata-sample.pdf}
 
-{\footnotesize
-
-
-Much appreciation for the answers from the Venerable Ajahns who endured my
-questions, in particular Ajahn Hāsapañño and Ajahn Amaro, and the many others
-who have helped to correct and improve it. Comprehension and consistency was
-only possible with their experience and understanding.
-
-Please send comments, corrections and further information to:
-
-\texttt{Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>}
-
-}
-
-\smallskip
-\hrule
+\end{minipage}%
+}}%
 
 \clearpage
 
@@ -607,300 +598,8 @@ years'' rule of thumb for adhikavāra years. This resulted in wrong dates being
 used on any inscriptions made until the error was corrected in the
 calendar.\cite{eade2007irregular}
 
-\section{Suriyayatra formulas}
-\label{sec-3-1}
-\label{suriyayatra-formulas}
-\subsection{Overview}
-\label{sec-3-1-1}
-
-The formulas take two inputs: the year, and the n$^{\text{th}}$ day in the lunar year.
-They go through a series of operations step by step to produce certain values
-which describe properties of the lunar year and the given day.
-
-\marginpar{%
-Only basic operations with pen and paper are necessary to get these results.
-(Although we'll get the machine to do it for us in the end.)
-
-Doing astronomy without looking up the sky does mean there may be inaccuracies
-for a given day, but the long-term calendar remains in sync.
-
-Consider the ancient \emph{hora} (astronomer / astrologer) in a rural village who is
-practising these steps. He doesn't have the equipment to make precise
-astronomical observations. He is not educated in the underlying theory of the
-complex interaction of the Sun, Earth and the Moon. He is only trained in
-following the steps, and still this allows him to obtain the necessary
-information to describe the progression of these events and plan any calendar
-year.
-}
-
-For $\mathbf{day} = 1$, the results are used to determine whether the year is
-common, adhikamāsa or adhikavāra. They can also give us the position of the Sun
-and the Moon on the given day. Thus, if we didn't add an extra month or day
-(i.e. in a common year), $\mathbf{day} = 103$ should tell us that the Full Moon
-in the sky is in Āsāḷha month.
-
-Significant values are assigned names.\cite{eade1989ephemeris} The following
-three will determine the adhikamāsa and adhikavāra:
-
-\savenotes
-
-\begin{description}
-\item[{Kammacubala}] Remaining 800ths of a day
-\item[{Avoman}] For the Moon's mean motion
-\item[{Tithi\footnote{a.k.a. Thaloengsok or New Year's Day}}] Age of the Moon, at the start of the year if $\mathbf{day} = 1$
-\end{description}
-
-As we follow the steps, we will also obtain:
-
-\begin{multicols}{2}
-
-\begin{description}
-\item[{Horakhun}] Elapsed days of the era
-\item[{Uccabala}] Age of the Moon's Apogee
-\item[{Masaken}] Elapsed months of the era
-\end{description}
-
-\columnbreak
-
-\begin{description}
-\item[{MeanSun}] Mean position of the Sun
-\item[{TrueSun}] True position of the Sun
-\item[{MeanMoon}] Mean position of the Moon
-\item[{TrueMoon}] True position of the Moon
-\item[{Raek\footnote{a.k.a. Naksatra}}] The position of the Moon in the 27 mansions
-of the Zodiac, which will determine the month
-\end{description}
-
-\end{multicols}
-
-\spewnotes
-
-\clearpage
-
-\subsection{Calculation}
-\label{sec-3-1-2}
-
-First we will see if we should add and extra month or extra day to keep the
-lunar year in sync with the solar year. We can lookup the Moon phases published
-by NASA and check if the Āsāḷha Pūjā date had in fact been a Full Moon.
-
-Then we will calculate the position of the Moon on that day, and see if we are
-in the correct month, and not at some other Full Moon.
-
-Let's take the year CE 1963 (CS 1325) as an example and calculate its
-properties. We should find that it is an adhikavāra year. As an excercise,
-calculate the following year CE 1964 (CS 1326), and you should find that it is
-adhikamāsa.
-
-Notation:
-
-$a \bmod b$ produces the \emph{remainder part} of $a/b$.\\
-E.g. $14 \bmod 5 = 4$, because $14/5 = 2*5 + 4$.
-
-$\lfloor a \rfloor$ \emph{floors} (or truncates) a fraction value, meaning we only
-keep its integer part.\\
-E.g. $\lfloor 12.8 \rfloor = 12$.
-
-
-\begin{align*}
-\text{Constants:} && \mathbf{EraYears} & = 800 & \mathbf{EraDays} & = 292207
-\end{align*}
-
-\begin{align}
-\begin{split}
-   \mathbf{CS\_year} &= \mathbf{CE\_year} - 638\\
-                     &= 1325
-\end{split}\\
-\begin{split}
-                   a &= (\mathbf{CS\_year} * \mathbf{292207}) + 373\\
-                     &= 387174648
-\end{split}\\
-\begin{split}
-\mathbf{Horakhun}    &= \lfloor a / \mathbf{800} + 1 \rfloor\\
-                     &= 483969
-\end{split}\\
-\begin{split}
-\mathbf{Kammacubala} &= \mathbf{800} - (a \bmod \mathbf{800})\\
-                     &= 552
-\end{split}\\
-\begin{split}
-\mathbf{Avoman}      &= ((\mathbf{Horakhun} * 11) + 650) \bmod 692\\
-                     &= 61
-\end{split}\\
-\begin{split}
-                   b &= \lfloor ((\mathbf{Horakhun} * 11) + 650) / 692 \rfloor\\
-                     &= 7694
-\end{split}\\
-\begin{split}
-\mathbf{Masaken}     &= \lfloor (b + \mathbf{Horakhun}) / 30 \rfloor\\
-                     &= 16388
-\end{split}\\
-\begin{split}
-\mathbf{Tithi}       &= (b + \mathbf{Horakhun}) \bmod 30\\
-                     &= 23
-\end{split}
-\end{align}
-
-Now we can determine if the year qualifies for adhikamāsa or adhikavāra.
-
-\clearpage
-
-\subsubsection{Adhikamāsa years}
-\label{sec-3-1-2-1}
-\label{adhikamasa-years}
-
-(Thai: atikamat \thai{อธิกมาส})
-
-The year could be adhikamāsa:
-
-\begin{itemize}
-\item \logic{IF} the \textbf{Tithi} is between 24 and 29 inclusive,
-\item \logic{OR} between 0 and 5 inclusive.
-\end{itemize}
-
-However:
-
-\begin{itemize}
-\item \logic{IF} the next year also satisfies the above,
-\item \logic{then} this year will not be adhikamāsa, and the next year will be.
-\end{itemize}
-
-Adhikamāsa years are not allowed to be contiguous, and max. 2 years are allowed
-between them. If next year also qualifies for adhikamāsa, then it will be
-assigned there and not to the current year.
-
-In the above example for year CS 1325, the \textbf{Tithi} is 23, which doesn't satisfy
-the first condition, and so it can't be adhikamāsa.
-
-\subsubsection{Adhikavāra years}
-\label{sec-3-1-2-2}
-\label{adhikavara-years}
-
-(Thai: adhikawan \thai{อธิกวาร})
-
-Determine if it is a leap year:
-
-\begin{itemize}
-\item \logic{IF} the \textbf{Kammacubala} is less than or equal to 207,
-\item \logic{THEN} it is a leap year.
-\end{itemize}
-
-The year could be adhikavāra:
-
-\begin{itemize}
-\item \logic{IF} it is a leap year \logic{AND} the \textbf{Avoman} is less than or equal to 126,
-\item \logic{ELSE IF} it is \logic{NOT} a leap year \logic{AND} the \textbf{Avoman} is less than 137.
-\end{itemize}
-
-\marginpar{%
-``Carried adhikavāra'' meaning that last year qualified both for adhikamāsa and
-adhikavāra, so it was not allowed to be assigned the adhikavāra, which was
-``carried on'' and will now be assigned to this year.
-
-In Thailand, years with an extra month are not allowed to also have an extra
-day, and the adhikavāra may be assigned to one of the flanking years. So in
-theory it could be assigned to the following or preceding year, but the general
-practice is to ``carry on'' the adhikavāra and assign it to the following year.
-}
-
-However:
-
-\begin{itemize}
-\item \logic{IF} the year is adhikamāsa,
-\item \logic{then} it can't be adhikavāra.
-\item \logic{ELSE IF} there is a carried adhikavāra from last year,
-\item \logic{then} this year will be adhikavāra.
-\end{itemize}
-
-In the above example for year CS 1325: The year is not adhikamāsa, so we can
-examine it further. The \textbf{Kammacubala} is 552 so it is not a leap year. The
-\textbf{Avoman} is 61, so the year qualifies to be assigned an adhikavāra.
-
-Now we know if the year is adhikamāsa, adhikamāsa or common, and we can plan the
-\emph{uposathas} as shown in the diagram on
-p.\pageref{dia-common-adhikamasa-adhikavara}.
-
-Checking the past calendars for year CS 1325 (see Table
-\ref{tbl-calendars-1958}), we see that indeed it was adhikavāra, conforming to
-the formulas.
-
-Nonetheless, the future remains uncertain and the past inscrutable at times.
-When the calendar comittees plan several years ahead, they may assign the
-adhikavāra to a different year for reasons that remain obscured, causing at
-least two irregular years. This can be observed in past calendars (Table
-\ref{tbl-adhikavara-irregularities}), but recently this hasn't been happening,
-and the years follow the prediction of the formulas.
-
-\subsubsection{Sun, Moon and Raek}
-\label{sec-3-1-2-3}
-
-Eade describes the formulas at the end of his paper \emph{Rules for interpolation in
-the Thai calendar}\cite{eade2000rules}, but his notation is a puzzle in itself,
-with its implied conversions and obscure progression from one step to the next.
-
-The folks at \href{http://astronomy.stackexchange.com/}{Astronomy Stack Exchange} helped to decipher it:
-
-\begin{itemize}
-\item \href{http://astronomy.stackexchange.com/questions/11753/how-to-interpret-this-old-degree-notation}{How to interpret this old degree notation?}
-\item \href{http://astronomy.stackexchange.com/questions/12052/from-mean-moon-to-true-moon-in-an-old-procedural-calendar}{From Mean Moon to True Moon in an old procedural calendar}
-\end{itemize}
-
-This allows us to continue examining the year CS 1325 as an example.
-
-TODO
-
-\subsubsection{In Golang}
-\label{sec-3-1-2-4}
-\label{suriya-go-example}
-
-Going through all this may be intriguing to calculate once, but mention
-repeating it every year, then checking and proofing it, and one is reminded of a
-phrase in Eade's \emph{Calendrical Systems}: ``Few would undertake cheerfully the
-task."\cite{eade1995calendrical}
-
-Better tell the machine how to do it and let us get on with living. Let's
-import \href{https://github.com/splendidmoons/suriya-go}{suriya-go} and ask the machine in Golang:
-
-\begin{minted}{go}
-package main
-
-import "fmt"
-import "github.com/splendidmoons/suriya-go"
-
-func main() {
-  suYear := suriya.SuriyaYear{}
-  suYear.Init(1963) // CS 1325
-
-  dateFmt := "2006-01-02"
-  fmtStr := `Year: %v
-Tithi: %v
-Adhikamāsa: %v
-Adhikavāra: %v
-Āsāḷha: %v
-`
-  fmt.Printf(fmtStr,
-    suYear.Year,
-    suYear.Tithi,
-    suYear.Is_Adhikamasa(),
-    suYear.Is_Adhikavara(),
-    suYear.AsalhaPuja().Format(dateFmt))
-}
-\end{minted}
-
-Which will print:
-
-\begin{verbatim}
-Year: 1963
-Tithi: 23
-Adhikamāsa: false
-Adhikavāra: true
-Āsāḷha: 1963-07-06
-\end{verbatim}
-
-\clearpage
-
 \section{Names of the months}
-\label{sec-3-2}
+\label{sec-3-1}
 
 The name of a given month is determined by the astrological sign which
 the Full Moon enters at midnight. See Table \ref{tbl-month-names}.
@@ -930,7 +629,7 @@ Rainy Season & 10 & 29 & Bhaddapāda-māsa & September & Virgo / Kanyā\\
 \end{table}
 
 \section{The first and last day of a lunar month}
-\label{sec-3-3}
+\label{sec-3-2}
 \label{lunar-month-first-last}
 
 In monastic practice, the Full Moon day is on the last day of a given
@@ -999,8 +698,352 @@ Nth & phase & month & Monastic & Thai\\
 
 \clearpage
 
-\chapter{Gregorian leap years}
+\chapter{The Duang Chata}
 \label{sec-4}
+
+\begin{figure}[h]
+\caption{Duang Chata \thai{ดวงชะตา}.}
+\resizebox{\linewidth}{!}{\DuangChata{ {0}{0}{0} }{ {1}{0}{0} }}
+
+Horakhun\\
+Tithi
+
+\end{figure}
+
+Rasi is 0-11, Naksatra is 1-27. Sun = \theSun, Moon = \theMoon.
+
+0:1\degree 2\minute = Rasi:Angsa\degree Lipda\minute or Rasi:Degree\degree Minute\minute.
+
+\section{Tithi progression}
+\label{sec-4-1}
+
+30 Tithi, 15 is Full Moon
+
+Duang at Tithi: 0 3 6 9 12 15 18 21 24 27 29(?)
+
+\section{Rasi}
+\label{sec-4-2}
+
+0-11
+
+\section{Naksatra, lunar mansions}
+\label{sec-4-3}
+
+1-27
+
+\clearpage
+
+\chapter{Suriyayatra formulas}
+\label{sec-5}
+\label{suriyayatra-formulas}
+\section{Overview}
+\label{sec-5-1}
+
+The formulas take two inputs: the year, and the n$^{\text{th}}$ day in the lunar year.
+They go through a series of operations step by step to produce certain values
+which describe properties of the lunar year and the given day.
+
+For $\mathbf{day} = 1$, the results are used to determine whether the year is
+common, adhikamāsa or adhikavāra. They can also give us the position of the Sun
+and the Moon on the given day. Thus, if we didn't add an extra month or day
+(i.e. in a common year), $\mathbf{day} = 103$ should tell us that the Full Moon
+in the sky is in Āsāḷha month.
+
+Significant values are assigned names.\cite{eade1989ephemeris} The following
+three will determine the adhikamāsa and adhikavāra:
+
+\savenotes
+
+\begin{description}
+\item[{Kammacubala \thai{กัมมัชพล}}] Remaining 800ths of a day
+\item[{Avoman \thai{อวมาน}}] For the Moon's mean motion
+\item[{Tithi\footnote{a.k.a. Thaloengsok or New Year's Day} \thai{ดีถี}}] Age of the Moon, at the start of the year if $\mathbf{day} = 1$
+\end{description}
+
+As we follow the steps, we will also obtain:
+
+\begin{description}
+\item[{Horakhun \thai{อหรคุณ}}] Elapsed days of the era
+\item[{Uccabala \thai{อุจจพล}}] Age of the Moon's Apogee
+\item[{Masaken \thai{มาสเกณฑ์}}] Elapsed months of the era
+
+\item[{MeanSun, TrueSun, MeanMoon, TrueMoon}] Mean and True position of the Sun and the Moon
+\item[{Raek}] The position of the Moon in the 27 mansions (Naksatra, \thai{นักษัตร}) of the Zodiac, which will determine the month
+\end{description}
+
+\spewnotes
+
+Only basic operations in a series of simple steps are necessary to produce these
+results. It can be carried out entirely on paper, although we will get the
+machine to do it for us in the end.
+
+This is a simplistic clockwork model of the solar system. It is not a framework
+to model orbital mechanics, and doesn't account for such things as the varying
+speed of the Moon in its elliptical orbit.
+
+Therefore there can be inaccuracies for a given day between its results and
+observations made with telescopes (or indeed by plain sight) about what is
+actually going on ``out there'', but nonetheless it keeps the long-term calendar
+in sync with the periodic cycles of the celestial bodies.
+
+Consider the ancient \emph{hora} \thai{โหรา} (astronomer / astrologer) in a rural village who is
+practising these steps. He doesn't have the equipment to make precise
+astronomical observations. He is not educated in the underlying theory of the
+complex interaction of the Sun, Earth and the Moon. He is only trained in
+following the steps, and still this allows him to obtain the necessary
+information to describe the progression of these events in any year.
+
+\section{Calculating the properties of the year}
+\label{sec-5-2}
+
+First we will see if we should add and extra month or extra day to keep the
+lunar year in sync with the solar year. We can lookup the Moon phases published
+by NASA and check if the Āsāḷha Pūjā date had in fact been a Full Moon.
+
+Then we will calculate the position of the Moon on that day, and see if we are
+in Āsāḷha month, and not at some other Full Moon.
+
+Let's take the year CE 1963 (CS 1325) as an example and calculate its
+properties. We should find that it is an adhikavāra year. If you calculate the
+following year CE 1964 (CS 1326) as an excercise, you should find that it is
+adhikamāsa.
+
+Notation:
+
+$a \bmod b$ produces the \emph{remainder part} of $a/b$.\\
+E.g. $14 \bmod 5 = 4$, because $14/5 = 2*5 + 4$.
+
+$\lfloor a \rfloor$ \emph{floors} (or truncates) a fraction value, meaning we discard
+the fraction part and only keep the integer part.\\
+E.g. $\lfloor 12.8 \rfloor = 12$.
+
+
+Era Constants. For readability, in the formulas we will use their values directly, set in \textbf{bold}.
+
+\begin{align*}
+  \mathbf{EraYears} = 800 & \mathbf{EraDays} = 292207 & \mathbf{MonthLength} = 30
+\end{align*}
+
+Constant offsets, which have to be added because their value was not 0 at the beginning of the Era:
+
+\begin{align*}
+  \mathbf{EraHorakhun} & = 373 & \mathbf{EraUccabala} & = 2611\\
+  \mathbf{EraAvoman} & = 650 & \mathbf{EraMasaken} & = 0
+\end{align*}
+
+%"For every 692 solar days that elapse there are also 703 tithi.
+%Since 703 / 692 can be expressed as 692 + 11 / 692,
+%the ratio is simplified to these terms..." (Calendrical, p.48)
+%
+%11 is the daily increase (excess tithi over days)
+%
+% also see (Calendrical, p.49)
+
+\begin{equation*}
+703 / 692 = 692 + 11 / 692
+\end{equation*}
+
+\begin{align}
+\begin{split}
+   \mathbf{CS\_year} &= \mathbf{CE\_year} - 638\\
+                     &= 1325
+\end{split}\\
+\begin{split}
+                   a &= (\mathbf{CS\_year} * \mathbf{292207}) + \mathbf{373}\\
+                     &= 387174648
+\end{split}\\
+\begin{split}
+\mathbf{Horakhun}    &= \lfloor a / \mathbf{800} + 1 \rfloor\\
+                     &= 483969
+\end{split}\\
+\begin{split}
+\mathbf{Kammacubala} &= \mathbf{800} - (a \bmod \mathbf{800})\\
+                     &= 552
+\end{split}\\
+\begin{split}
+\mathbf{Avoman}      &= ((\mathbf{Horakhun} * 11) + \mathbf{650}) \bmod 692\\
+                     &= 61
+\end{split}\\
+\begin{split}
+                   b &= \lfloor ((\mathbf{Horakhun} * 11) + \mathbf{650}) / 692 \rfloor\\
+                     &= 7694
+\end{split}\\
+\begin{split}
+\mathbf{Masaken}     &= \lfloor (b + \mathbf{Horakhun}) / 30 \rfloor\\
+                     &= 16388
+\end{split}\\
+\begin{split}
+\mathbf{Tithi}       &= (b + \mathbf{Horakhun}) \bmod 30\\
+                     &= 23
+\end{split}
+\end{align}
+
+Now we can determine if the year qualifies for adhikamāsa or adhikavāra.
+
+\section{Adhikamāsa conditions}
+\label{sec-5-3}
+\label{adhikamasa-years}
+
+(Thai: atikamat \thai{อธิกมาส})
+
+The year could be adhikamāsa:
+
+\begin{itemize}
+\item \logic{IF} the \textbf{Tithi} is between 24 and 29 inclusive,
+\item \logic{OR} between 0 and 5 inclusive.
+\end{itemize}
+
+However:
+
+\begin{itemize}
+\item \logic{IF} the next year also satisfies the above,
+\item \logic{then} this year will not be adhikamāsa, and the next year will be.
+\end{itemize}
+
+Adhikamāsa years are not allowed to be contiguous, and max. 2 years are allowed
+between them. If next year also qualifies for adhikamāsa, then it will be
+assigned there and not to the current year.
+
+In the above example for year CS 1325, the \textbf{Tithi} is 23, which doesn't satisfy
+the first condition, and so it can't be adhikamāsa.
+
+\section{Adhikavāra conditions}
+\label{sec-5-4}
+\label{adhikavara-years}
+
+(Thai: atikawan \thai{อธิกวาร})
+
+Determine if it is a leap year:
+
+\begin{itemize}
+\item \logic{IF} the \textbf{Kammacubala} is less than or equal to 207,
+\item \logic{THEN} it is a leap year.
+\end{itemize}
+
+The year could be adhikavāra:
+
+\begin{itemize}
+\item \logic{IF} it is a leap year \logic{AND} the \textbf{Avoman} is less than or equal to 126,
+\item \logic{ELSE IF} it is \logic{NOT} a leap year \logic{AND} the \textbf{Avoman} is less than 137.
+\end{itemize}
+
+\marginpar{%
+``Carried adhikavāra'' meaning that last year qualified both for adhikamāsa and
+adhikavāra, so it was not allowed to be assigned the adhikavāra, which was
+``carried on'' and will now be assigned to this year.
+
+In Thailand, years with an extra month are not allowed to also have an extra
+day, and the adhikavāra may be assigned to one of the flanking years. So in
+theory it could be assigned to the following or preceding year, but the general
+practice is to ``carry on'' the adhikavāra and assign it to the following year.
+}
+
+However:
+
+\begin{itemize}
+\item \logic{IF} the year is adhikamāsa,
+\item \logic{then} it can't be adhikavāra.
+\item \logic{ELSE IF} there is a carried adhikavāra from last year,
+\item \logic{then} this year will be adhikavāra.
+\end{itemize}
+
+In the above example for year CS 1325: The year is not adhikamāsa, so we can
+examine it further. The \textbf{Kammacubala} is 552 so it is not a leap year. The
+\textbf{Avoman} is 61, so the year qualifies to be assigned an adhikavāra.
+
+Now we know if the year is adhikamāsa, adhikamāsa or common, and we can plan the
+\emph{uposathas} as shown in the diagram on
+p.\pageref{dia-common-adhikamasa-adhikavara}.
+
+Checking the past calendars for year CS 1325 (see Table
+\ref{tbl-calendars-1958}), we see that indeed it was adhikavāra, conforming to
+the formulas.
+
+Nonetheless, the future remains uncertain and the past inscrutable at times.
+When the calendar comittees plan several years ahead, they may assign the
+adhikavāra to a different year for reasons that remain obscured, causing at
+least two irregular years. This can be observed in past calendars (Table
+\ref{tbl-adhikavara-irregularities}), but recently this hasn't been happening,
+and the years follow the prediction of the formulas.
+
+\section{Calculating the Position of the Sun and the Moon}
+\label{sec-5-5}
+
+Eade describes the formulas at the end of his paper \emph{Rules for interpolation in
+the Thai calendar}\cite{eade2000rules}, but his notation is a puzzle in itself,
+with its implied conversions and obscure progression from one step to the next.
+
+The folks at \href{http://astronomy.stackexchange.com/}{Astronomy Stack Exchange} helped to decipher it:
+
+\begin{itemize}
+\item \href{http://astronomy.stackexchange.com/questions/11753/how-to-interpret-this-old-degree-notation}{How to interpret this old degree notation?}
+\item \href{http://astronomy.stackexchange.com/questions/12052/from-mean-moon-to-true-moon-in-an-old-procedural-calendar}{From Mean Moon to True Moon in an old procedural calendar}
+\end{itemize}
+
+This allows us to continue examining the year CE 1963 (CS 1325).
+
+
+\begin{align}
+\begin{split}
+   \mathbf{detaCA} &= \mathbf{CE\_year} - 638\\
+                     &= 1325
+\end{split}\\
+\begin{split}
+                   a &= (\mathbf{CS\_year} * \mathbf{292207}) + 373\\
+                     &= 387174648
+\end{split}
+\end{align}
+
+\section{In Golang}
+\label{sec-5-6}
+\label{suriya-go-example}
+
+Going through all this may be intriguing to calculate once, but mention
+repeating it every year, then checking and proofing it, and one is reminded of a
+phrase in Eade's \emph{Calendrical Systems}: ``Few would undertake cheerfully the
+task."\cite{eade1995calendrical}
+
+Better tell the machine how to do it and let us get on with living. Let's
+import \href{https://github.com/splendidmoons/suriya-go}{suriya-go} and ask the machine in Golang:
+
+\begin{minted}{go}
+package main
+
+import "fmt"
+import "github.com/splendidmoons/suriya-go"
+
+func main() {
+  suYear := suriya.SuriyaYear{}
+  suYear.Init(1963) // CS 1325
+
+  dateFmt := "2006-01-02"
+  fmtStr := `Year: %v
+Tithi: %v
+Adhikamāsa: %v
+Adhikavāra: %v
+Āsāḷha: %v
+`
+  fmt.Printf(fmtStr,
+    suYear.Year,
+    suYear.Tithi,
+    suYear.Is_Adhikamasa(),
+    suYear.Is_Adhikavara(),
+    suYear.AsalhaPuja().Format(dateFmt))
+}
+\end{minted}
+
+Which will print:
+
+\begin{verbatim}
+Year: 1963
+Tithi: 23
+Adhikamāsa: false
+Adhikavāra: true
+Āsāḷha: 1963-07-06
+\end{verbatim}
+
+\chapter{Gregorian leap years}
+\label{sec-6}
 
 \begin{table}[h]
 \caption{\label{tbl-cycle-leap-years} Gregorian leap years}
@@ -1025,7 +1068,7 @@ Nth & phase & month & Monastic & Thai\\
 \backmatter
 
 \chapter{Websites and Apps}
-\label{sec-5}
+\label{sec-7}
 
 TODO
 
@@ -1036,14 +1079,14 @@ myhora.com
 uposatha app
 
 \chapter{Bibliography}
-\label{sec-6}
+\label{sec-8}
 \label{bibliography}
 
 \bibliographystyle{plain}
 \bibliography{bibentries}
 
 \chapter{Colophon}
-\label{sec-7}
+\label{sec-9}
 
 \href{http://orgmode.org/}{Org-mode} and \LaTeX. Sources at \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{Github}.
 
@@ -1051,7 +1094,7 @@ Please send comments, corrections and further information to:
 
 \texttt{Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>}
 
-Last updated on 2015-11-02.
+Last updated on 2015-11-07.
 
 
 \fullpage{%

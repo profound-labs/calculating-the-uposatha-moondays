@@ -1,5 +1,8 @@
 \ProvidesPackage{local}
 
+\usepackage{duangchata}
+\renewcommand\duangThaiFont{\articleThaiFont}
+
 \usepackage{tikz}
 \usetikzlibrary{calendar}
 \usetikzlibrary{positioning}
@@ -44,6 +47,9 @@
 \usepackage{lscape}
 \usepackage{footnote}
 
+\newcommand\degree{\ensuremath{^\circ}}
+\newcommand\minute{\ensuremath{^\prime}}
+
 \usepackage{wasysym}
 
 \newcommand*\moonformat[1]{{\color{primary-content} #1}}
@@ -64,4 +70,5 @@
     \addcontentsline{toc}{chapter}{\bibname}%
   \fi
   \prebibhook}
+
 

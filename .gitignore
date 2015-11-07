@@ -6,8 +6,11 @@
 *.blg
 *~
 *.backup
+sources/mwe.*
 sources/calculating-the-uposatha-moondays.pdf
 sources/auto
-sources/includes/auto
 sources/_minted-calculating-the-uposatha-moondays/
+sources/_minted-mwe/
+sources/includes/auto
+sources/includes/_minted-code-sample/
 

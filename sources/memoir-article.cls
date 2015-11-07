@@ -299,9 +299,9 @@
 }}%
 }
 
-\newfontfamily\thaiFont{Kinnari}
+\newfontfamily\articleThaiFont{Kinnari}
 
-\newcommand*\thai[1]{{\thaiFont #1}}
+\newcommand*\thai[1]{{\articleThaiFont #1}}
 
 \newcommand*\logic[1]{\textsc{\logicFont \MakeTextUppercase{#1}}}
 

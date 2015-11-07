@@ -1,0 +1,46 @@
+\documentclass[10pt]{article}
+
+\makeatletter
+
+\usepackage{xcolor}
+
+\usepackage{geometry}
+\geometry{
+  paperwidth=100mm,
+  paperheight=35mm,
+  hmargin=0pt,
+  vmargin=0pt,
+  noheadfoot,
+  %centering,
+}
+
+\usepackage{minted}
+
+%\definecolor{base3}{HTML}{FDF6E3}
+%\colorlet{code-bg}{base3}
+%
+%\setminted{bgcolor=code-bg}
+%\setmintedinline{bgcolor={}}
+
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+
+\pagestyle{empty}
+\raggedright
+
+\makeatother
+
+\begin{document}
+
+\begin{minted}{go}
+suYear := suriya.SuriyaYear{}
+suYear.Init(1963) // CS 1325
+fmt.Println(suYear.Is_Adhikamasa())
+// false
+fmt.Println(suYear.Is_Adhikavara())
+// true
+fmt.Println(suYear.AsalhaPuja().Format("2006 Jan 2"))
+// 1963 Jul 6
+\end{minted}
+
+\end{document}
