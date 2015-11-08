@@ -600,24 +600,27 @@ the same visual phase
 The name of a given month is determined by the astrological sign which
 the Full Moon enters at midnight. See Table \ref{tbl-month-names}.
 
+The lunar year starts in April with Citta-māsa, which is 0 degrees (the vernal
+equinox) on the /duang/ wheel, corresponding to Aries.
+
 #+attr_latex: :placement [h] :caption \caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs\cite{hasapannyo-zodiac}}
 | Season       |    |      | Lunar Month     | Solar Month | Solar Zodiac         |
 |              |    | days |                 |             | (Western / Sanskrit) |
 |--------------+----+------+-----------------+-------------+----------------------|
-| Hemanta-utu  |  1 |   30 | Magasira-māsa   | December    | Sagittarius / Dhanus |
-| Cold Season  |  2 |   29 | Phussa-māsa     | January     | Capricorn / Makara   |
-|              |  3 |   30 | Māgha-māsa      | February    | Aquarius / Kumbha    |
-|              |  4 |   29 | Phagguṇa-māsa   | March       | Pisces / Mīna        |
+| Hemanta-utu  |  9 |   30 | Magasira-māsa   | December    | Sagittarius / Dhanus |
+| Cold Season  | 10 |   29 | Phussa-māsa     | January     | Capricorn / Makara   |
+|              | 11 |   30 | Māgha-māsa      | February    | Aquarius / Kumbha    |
+|              | 12 |   29 | Phagguṇa-māsa   | March       | Pisces / Mīna        |
 |--------------+----+------+-----------------+-------------+----------------------|
-| Gimha-utu    |  5 |   30 | Citta-māsa      | April       | Aries / Meṣa         |
-| Hot Season   |  6 |   29 | Visākha-māsa    | May         | Taurus / Vṛṣabha     |
-|              |  7 |   30 | Jeṭṭha-māsa     | June        | Gemini / Mithuna     |
-|              |  8 |   29 | Āsāḷha-māsa     | July        | Cancer / Karkaṭa     |
+| Gimha-utu    |  1 |   30 | Citta-māsa      | April       | Aries / Meṣa         |
+| Hot Season   |  2 |   29 | Visākha-māsa    | May         | Taurus / Vṛṣabha     |
+|              |  3 |   30 | Jeṭṭha-māsa     | June        | Gemini / Mithuna     |
+|              |  4 |   29 | Āsāḷha-māsa     | July        | Cancer / Karkaṭa     |
 |--------------+----+------+-----------------+-------------+----------------------|
-| Vassāna-utu  |  9 |   30 | Savaṇa-māsa     | August      | Leo / Siṃha          |
-| Rainy Season | 10 |   29 | Bhaddapāda-māsa | September   | Virgo / Kanyā        |
-|              | 11 |   30 | Assayuja-māsa   | October     | Libra / Tulā         |
-|              | 12 |   29 | Kattika-māsa    | November    | Scorpio / Vṛścika    |
+| Vassāna-utu  |  5 |   30 | Savaṇa-māsa     | August      | Leo / Siṃha          |
+| Rainy Season |  6 |   29 | Bhaddapāda-māsa | September   | Virgo / Kanyā        |
+|              |  7 |   30 | Assayuja-māsa   | October     | Libra / Tulā         |
+|              |  8 |   29 | Kattika-māsa    | November    | Scorpio / Vṛścika    |
 
 ** The first and last day of a lunar month
 \label{lunar-month-first-last}
@@ -723,6 +726,36 @@ Rasi is 0-11, Naksatra is 1-27. Sun = \theSun, Moon = \theMoon.
 
 0:1\degree 2\minute = Rasi:Angsa\degree Lipda\minute or Rasi:Degree\degree Minute\minute.
 
+*** notes                                                          :noexport:
+
+https://en.wikipedia.org/wiki/Nakshatra 
+Naksatra, Thai
+https://th.wikipedia.org/wiki/%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%82%E0%B8%B1%E0%B8%95%E0%B8%A4%E0%B8%81%E0%B8%A9%E0%B9%8C
+    
+https://en.wikipedia.org/wiki/Lunar_mansion
+https://en.wikipedia.org/wiki/Twenty-Eight_Mansions
+
+https://en.wikipedia.org/wiki/Zodiac#Hindu_astrology_and_the_Zodiac
+
+Zodiac, Thai
+https://th.wikipedia.org/wiki/%E0%B8%88%E0%B8%B1%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%B2%E0%B8%A8%E0%B8%B5
+
+http://www.thaiworldview.com/bouddha/animism4.htm
+
+p.9: tithi is 15:00 - sun and moon are 180 degrees apart, it is full moon. Tithi
+is reckoned in base 60, so 0:30 is half a tithi.
+
+p.27: naksatra: which the moon will occupy at full moon
+
+p.31: raek: the reference is to the 27 segments into which the moon's orbit is divided
+
+each segment is 13 deg 20 min
+
+p.34: The names of the lunar months are derived from the name of naksatra that the
+moon will normally be occupying at Full Moon.
+
+p.78: duang chata / zata
+
 ** Tithi progression
 
 30 Tithi, 15 is Full Moon
@@ -730,12 +763,68 @@ Rasi is 0-11, Naksatra is 1-27. Sun = \theSun, Moon = \theMoon.
 Duang at Tithi: 0 3 6 9 12 15 18 21 24 27 29(?)
 
 ** Rasi
-
-0-11
- 
-** Naksatra, lunar mansions
    
-1-27
+#+attr_latex: :placement [h] :caption \caption{\label{tbl-rasi-names} Names of the 12 Rasi.}
+| Rasi \thai{ราศี} | Western     | Thai        | Sanskrit |
+|-----------------+-------------+-------------+----------|
+|               0 | Aries       | \thai{เมษ}  | Meṣa     |
+|               1 | Taurus      | \thai{พฤษภ} | Vṛṣabha  |
+|               2 | Gemini      | \thai{เมถุน} | Mithuna  |
+|               3 | Cancer      | \thai{กรกฎ} | Karkaṭa  |
+|               4 | Leo         | \thai{สิงห์}  | Siṃha    |
+|               5 | Virgo       | \thai{กันย์}  | Kanyā    |
+|               6 | Libra       | \thai{ตุลย์}  | Tulā     |
+|               7 | Scorpio     | \thai{พิจิก}  | Vṛścika  |
+|               8 | Sagittarius | \thai{ธนู}   | Dhanus   |
+|               9 | Capricorn   | \thai{มังกร} | Makara   |
+|              10 | Aquarius    | \thai{กุมภ์}  | Kumbha   |
+|              11 | Pisces      | \thai{มีน}   | Mīna     |
+
+The circle is divided into 12 segments called /rasi/, each marking 30 degrees.
+Their numbering starts from 0, to express $x*30\degree$. See Table
+\ref{tbl-rasi-names}.
+
+0 degree (Aries) is the vernal equinox.
+
+The notation $x:y\degree z\minute = x*30 + y + z/60$, thus 36\degree 5\minute is
+$1:6\degree 5\minute$.
+
+** Naksatra, lunar mansions
+
+# Eade, Calendrical, p.31
+
+The Moon moves about 13\degree\ a day, which in general means it traverses one
+lunar mansion per day.
+
+# Eade, Calendrical, p.33
+
+|  1 | Asvini            |
+|  2 | Bharani           |
+|  3 | Karttika          |
+|  4 | Rohini            |
+|  5 | Margasirsha       |
+|  6 | Ardhra            |
+|  7 | Punarvasu         |
+|  8 | Pushya            |
+|  9 | Aslesha           |
+| 10 | Magha             |
+| 11 | P. Phalguni       |
+| 12 | Uttara Phalguni   |
+| 13 | Hasta             |
+| 14 | Cittra            |
+| 15 | Svati             |
+| 16 | Visakha           |
+| 17 | Anuradha          |
+| 18 | Jyestha           |
+| 19 | Mula              |
+| 20 | P. Ashadha        |
+| 21 | Uttara Ashadha    |
+| 22 | Sravana           |
+| 23 | Danishta          |
+| 24 | Satabisha         |
+| 25 | P. Bhadrapada     |
+| 26 | Uttara Bhadrapada |
+| 27 | Revati            |
 
 \clearpage
 
@@ -1026,27 +1115,6 @@ This allows us to continue examining the year CE 1963 (CS 1325).
 # ดาว	ราศี	องศา	ลิปดา	 
 # ๑	อาทิตย์	11 : มีน	22	33	
 # ๒	จันทร์
-
-
-Ephemeris p.19: Rasi and angsa, signs and degrees: 30 degrees to each rasi. Aries=0. 107 degrees = 3:17
-
-"DUANG CHATA" - ดวงชะตา
-
-http://www.thaiworldview.com/bouddha/animism4.htm
-
-p.9: tithi is 15:00 - sun and moon are 180 degrees apart, it is full moon. Tithi
-is reckoned in base 60, so 0:30 is half a tithi.
-
-p.27: naksatra: which the moon will occupy at full moon
-
-p.31: raek: the reference is to the 27 segments into which the moon's orbit is divided
-
-each segment is 13 deg 20 min
-
-p.34: The names of the lunar months are derived from the name of naksatra that the
-moon will normally be occupying at Full Moon.
-
-p.78: duang chata / zata
 
 ** In Golang
 \label{suriya-go-example}
