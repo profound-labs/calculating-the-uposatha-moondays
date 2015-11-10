@@ -4,13 +4,18 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 
-\newcommand\duangThaiFont{}
+\usepackage{wasysym}
 
-\newcommand\theSun{{\duangThaiFont ๑}}
-\newcommand\theMoon{{\duangThaiFont ๒}}
+\newcommand\theSun{\astrosun}
+\newcommand\theMoon{\leftmoon}
 
 \newcommand\@dng@degree{\ensuremath{^\circ}}
 \newcommand\@dng@minute{\ensuremath{^\prime}}
+
+% #1 = Rasi, #2 = Angsa (degree), #3 = Lipda (minute)
+\newcommand\RalText[3]{%
+  #1:#2\@dng@degree #3\@dng@minute%
+}
 
 \newdimen\@t@result
 
@@ -25,6 +30,7 @@
 \newdimen\MoonAngle
 
 \newdimen\angle
+\newdimen\textrotate
 \newcount\nth
 
 % #1 = Sun (r:a'l"), #2 = Moon (r:a'l")
@@ -37,44 +43,70 @@
   \setlength{\MoonAngle}{\@t@result}
 
   \node (0,0) [circle, draw=black, minimum width=200pt] {};
-  
-  % Naksatra
-  \foreach \n/\@t@name in {0/{name},1/{name},2/{name},3/{name},4/{name},5/{name},6/{name},7/{name},8/{name},9/{name},10/{name},11/{name},12/{name},13/{name},14/{name},15/{name},16/{name},17/{name},18/{name},19/{name},20/{name},21/{name},22/{name},23/{name},24/{name},25/{name},26/{name}} {
+
+  % Nakshatra
+  \foreach \n/\@t@name in {0/{Ashvinī},1/{Bharanī},2/{Kṛttikā},3/{Rohinī},4/{Mrigashīra},5/{Ārdrā},6/{Punarvasu},7/{Pushya},8/{Āshleshā},9/{Maghā},10/{Pūrva Phalgunī},11/{Uttara Phalgunī},12/{Hasta},13/{Chitrā},14/{Svātī},15/{Vishākhā},16/{Anurādhā},17/{Jyeshtha},18/{Mūla},19/{Pūrva Ashādhā},20/{Uttara Ashādhā},21/{Shravana},22/{Dhanistha},23/{Shatabhisha},24/{Pūrva Bhādrapadā},25/{Uttara Bhādrapadā},26/{Revatī}} {
     \setlength{\angle}{1pt * \n * \real{13.33}}
     \addtolength{\angle}{90pt - 15pt}% first Naksatra begins where the first Rasi begins
+
+    % use \n for multiplying angles, index from 0
+    % use \nth for naming, index from 1
+    \nth=\n 
+    \advance \nth by 1 
 
     \pgfpointpolar{\angle}{100pt}
     \pgfgetlastxy{\co@x}{\co@y}
     \draw (0,0) -- (\co@x,\co@y);
 
+    \setlength{\textrotate}{\angle - 90pt + 6.66pt}
+    \ifnum\nth>8
+      \ifnum\nth<22
+        \addtolength{\textrotate}{180pt}
+      \fi
+    \fi
+
     \pgfpointpolar{\angle + 6.66pt}{95pt}
     \pgfgetlastxy{\co@x}{\co@y}
-    \node [rotate={\angle - 90pt + 6.66pt}] at (\co@x,\co@y) {\small \thai{\@t@name}};
+    \node [rotate={\textrotate}] at (\co@x,\co@y) {\small \the\nth};
 
-    \pgfpointpolar{\angle + 6.66pt}{105pt}
+    \setlength{\textrotate}{\angle + 6.66pt}
+    \ifnum\nth<16
+      \ifnum\nth>1
+        \addtolength{\textrotate}{-180pt}
+      \fi
+    \fi
+
+    \pgfpointpolar{\angle + 6.66pt}{120pt}
     \pgfgetlastxy{\co@x}{\co@y}
-    \nth=\n
-    \advance\nth by 1
-    \node [rotate={\angle - 90pt + 6.66pt}] at (\co@x,\co@y) {\small \the\nth};
+    \node [rotate={\textrotate}] at (\co@x,\co@y) {\parbox{35pt}{\centering\tiny \@t@name}};
   }
   \node (0,0) [circle, draw=red, fill=white, minimum width=180pt] {};
-
+  
   % Rasi
-  \foreach \n/\@t@name in {0/{เมษ},1/{พฤษภ},2/{เมถุน},3/{กรกฎ},4/{สิงห์},5/{กันย์},6/{ตุลย์},7/{พิจิก},8/{ธนู},9/{มังกร},10/{กุมภ์},11/{มีน}} {
+  \foreach \n/\@t@name in {0/{Meṣa},1/{Vṛṣabha},2/{Mithuna},3/{Karkaṭa},4/{Siṃha},5/{Kanyā},6/{Tulā},7/{Vṛścika},8/{Dhanus},9/{Makara},10/{Kumbha},11/{Mīna}} {
     \setlength{\angle}{1pt * \n * 30}
     \addtolength{\angle}{90pt - 15pt}% first Rasi is centered on 0 deg
+
+    \nth=\n % Rasi naming starts from 0
+
     \pgfpointpolar{\angle}{90pt}
     \pgfgetlastxy{\co@x}{\co@y}
     \draw [red] (0,0) -- (\co@x,\co@y);
 
-    \pgfpointpolar{\angle + 15pt}{80pt}
-    \pgfgetlastxy{\co@x}{\co@y}
-    \node [rotate={\angle - 90pt + 15pt}] at (\co@x,\co@y) {\small \thai{\@t@name}};
+    \setlength{\textrotate}{\angle - 90pt + 15pt}
+    \ifnum\nth>3
+      \ifnum\nth<9
+        \addtolength{\textrotate}{180pt}
+      \fi
+    \fi
 
     \pgfpointpolar{\angle + 15pt}{70pt}
     \pgfgetlastxy{\co@x}{\co@y}
-    \nth=\n
-    \node [rotate={\angle - 90pt + 15pt}] at (\co@x,\co@y) {\small \the\nth};
+    \node [rotate={\textrotate}] at (\co@x,\co@y) {\small \the\nth};
+
+    \pgfpointpolar{\angle + 15pt}{80pt}
+    \pgfgetlastxy{\co@x}{\co@y}
+    \node [rotate={\textrotate}] at (\co@x,\co@y) {\tiny \@t@name};
   }
   
   % Zero degree
@@ -84,7 +116,9 @@
   \pgfpointpolar{\angle}{110pt}
   \pgfgetlastxy{\co@xB}{\co@yB}
   \draw [gray, thin] (\co@xA,\co@yA) -- (\co@xB,\co@yB);
-  \node at (\co@xB,\co@yB) [xshift=12pt, yshift=2pt] {\tiny 0:0\@dng@degree 0\@dng@minute};
+  \pgfpointpolar{\angle}{120pt}
+  \pgfgetlastxy{\co@x}{\co@y}
+  \node [rotate={\angle}] at (\co@x,\co@y) {\tiny \RalText{0}{0}{0}};
   
   % Sun
   \setlength{\angle}{\SunAngle + 90pt - 15pt}
@@ -96,7 +130,16 @@
   \pgfgetlastxy{\co@x}{\co@y}
   \node at (\co@x,\co@y) [circle, fill=red!30, minimum width=15pt] {};
   \node (sun) at (\co@x,\co@y) {\theSun};
-  \node [right=5pt of sun] {\small r:a\@dng@degree l\@dng@minute};
+  \ifdim\angle>90pt
+    \ifdim\angle<270pt
+      \node [left=2pt of sun] {\small \RalText #1};
+    \fi
+  \else
+    \node [right=2pt of sun] {\small \RalText #1};
+  \fi
+  \ifdim\angle>270pt
+    \node [right=2pt of sun] {\small \RalText #1};
+  \fi
 
   % Moon
   \setlength{\angle}{\MoonAngle + 90pt - 15pt}
@@ -108,7 +151,16 @@
   \pgfgetlastxy{\co@x}{\co@y}
   \node at (\co@x,\co@y) [circle, fill=blue!30, minimum width=15pt] {};
   \node (moon) at (\co@x,\co@y) {\theMoon};
-  \node [left=5pt of moon] {\small r:a\@dng@degree l\@dng@minute};
+  \ifdim\angle>90pt
+    \ifdim\angle<270pt
+      \node [left=2pt of moon] {\small \RalText #2};
+    \fi
+  \else
+    \node [right=2pt of moon] {\small \RalText #2};
+  \fi
+  \ifdim\angle>270pt
+    \node [right=2pt of moon] {\small \RalText #2};
+  \fi
 
   \node (0,0) [circle, draw=red, fill=white, minimum width=120pt] {};
   

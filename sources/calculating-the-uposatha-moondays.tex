@@ -1,4 +1,4 @@
-% Created 2015-11-08 Sun 21:12
+% Created 2015-11-10 Tue 21:31
 \documentclass[11pt,oneside]{memoir-article}
 \usepackage{local}
 \renewcommand{\docVersion}{v1.0}
@@ -701,109 +701,11 @@ Nth & phase & month & Monastic & Thai\\
 
 \clearpage
 
-\chapter{The Duang Chata}
-\label{sec-4}
-
-\begin{figure}[h]
-\caption{Duang Chata \thai{ดวงชะตา}.}
-\resizebox{\linewidth}{!}{\DuangChata{ {0}{0}{0} }{ {1}{0}{0} }}
-
-Horakhun\\
-Tithi
-
-\end{figure}
-
-Rasi is 0-11, Naksatra is 1-27. Sun = \theSun, Moon = \theMoon.
-
-0:1\degree 2\minute = Rasi:Angsa\degree Lipda\minute or Rasi:Degree\degree Minute\minute.
-
-\section{Tithi progression}
-\label{sec-4-1}
-
-30 Tithi, 15 is Full Moon
-
-Duang at Tithi: 0 3 6 9 12 15 18 21 24 27 29(?)
-
-\section{Rasi}
-\label{sec-4-2}
-
-\begin{table}[h]
-\caption{\label{tbl-rasi-names} Names of the 12 Rasi.}
-\centering
-\begin{tabular}{rlll}
-Rasi \thai{ราศี} & Western & Thai & Sanskrit\\
-\hline
-0 & Aries & \thai{เมษ} & Meṣa\\
-1 & Taurus & \thai{พฤษภ} & Vṛṣabha\\
-2 & Gemini & \thai{เมถุน} & Mithuna\\
-3 & Cancer & \thai{กรกฎ} & Karkaṭa\\
-4 & Leo & \thai{สิงห์} & Siṃha\\
-5 & Virgo & \thai{กันย์} & Kanyā\\
-6 & Libra & \thai{ตุลย์} & Tulā\\
-7 & Scorpio & \thai{พิจิก} & Vṛścika\\
-8 & Sagittarius & \thai{ธนู} & Dhanus\\
-9 & Capricorn & \thai{มังกร} & Makara\\
-10 & Aquarius & \thai{กุมภ์} & Kumbha\\
-11 & Pisces & \thai{มีน} & Mīna\\
-\end{tabular}
-\end{table}
-
-The circle is divided into 12 segments called \emph{rasi}, each marking 30 degrees.
-Their numbering starts from 0, to express $x*30\degree$. See Table
-\ref{tbl-rasi-names}.
-
-0 degree (Aries) is the vernal equinox.
-
-The notation $x:y\degree z\minute = x*30 + y + z/60$, thus 36\degree 5\minute is
-$1:6\degree 5\minute$.
-
-\section{Naksatra, lunar mansions}
-\label{sec-4-3}
-
-
-The Moon moves about 13\degree$\backslash$ a day, which in general means it traverses one
-lunar mansion per day.
-
-
-\begin{center}
-\begin{tabular}{rl}
-1 & Asvini\\
-2 & Bharani\\
-3 & Karttika\\
-4 & Rohini\\
-5 & Margasirsha\\
-6 & Ardhra\\
-7 & Punarvasu\\
-8 & Pushya\\
-9 & Aslesha\\
-10 & Magha\\
-11 & P. Phalguni\\
-12 & Uttara Phalguni\\
-13 & Hasta\\
-14 & Cittra\\
-15 & Svati\\
-16 & Visakha\\
-17 & Anuradha\\
-18 & Jyestha\\
-19 & Mula\\
-20 & P. Ashadha\\
-21 & Uttara Ashadha\\
-22 & Sravana\\
-23 & Danishta\\
-24 & Satabisha\\
-25 & P. Bhadrapada\\
-26 & Uttara Bhadrapada\\
-27 & Revati\\
-\end{tabular}
-\end{center}
-
-\clearpage
-
 \chapter{Suriyayatra formulas}
-\label{sec-5}
+\label{sec-4}
 \label{suriyayatra-formulas}
 \section{Overview}
-\label{sec-5-1}
+\label{sec-4-1}
 
 The formulas take two inputs: the year, and the n$^{\text{th}}$ day in the lunar year.
 They go through a series of operations step by step to produce certain values
@@ -834,7 +736,7 @@ As we follow the steps, we will also obtain:
 \item[{Masaken \thai{มาสเกณฑ์}}] Elapsed months of the era
 
 \item[{MeanSun, TrueSun, MeanMoon, TrueMoon}] Mean and True position of the Sun and the Moon
-\item[{Raek}] The position of the Moon in the 27 mansions (Naksatra, \thai{นักษัตร}) of the Zodiac, which will determine the month
+\item[{Raek}] The position of the Moon in the 27 mansions (Nakshatra, \thai{นักษัตร}) of the Zodiac, which will determine the month
 \end{description}
 
 \spewnotes
@@ -860,7 +762,7 @@ following the steps, and still this allows him to obtain the necessary
 information to describe the progression of these events in any year.
 
 \section{Calculating the properties of the year}
-\label{sec-5-2}
+\label{sec-4-2}
 
 First we will see if we should add and extra month or extra day to keep the
 lunar year in sync with the solar year. We can lookup the Moon phases published
@@ -947,7 +849,7 @@ Constant offsets, which have to be added because their value was not 0 at the be
 Now we can determine if the year qualifies for adhikamāsa or adhikavāra.
 
 \section{Adhikamāsa conditions}
-\label{sec-5-3}
+\label{sec-4-3}
 \label{adhikamasa-years}
 
 (Thai: atikamat \thai{อธิกมาส})
@@ -974,7 +876,7 @@ In the above example for year CS 1325, the \textbf{Tithi} is 23, which doesn't s
 the first condition, and so it can't be adhikamāsa.
 
 \section{Adhikavāra conditions}
-\label{sec-5-4}
+\label{sec-4-4}
 \label{adhikavara-years}
 
 (Thai: atikawan \thai{อธิกวาร})
@@ -1033,7 +935,7 @@ least two irregular years. This can be observed in past calendars (Table
 and the years follow the prediction of the formulas.
 
 \section{Calculating the Position of the Sun and the Moon}
-\label{sec-5-5}
+\label{sec-4-5}
 
 Eade describes the formulas at the end of his paper \emph{Rules for interpolation in
 the Thai calendar}\cite{eade2000rules}, but his notation is a puzzle in itself,
@@ -1061,7 +963,7 @@ This allows us to continue examining the year CE 1963 (CS 1325).
 \end{align}
 
 \section{In Golang}
-\label{sec-5-6}
+\label{sec-4-6}
 \label{suriya-go-example}
 
 Going through all this may be intriguing to calculate once, but mention
@@ -1107,6 +1009,117 @@ Adhikamāsa: false
 Adhikavāra: true
 Āsāḷha: 1963-07-06
 \end{verbatim}
+
+\chapter{The Duang Chata}
+\label{sec-5}
+
+\begin{figure}[h]
+\caption{Duang Chata \thai{ดวงชะตา}.}
+\resizebox{\linewidth}{!}{\DuangChata{ {2}{0}{0} }{ {7}{0}{0} }}
+
+Horakhun\\
+Tithi
+
+\end{figure}
+
+Sun on Thai duang: \thai{๑}\\
+Moon on Thai duang: \thai{๒}
+
+Rasi is 0-11, Nakshatra is 1-27. Sun = \theSun, Moon = \theMoon.
+
+0:1\degree 2\minute = Rasi:Angsa\degree Lipda\minute or Rasi:Degree\degree Minute\minute.
+
+\section{Tithi progression}
+\label{sec-5-1}
+
+30 Tithi, 15 is Full Moon
+
+Duang at Tithi: 0 3 6 9 12 15 18 21 24 27 29(?)
+
+\section{Rasi}
+\label{sec-5-2}
+
+Rasi \thai{ราศี}
+
+\begin{table}[h]
+\caption{\label{tbl-rasi-names} Names of the 12 Rasi.}
+\centering
+\begin{tabular}{rlll}
+ & Western & Sanskrit & Thai\\
+\hline
+0 & Aries & Meṣa & \thai{เมษ}\\
+1 & Taurus & Vṛṣabha & \thai{พฤษภ}\\
+2 & Gemini & Mithuna & \thai{เมถุน}\\
+3 & Cancer & Karkaṭa & \thai{กรกฎ}\\
+4 & Leo & Siṃha & \thai{สิงห์}\\
+5 & Virgo & Kanyā & \thai{กันย์}\\
+6 & Libra & Tulā & \thai{ตุลย์}\\
+7 & Scorpio & Vṛścika & \thai{พิจิก}\\
+8 & Sagittarius & Dhanus & \thai{ธนู}\\
+9 & Capricorn & Makara & \thai{มังกร}\\
+10 & Aquarius & Kumbha & \thai{กุมภ์}\\
+11 & Pisces & Mīna & \thai{มีน}\\
+\end{tabular}
+\end{table}
+
+The circle is divided into 12 segments called \emph{rasi}, each marking 30 degrees.
+Their numbering starts from 0, to express $x*30\degree$. See Table
+\ref{tbl-rasi-names}.
+
+0 degree (Aries) is the vernal equinox.
+
+The notation $x:y\degree z\minute = x*30 + y + z/60$, thus 36\degree 5\minute is
+$1:6\degree 5\minute$.
+
+\section{Nakshatra, lunar mansions}
+\label{sec-5-3}
+
+Nakshatra \thai{นักษัตร}
+
+
+The Moon moves about 13\degree$\backslash$ a day, which in general means it traverses one
+lunar mansion per day.
+
+
+\url{https://en.wikipedia.org/wiki/Nakshatra} 
+
+\url{https://th.wikipedia.org/wiki/\%E0\%B8\%94\%E0\%B8\%B2\%E0\%B8\%A7\%E0\%B8\%99\%E0\%B8\%B1\%E0\%B8\%81\%E0\%B8\%82\%E0\%B8\%B1\%E0\%B8\%95\%E0\%B8\%A4\%E0\%B8\%81\%E0\%B8\%A9\%E0\%B9\%8C}
+
+\begin{center}
+\begin{tabular}{rll}
+ & Sanskrit & Thai\\
+\hline
+1 & Ashvinī & \thai{อัศวินี}\\
+2 & Bharanī & \thai{ภรณี}\\
+3 & Kṛttikā & \thai{กฤติกา}\\
+4 & Rohinī & \thai{โรหิณี}\\
+5 & Mrigashīra & \thai{มฤคศีรษะ}\\
+6 & Ārdrā & \thai{อาทรา}\\
+7 & Punarvasu & \thai{ปุนวสุ}\\
+8 & Pushya & \thai{ปุษยะ}\\
+9 & Āshleshā & \thai{อาศเลศา}\\
+10 & Maghā & \thai{มฆา}\\
+11 & Pūrva Phalgunī & \thai{บูรพผลคุณี}\\
+12 & Uttara Phalgunī & \thai{อุตรผลคุณี}\\
+13 & Hasta & \thai{หัสตะ}\\
+14 & Chitrā & \thai{จิตรา}\\
+15 & Svātī & \thai{สวาตี}\\
+16 & Vishākhā & \thai{วิศาขา}\\
+17 & Anurādhā & \thai{อนุราธา}\\
+18 & Jyeshtha & \thai{เชษฐะ}\\
+19 & Mūla & \thai{มูละ}\\
+20 & Pūrva Ashādhā & \thai{บูรพาษาฒ}\\
+21 & Uttara Ashādhā & \thai{อุตราษาฒ}\\
+22 & Shravana & \thai{ศรวณะ}\\
+23 & Dhanistha & \thai{ศรวิษฐะ}\\
+24 & Shatabhisha & \thai{ศตภิษัช}\\
+25 & Pūrva Bhādrapadā & \thai{บูรพภัทรบท}\\
+26 & Uttara Bhādrapadā & \thai{อุตรภัทรบท}\\
+27 & Revatī & \thai{เรวตี}\\
+\end{tabular}
+\end{center}
+
+\clearpage
 
 \chapter{Gregorian leap years}
 \label{sec-6}
@@ -1160,7 +1173,7 @@ Please send comments, corrections and further information to:
 
 \texttt{Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>}
 
-Last updated on 2015-11-08.
+Last updated on 2015-11-10.
 
 
 \fullpage{%
