@@ -47,7 +47,7 @@
 \newif\ifFrills
 \newif\ifRasiLabels
 \newif\ifNakshatraLabels
-\newif\ifShowAngle
+\newif\ifShowAngles
 \newif\ifShowZero
 
 \def\SunAngleText{}
@@ -58,12 +58,12 @@
   frills/.is if = Frills,
   rasi labels/.is if = RasiLabels,
   nakshatra labels/.is if = NakshatraLabels,
-  show angle/.is if = ShowAngle,
+  show angles/.is if = ShowAngles,
   show zero/.is if = ShowZero,
   simple/.style = {frills=false, rasi labels=false, nakshatra labels=false,
-    show angle=false, show zero=false},
+    show angles=false, show zero=false},
   fancy/.style = {frills=true, rasi labels=true, nakshatra labels=true,
-    show angle=true, show zero=true},
+    show angles=true, show zero=true},
   Sun/.code = {%
     \RalToDeg{#1}
     \setlength{\SunAngle}{\@t@result}
@@ -184,7 +184,7 @@
   \node at (\co@x,\co@y) [circle, fill=red!30, minimum width=15pt] {};
   \node (sun) at (\co@x,\co@y) {\theSun};
 
-  \ifShowAngle
+  \ifShowAngles
     \ifdim\angle>90pt
       \ifdim\angle<270pt
         \node [left=2pt of sun] {\small \SunAngleText};
@@ -208,7 +208,7 @@
   \node at (\co@x,\co@y) [circle, fill=blue!30, minimum width=15pt] {};
   \node (moon) at (\co@x,\co@y) {\theMoon};
 
-  \ifShowAngle
+  \ifShowAngles
     \ifdim\angle>90pt
       \ifdim\angle<270pt
         \node [left=2pt of moon] {\small \MoonAngleText};

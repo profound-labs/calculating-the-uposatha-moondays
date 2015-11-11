@@ -1,4 +1,4 @@
-% Created 2015-11-11 Wed 18:32
+% Created 2015-11-11 Wed 22:04
 \documentclass[11pt,oneside]{memoir-article}
 \usepackage{local}
 \renewcommand{\docVersion}{v1.0}
@@ -404,7 +404,7 @@ Adhikavāra year: the logic is the same as in common years.
 adhikamāsa (M) or adhikavāra (V). nM, nV: n-th place in the adhikamāsa
 19-year cycle (M) or the adhikavāra 57 year cycle. 'x' marks years which would
 qualify for adhikavāra, but there is already an adhikamāsa, and so the
-adhikavāra is carried on the following year.}
+adhikavāra is carried on to the following year.}
 
 \begin{multicols}{2}
 
@@ -529,17 +529,19 @@ synodic month\footnotemark\space of the Moon & \textasciitilde{}29.53 days, can 
 complete an orbit around the Sun}\footnotetext[2]{synodic month: the time it takes the Moon to reach
 the same visual phase}
 
-The epoch of the Thai lunar calendar is 25 March 638 AD, this is the beginning
-of the \emph{Chulasakkarat Era}\cite{TODO}.
+The epoch of the Thai lunar calendar is 25 March 638 BCE, this is the beginning
+of the \emph{Chulasakkarat Era}.\cite{eade1995calendrical}
 
-
-The epoch of the Buddhist Era is the Parinibbāna of the Buddha Gotama in 543 BC.
+The epoch of the \emph{Buddhist Era} is the date when the Buddha attained
+Parinibbāna. According to Thai tradition it is 11 March 545 BCE, but the
+difference between CE and BE in Thailand is now fixed at 543
+years.\cite{eade1995calendrical}
 
 Thus the conversion between the eras:
 
 \begin{center}
 \begin{tabular}{lll}
-CE 1963 & Common Era (AD) & \\
+CE 1963 & Common Era & \\
 BE 2506 & Buddhist Era & CE + 543\\
 CS 1325 & Chulasakkarat Era & CE - 638\\
 \end{tabular}
@@ -605,7 +607,8 @@ The name of a given month is determined by the astrological sign which
 the Full Moon enters at midnight. See Table \ref{tbl-month-names}.
 
 The lunar year starts in April with Citta-māsa, which is 0 degrees (the vernal
-equinox) on the \emph{duang} wheel, corresponding to Aries.
+equinox) on the wheel of the zodiac (see sec. \ref{duangchata}), corresponding
+to Aries.
 
 \begin{table}[h]
 \caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs\cite{hasapannyo-zodiac}}
@@ -613,11 +616,6 @@ equinox) on the \emph{duang} wheel, corresponding to Aries.
 \begin{tabular}{lrrlll}
 Season &  &  & Lunar Month & Solar Month & Solar Zodiac\\
  &  & days &  &  & (Western / Sanskrit)\\
-\hline
-Hemanta-utu & 9 & 30 & Magasira-māsa & December & Sagittarius / Dhanus\\
-Cold Season & 10 & 29 & Phussa-māsa & January & Capricorn / Makara\\
- & 11 & 30 & Māgha-māsa & February & Aquarius / Kumbha\\
- & 12 & 29 & Phagguṇa-māsa & March & Pisces / Mīna\\
 \hline
 Gimha-utu & 1 & 30 & Citta-māsa & April & Aries / Meṣa\\
 Hot Season & 2 & 29 & Visākha-māsa & May & Taurus / Vṛṣabha\\
@@ -628,6 +626,11 @@ Vassāna-utu & 5 & 30 & Savaṇa-māsa & August & Leo / Siṃha\\
 Rainy Season & 6 & 29 & Bhaddapāda-māsa & September & Virgo / Kanyā\\
  & 7 & 30 & Assayuja-māsa & October & Libra / Tulā\\
  & 8 & 29 & Kattika-māsa & November & Scorpio / Vṛścika\\
+\hline
+Hemanta-utu & 9 & 30 & Magasira-māsa & December & Sagittarius / Dhanus\\
+Cold Season & 10 & 29 & Phussa-māsa & January & Capricorn / Makara\\
+ & 11 & 30 & Māgha-māsa & February & Aquarius / Kumbha\\
+ & 12 & 29 & Phagguṇa-māsa & March & Pisces / Mīna\\
 \end{tabular}
 \end{table}
 
@@ -711,11 +714,20 @@ The formulas take two inputs: the year, and the n$^{\text{th}}$ day in the lunar
 They go through a series of operations step by step to produce certain values
 which describe properties of the lunar year and the given day.
 
-For $\mathbf{day} = 1$, the results are used to determine whether the year is
-common, adhikamāsa or adhikavāra. They can also give us the position of the Sun
-and the Moon on the given day. Thus, if we didn't add an extra month or day
-(i.e. in a common year), $\mathbf{day} = 103$ should tell us that the Full Moon
-in the sky is in Āsāḷha month.
+For $\mathbf{day} = 0$, the results are used to determine whether the year is
+common, adhikamāsa or adhikavāra. They can also give us the angular position of
+the Sun and the Moon on the given day.
+
+\marginpar{%
+\resizebox{\linewidth}{!}{\DuangChata[Sun={2/25/22}, Moon={8/16/6}, simple]}
+
+2014 July 11 -- Asalha
+}
+
+
+For example in a common year, when we calculate the Moon's position for
+$\mathbf{day} = 103$, it should tell us that it is Full Moon, and it is found in
+the region of the sky associated with Āsāḷha month.
 
 Significant values are assigned names.\cite{eade1989ephemeris} The following
 three will determine the adhikamāsa and adhikavāra:
@@ -725,7 +737,7 @@ three will determine the adhikamāsa and adhikavāra:
 \begin{description}
 \item[{Kammacubala \thai{กัมมัชพล}}] Remaining 800ths of a day
 \item[{Avoman \thai{อวมาน}}] For the Moon's mean motion
-\item[{Tithi\footnote{a.k.a. Thaloengsok or New Year's Day} \thai{ดีถี}}] Age of the Moon, at the start of the year if $\mathbf{day} = 1$
+\item[{Tithi\footnote{a.k.a. Thaloengsok or New Year's Day} \thai{ดีถี}}] Age of the Moon, at the start of the year if $\mathbf{day} = 0$
 \end{description}
 
 As we follow the steps, we will also obtain:
@@ -1012,6 +1024,7 @@ Adhikavāra: true
 
 \chapter{The Duang Chata}
 \label{sec-5}
+\label{duangchata}
 
 \begin{figure}[h]
 \caption{Duang Chata \thai{ดวงชะตา}.}
