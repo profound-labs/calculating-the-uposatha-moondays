@@ -1,9 +1,9 @@
 \ProvidesPackage{duangchata}
 
+\usepackage{pgfkeys}
 \usepackage{calc}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
-
 \usepackage{wasysym}
 
 \newcommand\theSun{\astrosun}
@@ -12,18 +12,26 @@
 \newcommand\@dng@degree{\ensuremath{^\circ}}
 \newcommand\@dng@minute{\ensuremath{^\prime}}
 
-% #1 = Rasi, #2 = Angsa (degree), #3 = Lipda (minute)
-\newcommand\RalText[3]{%
-  #1:#2\@dng@degree #3\@dng@minute%
+% #1 = {3/12/21}
+% i.e. Rasi, Angsa (degree), Lipda (minute)
+\newcommand\RalToText[1]{%
+  \foreach \rasi/\angsa/\lipda in {#1} {%
+    \rasi:\angsa\@dng@degree \lipda\@dng@minute%
+  }%
 }
 
 \newdimen\@t@result
+\newdimen\@t@res
 
-% #1 = Rasi, #2 = Angsa (degree), #3 = Lipda (minute)
-\newcommand\RalToDeg[3]{%
-  \setlength{\@t@result}{30pt * #1}%
-  \addtolength{\@t@result}{1pt * #2}%
-  \addtolength{\@t@result}{1pt * #3 * \ratio{1pt}{60pt}}%
+% #1 = {3/12/21}
+% i.e. Rasi, Angsa (degree), Lipda (minute)
+\newcommand\RalToDeg[1]{%
+  \foreach \rasi/\angsa/\lipda in {#1} {
+    \setlength{\@t@res}{30pt * \rasi}%
+    \addtolength{\@t@res}{1pt * \angsa}%
+    \addtolength{\@t@res}{1pt * \lipda * \ratio{1pt}{60pt}}%
+    \global\@t@result=\@t@res
+  }
 }
 
 \newdimen\SunAngle
@@ -31,23 +39,54 @@
 
 \newdimen\angle
 \newdimen\textrotate
+\newdimen\@duang@innerRadius
+\newdimen\@t@extra
 \newcount\nth
 
-% #1 = Sun (r:a'l"), #2 = Moon (r:a'l")
-\newcommand\DuangChata[2]{%
-\begin{tikzpicture}
 
-  \RalToDeg #1
-  \setlength{\SunAngle}{\@t@result}
-  \RalToDeg #2
-  \setlength{\MoonAngle}{\@t@result}
+\newif\ifFrills
+\newif\ifRasiLabels
+\newif\ifNakshatraLabels
+\newif\ifShowAngle
+\newif\ifShowZero
+
+\def\SunAngleText{}
+\def\MoonAngleText{}
+
+\pgfkeys{
+  /Duang/.is family, /Duang,
+  frills/.is if = Frills,
+  rasi labels/.is if = RasiLabels,
+  nakshatra labels/.is if = NakshatraLabels,
+  show angle/.is if = ShowAngle,
+  show zero/.is if = ShowZero,
+  simple/.style = {frills=false, rasi labels=false, nakshatra labels=false,
+    show angle=false, show zero=false},
+  fancy/.style = {frills=true, rasi labels=true, nakshatra labels=true,
+    show angle=true, show zero=true},
+  Sun/.code = {%
+    \RalToDeg{#1}
+    \setlength{\SunAngle}{\@t@result}
+    \def\SunAngleText{\RalToText{#1}}
+  },
+  Moon/.code = {
+    \RalToDeg{#1}
+    \setlength{\MoonAngle}{\@t@result}
+    \def\MoonAngleText{\RalToText{#1}}
+  },
+}
+
+% \DuangChata[Sun={0/0/0}, Moon={1/0/0}, simple, show zero]
+\newcommand\DuangChata[1][]{%
+\begin{tikzpicture}
+  \pgfkeys{/Duang, #1}
 
   \node (0,0) [circle, draw=black, minimum width=200pt] {};
 
   % Nakshatra
   \foreach \n/\@t@name in {0/{Ashvinī},1/{Bharanī},2/{Kṛttikā},3/{Rohinī},4/{Mrigashīra},5/{Ārdrā},6/{Punarvasu},7/{Pushya},8/{Āshleshā},9/{Maghā},10/{Pūrva Phalgunī},11/{Uttara Phalgunī},12/{Hasta},13/{Chitrā},14/{Svātī},15/{Vishākhā},16/{Anurādhā},17/{Jyeshtha},18/{Mūla},19/{Pūrva Ashādhā},20/{Uttara Ashādhā},21/{Shravana},22/{Dhanistha},23/{Shatabhisha},24/{Pūrva Bhādrapadā},25/{Uttara Bhādrapadā},26/{Revatī}} {
     \setlength{\angle}{1pt * \n * \real{13.33}}
-    \addtolength{\angle}{90pt - 15pt}% first Naksatra begins where the first Rasi begins
+    \addtolength{\angle}{90pt - 15pt}% first Nakshatra begins where the first Rasi begins
 
     % use \n for multiplying angles, index from 0
     % use \nth for naming, index from 1
@@ -59,9 +98,11 @@
     \draw (0,0) -- (\co@x,\co@y);
 
     \setlength{\textrotate}{\angle - 90pt + 6.66pt}
-    \ifnum\nth>8
-      \ifnum\nth<22
-        \addtolength{\textrotate}{180pt}
+    \ifNakshatraLabels
+      \ifnum\nth>8
+        \ifnum\nth<22
+          \addtolength{\textrotate}{180pt}
+        \fi
       \fi
     \fi
 
@@ -69,16 +110,18 @@
     \pgfgetlastxy{\co@x}{\co@y}
     \node [rotate={\textrotate}] at (\co@x,\co@y) {\small \the\nth};
 
-    \setlength{\textrotate}{\angle + 6.66pt}
-    \ifnum\nth<16
-      \ifnum\nth>1
-        \addtolength{\textrotate}{-180pt}
+    \ifNakshatraLabels
+      \setlength{\textrotate}{\angle + 6.66pt}
+      \ifnum\nth<16
+        \ifnum\nth>1
+          \addtolength{\textrotate}{-180pt}
+        \fi
       \fi
-    \fi
 
-    \pgfpointpolar{\angle + 6.66pt}{120pt}
-    \pgfgetlastxy{\co@x}{\co@y}
-    \node [rotate={\textrotate}] at (\co@x,\co@y) {\parbox{35pt}{\centering\tiny \@t@name}};
+      \pgfpointpolar{\angle + 6.66pt}{120pt}
+      \pgfgetlastxy{\co@x}{\co@y}
+      \node [rotate={\textrotate}] at (\co@x,\co@y) {\parbox{35pt}{\centering\tiny \@t@name}};
+    \fi
   }
   \node (0,0) [circle, draw=red, fill=white, minimum width=180pt] {};
   
@@ -94,31 +137,41 @@
     \draw [red] (0,0) -- (\co@x,\co@y);
 
     \setlength{\textrotate}{\angle - 90pt + 15pt}
-    \ifnum\nth>3
-      \ifnum\nth<9
-        \addtolength{\textrotate}{180pt}
+    \ifRasiLabels
+      \ifnum\nth>3
+        \ifnum\nth<9
+          \addtolength{\textrotate}{180pt}
+        \fi
       \fi
     \fi
 
-    \pgfpointpolar{\angle + 15pt}{70pt}
+    \ifRasiLabels
+      \pgfpointpolar{\angle + 15pt}{70pt}
+    \else
+      \pgfpointpolar{\angle + 15pt}{80pt}
+    \fi
     \pgfgetlastxy{\co@x}{\co@y}
     \node [rotate={\textrotate}] at (\co@x,\co@y) {\small \the\nth};
 
-    \pgfpointpolar{\angle + 15pt}{80pt}
-    \pgfgetlastxy{\co@x}{\co@y}
-    \node [rotate={\textrotate}] at (\co@x,\co@y) {\tiny \@t@name};
+    \ifRasiLabels
+      \pgfpointpolar{\angle + 15pt}{80pt}
+      \pgfgetlastxy{\co@x}{\co@y}
+      \node [rotate={\textrotate}] at (\co@x,\co@y) {\tiny \@t@name};
+    \fi
   }
   
   % Zero degree
-  \setlength{\angle}{90pt - 15pt}
-  \pgfpointpolar{\angle}{100pt}
-  \pgfgetlastxy{\co@xA}{\co@yA}
-  \pgfpointpolar{\angle}{110pt}
-  \pgfgetlastxy{\co@xB}{\co@yB}
-  \draw [gray, thin] (\co@xA,\co@yA) -- (\co@xB,\co@yB);
-  \pgfpointpolar{\angle}{120pt}
-  \pgfgetlastxy{\co@x}{\co@y}
-  \node [rotate={\angle}] at (\co@x,\co@y) {\tiny \RalText{0}{0}{0}};
+  \ifShowZero
+    \setlength{\angle}{90pt - 15pt}
+    \pgfpointpolar{\angle}{100pt}
+    \pgfgetlastxy{\co@xA}{\co@yA}
+    \pgfpointpolar{\angle}{110pt}
+    \pgfgetlastxy{\co@xB}{\co@yB}
+    \draw [gray, thin] (\co@xA,\co@yA) -- (\co@xB,\co@yB);
+    \pgfpointpolar{\angle}{120pt}
+    \pgfgetlastxy{\co@x}{\co@y}
+    \node [rotate={\angle}] at (\co@x,\co@y) {\tiny \RalToText{0/0/0}};
+  \fi
   
   % Sun
   \setlength{\angle}{\SunAngle + 90pt - 15pt}
@@ -130,15 +183,18 @@
   \pgfgetlastxy{\co@x}{\co@y}
   \node at (\co@x,\co@y) [circle, fill=red!30, minimum width=15pt] {};
   \node (sun) at (\co@x,\co@y) {\theSun};
-  \ifdim\angle>90pt
-    \ifdim\angle<270pt
-      \node [left=2pt of sun] {\small \RalText #1};
+
+  \ifShowAngle
+    \ifdim\angle>90pt
+      \ifdim\angle<270pt
+        \node [left=2pt of sun] {\small \SunAngleText};
+      \fi
+    \else
+      \node [right=2pt of sun] {\small \SunAngleText};
     \fi
-  \else
-    \node [right=2pt of sun] {\small \RalText #1};
-  \fi
-  \ifdim\angle>270pt
-    \node [right=2pt of sun] {\small \RalText #1};
+    \ifdim\angle>270pt
+      \node [right=2pt of sun] {\small \SunAngleText};
+    \fi
   \fi
 
   % Moon
@@ -151,73 +207,82 @@
   \pgfgetlastxy{\co@x}{\co@y}
   \node at (\co@x,\co@y) [circle, fill=blue!30, minimum width=15pt] {};
   \node (moon) at (\co@x,\co@y) {\theMoon};
-  \ifdim\angle>90pt
-    \ifdim\angle<270pt
-      \node [left=2pt of moon] {\small \RalText #2};
+
+  \ifShowAngle
+    \ifdim\angle>90pt
+      \ifdim\angle<270pt
+        \node [left=2pt of moon] {\small \MoonAngleText};
+      \fi
+    \else
+      \node [right=2pt of moon] {\small \MoonAngleText};
     \fi
-  \else
-    \node [right=2pt of moon] {\small \RalText #2};
-  \fi
-  \ifdim\angle>270pt
-    \node [right=2pt of moon] {\small \RalText #2};
+    \ifdim\angle>270pt
+      \node [right=2pt of moon] {\small \MoonAngleText};
+    \fi
   \fi
 
-  \node (0,0) [circle, draw=red, fill=white, minimum width=120pt] {};
+  \ifRasiLabels
+    \setlength{\@duang@innerRadius}{60pt}
+  \else
+    \setlength{\@duang@innerRadius}{70pt}
+  \fi
+
+  \node (0,0) [circle, draw=red, fill=white, minimum width={2\@duang@innerRadius}] {};
   
   % Inner lines
   
   % 45 deg cross
   \setlength{\angle}{30pt*2 + 90pt - 15pt}
-  \pgfpointpolar{\angle}{60pt}
+  \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xA}{\co@yA}
   \setlength{\angle}{30pt*8 + 90pt - 15pt}
-  \pgfpointpolar{\angle}{60pt}
+  \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xB}{\co@yB}
   \draw [gray, thin] (\co@xA,\co@yA) -- (\co@xB,\co@yB);
 
   \setlength{\angle}{30pt*5 + 90pt - 15pt}
-  \pgfpointpolar{\angle}{60pt}
+  \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xA}{\co@yA}
   \setlength{\angle}{30pt*11 + 90pt - 15pt}
-  \pgfpointpolar{\angle}{60pt}
+  \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xB}{\co@yB}
   \draw [gray, thin] (\co@xA,\co@yA) -- (\co@xB,\co@yB);
   
-  \node (0,0) [circle, fill=white, minimum width=29.5pt] {};
+  \node (0,0) [circle, fill=white, minimum width={0.5\@duang@innerRadius - 0.5pt}] {};
 
   % Vertical left
   \setlength{\angle}{30pt - 5pt + 90pt - 15pt}
-  \pgfpointpolar{\angle}{60pt}
+  \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xA}{\co@yA}
   \setlength{\angle}{30pt*6 + 5pt + 90pt - 15pt}
-  \pgfpointpolar{\angle}{60pt}
+  \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xB}{\co@yB}
   \draw [gray, thin] (\co@xA,\co@yA) -- (\co@xB,\co@yB);
 
   % Vertical right
   \setlength{\angle}{5pt + 90pt - 15pt}
-  \pgfpointpolar{\angle}{60pt}
+  \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xA}{\co@yA}
   \setlength{\angle}{30pt*7 - 5pt + 90pt - 15pt}
-  \pgfpointpolar{\angle}{60pt}
+  \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xB}{\co@yB}
   \draw [gray, thin] (\co@xA,\co@yA) -- (\co@xB,\co@yB);
 
   % Horizontal lower
   \setlength{\angle}{30pt*4 - 5pt + 90pt - 15pt}
-  \pgfpointpolar{\angle}{60pt}
+  \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xA}{\co@yA}
   \setlength{\angle}{30pt*9 + 5pt + 90pt - 15pt}
-  \pgfpointpolar{\angle}{60pt}
+  \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xB}{\co@yB}
   \draw [gray, thin] (\co@xA,\co@yA) -- (\co@xB,\co@yB);
 
   % Horizontal upper
   \setlength{\angle}{30pt*3 + 5pt + 90pt - 15pt}
-  \pgfpointpolar{\angle}{60pt}
+  \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xA}{\co@yA}
   \setlength{\angle}{30pt*10 - 5pt + 90pt - 15pt}
-  \pgfpointpolar{\angle}{60pt}
+  \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xB}{\co@yB}
   \draw [gray, thin] (\co@xA,\co@yA) -- (\co@xB,\co@yB);
 

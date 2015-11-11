@@ -1049,7 +1049,7 @@ Which will print:
 #+begin_latex
 \begin{figure}[h]
 \caption{Duang Chata \thai{ดวงชะตา}.}
-\resizebox{\linewidth}{!}{\DuangChata{ {2}{0}{0} }{ {7}{0}{0} }}
+\resizebox{\linewidth}{!}{\DuangChata[Sun={2/0/0}, Moon={4/5/10}, fancy]}
 
 Horakhun\\
 Tithi
