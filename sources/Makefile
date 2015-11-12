@@ -4,7 +4,7 @@ MAIN=calculating-the-uposatha-moondays
 
 all:
 	$(LATEX) $(LATEX_OPTS) $(MAIN) &&\
-	bibtex $(MAIN) &&\
+	biber $(MAIN) &&\
 	$(LATEX) $(LATEX_OPTS) $(MAIN) &&\
 	$(LATEX) $(LATEX_OPTS) $(MAIN)
 

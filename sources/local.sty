@@ -40,7 +40,7 @@
 
 \usepackage{minted}
 
-\setminted{bgcolor=code-bg}
+\setminted{bgcolor=code-bg, fontsize=\footnotesize}
 \setmintedinline{bgcolor={}}
 
 \usepackage{lscape}
@@ -70,4 +70,5 @@
   \fi
   \prebibhook}
 
-
+\usepackage[notes,short,autocite=footnote,isbn=false,backend=biber]{biblatex-chicago}
+\addbibresource{bibentries.bib}

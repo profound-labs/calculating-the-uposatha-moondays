@@ -81,10 +81,6 @@ Download [[https://github.com/profound-labs/calculating-the-uposatha-moondays/ra
 
 *** TODO before release
 
-"For instance, a Pagan inscription of 14 April 1288 AD maintains that..."
-
-This is in Calendrical page 2 footnote. Add all three examples here, with Golang to compute the same result from the Gregorian date.
-
 - describe websites and apps
 
 - get to Raek:
@@ -105,15 +101,11 @@ demonstrate it with golang at the end.
 
 this needs a diagram
 
-*** TODO also
-
 - explain how to get zodiac position from formula with Eade notation
 
 - Hasapannyo's zodiacs are in the wrong position?
 
 - ? can fix footnote references
-
-- code sample for the 1288 AD example for the luni-solar calendar section
 
 - ? is there an update of Hasapannyo's Zodiac PDF
 
@@ -317,7 +309,7 @@ major moondays fall in an adhikamāsa year.
 The extra day is inserted in the 8th month (Āsāḷha), at the New Moon uposatha
 before Āsāḷha Full Moon, making the 7th uposatha of the Hot Season a 15-day
 uposatha instead of the expected 14-day, and making Āsāḷha a 30-day month that
-year.\cite{hasapannyo-zodiac}
+year.\autocite{hasapannyo-zodiac}
 
 In adhikavāra years the Vassa starts one day later.
 
@@ -345,7 +337,7 @@ such that an adhikamāsa year is due in every 2 or 3 years.
 
 It is not sufficient to rely on a shorthand pattern to determine the variation
 of 2 or 3 years -- the pattern of 3-3-2 - 3-3-3-2 has been mentioned by Ajahn
-Khemanando\cite{khemanando-adhikamasa}, but this doesn't always match the cycles
+Khemanando\autocite{khemanando-adhikamasa}, but this doesn't always match the cycles
 produced by the formulas.
 
 Table \ref{tbl-cycle-adhikamasa-adhikavara} shows adhikamāsa years for 1975-2030.
@@ -384,7 +376,7 @@ In adhikavāra years the Vassa starts one day later.
 The extra day is inserted in the 8th month (Āsāḷha), at the New Moon uposatha
 before Āsāḷha Full Moon (the 7th uposatha of the Hot Season), making it a 15-day
 uposatha instead of the expected 14-day, and making Āsāḷha a 30-day month that
-year.\cite{hasapannyo-zodiac}
+year.\autocite{hasapannyo-zodiac}
 
 The announcement of the adhikavāra years by the calendar authorities is not
 entirely predictable. In some of cases the calendar committees add the
@@ -525,12 +517,12 @@ Luni-solar calendars are constructed so as to count *years* according to the
 | synodic month[fn:synodicmonth]\space of the Moon  | ~29.53 days, can vary up to 7 hours |
 
 The epoch of the Thai lunar calendar is 25 March 638 BCE, this is the beginning
-of the /Chulasakkarat Era/.\cite{eade1995calendrical}
+of the /Chulasakkarat Era/.\autocite{eade1995calendrical}
 
 The epoch of the /Buddhist Era/ is the date when the Buddha attained
 Parinibbāna. According to Thai tradition it is 11 March 545 BCE, but the
 difference between CE and BE in Thailand is now fixed at 543
-years.\cite{eade1995calendrical}
+years.\autocite{eade1995calendrical}
 
 Thus the conversion between the eras:
 
@@ -550,16 +542,18 @@ Each stage is subjected to an operation learnt by rote, and the
 underlying theory disappears from view. The rote operations, however,
 will provide a valid answer for any date in any year. It seemed
 greatly preferable to set out the procedure thus starkly, rather than
-to give a detailed exposition of what is involved.\cite{eade-interpolation}
+to give a detailed exposition of what is involved.\autocite{eade-interpolation}
 #+end_quote
 
 Southeast Asian astronomers refined a fraction to obtain the length of the year.
 Taking 800 years as one Era, and 292207 days in the Era, they expressesed the
-length of one year in days as:
+length of one year in days as\autocite{eade-interpolation}:
 
+#+begin_latex
 \begin{equation}
-\frac{292207}{800} = 365.25875\ \text{days}\cite{eade-interpolation}
+\frac{292207}{800} = 365.25875\ \text{days}
 \end{equation}
+#+end_latex
 
 This is 0.01656 days longer than the modern measurement (accumulating
 1 day in ~60 years). Remarkably, the /suriyayatra/ accounts for this
@@ -569,8 +563,80 @@ and generates accurate results:
 For instance, a Pagan inscription of 14 April 1288 AD maintains that
 at midnight the Sun's position was 0 signs, 19 degrees and 59 minutes:
 the computer program returns
-#+latex: 0~19~59.\cite{eade1995calendrical}
+#+latex: 0~19~59.\autocite[p. 2]{eade1995calendrical}
 #+end_quote
+
+Let's see if we can get the same results. 14 April 1288 was 41 days into the
+lunar year, counting from Citta 1. While checking that, we might as well see day
+103, i.e. 15 June 1288, which should turn out to be Āsāḷha Pūjā.
+
+#+begin_latex
+\begin{marginfigure}
+\caption{1288 April 14}
+
+\resizebox{\linewidth}{!}{\DuangChata[Sun={0/19/58}, Moon={5/11/27}, simple, show angles]}
+
+\footnotesize
+\bigskip
+
+\begin{tabular}{l l}
+Sun: & 0:19\degree 58\minute\\
+Moon: & 5:11\degree 27\minute\\
+Tithi: & 12
+\end{tabular}
+
+\bigskip
+
+The Moon is in the 13. nakshatra, Hasta.
+
+\end{marginfigure}
+
+\begin{marginfigure}
+\caption{1288 June 15}
+
+\resizebox{\linewidth}{!}{\DuangChata[Sun={2/19/9}, Moon={8/19/1}, simple, show angles]}
+
+\footnotesize
+\bigskip
+
+\begin{tabular}{l l}
+Sun: & 2:19\degree 9\minute\\
+Moon: & 8:19\degree 1\minute\\
+Tithi: & 15
+\end{tabular}
+
+\bigskip
+
+The Moon is in the 20. nakshatra, Pūrva Ashādhā.
+
+\end{marginfigure}
+#+end_latex
+
+The code example is at \ref{golang-1288}. It prints:
+
+: Year: 1288
+: Adhikamāsa: false
+: Adhikavāra: false
+: ---
+: Year, Day: 1288, 41
+: True Sun: 0:19°58'
+: True Moon: 5:11°27'
+: Tithi: 12
+: ---
+: Year, Day: 1288, 103
+: True Sun: 2:19°9'
+: True Moon: 8:19°1'
+: Tithi: 15
+
+On day 103, tithi 15 means 15 lunar days since last New Moon, i.e. it is Full
+Moon. The Sun and Moon are angularly opposite, which also means Full Moon, and
+it appears in the 20. nakshatra, so the month is Āsāḷha.
+
+#+latex: As a reality check, we can look up the phase at NASA:\footnote{\href{http://astropixels.com/ephemeris/phasescat/phases1201.html}{AstroPixels - Moon Phases: 1201 to 1300}}
+
+#+latex: {\centering
+#+latex: \includegraphics[width=0.8\linewidth]{1288-astropixels.png}
+#+latex: \par}
 
 Nonetheless, the calendar dates published in Thailand (historical or
 recent) in a given year reflect not only these principles, but also
@@ -581,7 +647,7 @@ The historical record however, frequently defies prediction, forcing
 the conclusion that the pressure upon the /horas/ (astronomers /
 astrologers) was not to follow the "rules" but merely, within some
 more leisurely constraints, to ensure that the calendar did not get
-out of control.\cite{eade1995calendrical}
+out of control.\autocite{eade1995calendrical}
 #+end_quote
 
 Eade discusses a calendar error in CS 855 (CE 1493) when the formulas have
@@ -589,7 +655,7 @@ determined a /twelfth/ adhikavāra year in a 57 year period, which was not
 noticed by several astronomers at the time, who were using the "11 times in 57
 years" rule of thumb for adhikavāra years. This resulted in wrong dates being
 used on any inscriptions made until the error was corrected in the
-calendar.\cite{eade2007irregular}
+calendar.\autocite{eade2007irregular}
 
 # If this \clearpage is after the fn texts, it is included in them
 # \clearpage
@@ -609,7 +675,7 @@ The lunar year starts in April with Citta-māsa, which is 0 degrees (the vernal
 equinox) on the wheel of the zodiac (see sec. \ref{duangchata}), corresponding
 to Aries.
 
-#+attr_latex: :placement [h] :caption \caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs\cite{hasapannyo-zodiac}}
+#+attr_latex: :placement [h] :caption \caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs\autocite{hasapannyo-zodiac}}
 | Season       |    |      | Lunar Month     | Solar Month | Solar Zodiac         |
 |              |    | days |                 |             | (Western / Sanskrit) |
 |--------------+----+------+-----------------+-------------+----------------------|
@@ -660,7 +726,7 @@ the 1st /monastic/ lunar month.
 
 # Big tables that need a separate page
 
-#+attr_latex: :placement [p] :caption \caption{\label{tbl-calendars-1958} Adhikamāsa and adhikavāra in the period 1958 to 1978 (CS 1320-1340).\cite{eade-interpolation}}\legend{m for adhikamāsa, d for adhikavāra years, \Delta m and \Delta d for years since last adhikamāsa and adhikavāra.}
+#+attr_latex: :placement [p] :caption \caption{\label{tbl-calendars-1958} Adhikamāsa and adhikavāra in the period 1958 to 1978 (CS 1320-1340).\autocite{eade-interpolation}}\legend{m for adhikamāsa, d for adhikavāra years, \Delta m and \Delta d for years since last adhikamāsa and adhikavāra.}
 |    | \Delta d |    | \Delta m | year | type | Asalha | 2nd Asalha |
 |----+----------+----+----------+------+------+--------+------------|
 |    |          |  0 |          | 1320 | m    |  19:42 |      22:24 |
@@ -728,11 +794,32 @@ common, adhikamāsa or adhikavāra. They can also give us the angular position o
 the Sun and the Moon on the given day.
 
 #+begin_latex
-\marginpar{%
-\resizebox{\linewidth}{!}{\DuangChata[Sun={2/25/22}, Moon={8/16/6}, simple]}
+\begin{marginfigure}
+\raggedright
+\caption{\label{fig-wheel-2014-asalha} 2014 July 11, Āsāḷha Full Moon}
 
-2014 July 11 -- Asalha
-}
+\resizebox{\linewidth}{!}{\DuangChata[Sun={2/25/22}, Moon={8/16/6}, simple, show angles]}
+
+\footnotesize
+\bigskip
+
+\begin{tabular}{l l}
+True Sun: & 2:25\degree 22\minute\\
+True Moon: & 8:16\degree 6\minute\\
+Raek: & 20:12\minute\\
+Masaken: & 17022\\
+Avoman: & 391\\
+Horakhun: & 502683\\
+Kammacubala: & 69195\\
+Uccabala: & 1102\\
+Tithi: & 14
+\end{tabular}
+
+\bigskip
+
+At midnight the Moon would be seen in the 20. Nakshatra, Pūrva Ashādhā, around the stars δ and ε Sagittarii.
+
+\end{marginfigure}
 #+end_latex
 
 # Year 2014 http://www.myhora.com/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99-%E0%B8%9E.%E0%B8%A8.2557.aspx
@@ -743,7 +830,7 @@ For example in a common year, when we calculate the Moon's position for
 $\mathbf{day} = 103$, it should tell us that it is Full Moon, and it is found in
 the region of the sky associated with Āsāḷha month.
 
-Significant values are assigned names.\cite{eade1989ephemeris} The following
+Significant values are assigned names.\autocite{eade1989ephemeris} The following
 three will determine the adhikamāsa and adhikavāra:
 
 \savenotes
@@ -758,14 +845,29 @@ As we follow the steps, we will also obtain:
 - Uccabala \thai{อุจจพล} :: Age of the Moon's Apogee
 - Masaken \thai{มาสเกณฑ์} :: Elapsed months of the era
 
-- MeanSun, TrueSun, MeanMoon, TrueMoon :: Mean and True position of the Sun and the Moon
-- Raek :: The position of the Moon in the 27 mansions (Nakshatra, \thai{นักษัตร}) of the Zodiac, which will determine the month
+- MeanSun, TrueSun, MeanMoon, TrueMoon :: Mean and True angular position of the Sun and the Moon
+- Raek :: The position of the Moon in terms of the 27 lunar mansions, which will determine the month
 
 \spewnotes
 
+The zodiac wheel (a.k.a /duang chata/, sec. \ref{duangchata}) is divided into 12
+segments called /rasi/ (\thai{ราศี}), each marking 30 degrees.
+
+The wheel is also divided into 27 lunar mansions called /nakshatra/
+(\thai{นักษัตร}).
+
+Angular positions are given in a notation that expresses the rasi number plus
+the degrees and arcminutes. These values are also called the /rasi/, /angsa/ and
+/lipda/.
+
+The notation $r:a\degree l\minute = r*30 + a + l/60$, thus $85\degree 22\minute$ is
+$2:25\degree 22\minute$.
+
+# TODO: maybe a note about the difference b/w mean and true positions
+
 Only basic operations in a series of simple steps are necessary to produce these
-results. It can be carried out entirely on paper, although we will get the
-machine to do it for us in the end.
+results. It can be carried out entirely on paper, although the aim here is to
+get the machine to do it for us eventually.
 
 This is a simplistic clockwork model of the solar system. It is not a framework
 to model orbital mechanics, and doesn't account for such things as the varying
@@ -786,11 +888,13 @@ information to describe the progression of these events in any year.
 ** Calculating the properties of the year
 
 First we will see if we should add and extra month or extra day to keep the
-lunar year in sync with the solar year. We can lookup the Moon phases published
-by NASA and check if the Āsāḷha Pūjā date had in fact been a Full Moon.
+lunar year in sync with the solar year.
 
 Then we will calculate the position of the Moon on that day, and see if we are
 in Āsāḷha month, and not at some other Full Moon.
+
+We can confirm this by looking up the Moon phases published by NASA and check if
+the Āsāḷha Pūjā date had in fact been a Full Moon.
 
 Let's take the year CE 1963 (CS 1325) as an example and calculate its
 properties. We should find that it is an adhikavāra year. If you calculate the
@@ -811,27 +915,27 @@ E.g. $\lfloor 12.8 \rfloor = 12$.
 Era Constants. For readability, in the formulas we will use their values directly, set in \textbf{bold}.
 
 \begin{align*}
-  \mathbf{EraYears} = 800 & \mathbf{EraDays} = 292207 & \mathbf{MonthLength} = 30
+  \mathbf{EraYears} & = 800 & \mathbf{EraDays} & = 292207 & \mathbf{MonthLength} & = 30
 \end{align*}
 
 Constant offsets, which have to be added because their value was not 0 at the beginning of the Era:
 
 \begin{align*}
-  \mathbf{EraHorakhun} & = 373 & \mathbf{EraUccabala} & = 2611\\
-  \mathbf{EraAvoman} & = 650 & \mathbf{EraMasaken} & = 0
+  \mathbf{EraHorakhun} & = 373 & \mathbf{EraUccabala} & = 2611 & \mathbf{EraAvoman} & = 650 
 \end{align*}
 
-%"For every 692 solar days that elapse there are also 703 tithi.
-%Since 703 / 692 can be expressed as 692 + 11 / 692,
-%the ratio is simplified to these terms..." (Calendrical, p.48)
-%
-%11 is the daily increase (excess tithi over days)
-%
-% also see (Calendrical, p.49)
+3232 is a "base" for 360 degrees.\autocite[p. 48]{eade1995calendrical}
 
-\begin{equation*}
-703 / 692 = 692 + 11 / 692
-\end{equation*}
+The relationship between periods of \textbf{solar days} and \textbf{tithi}:
+"For every 692 solar days that elapse there are also 703 tithi.
+Since 703 / 692 can be expressed as 692 + 11 / 692, the ratio is simplified to these terms ...
+11 is the daily increase (excess tithi over days)."\autocite[p. 48]{eade1995calendrical}
+
+\begin{equation}
+\frac{703}{692} = \frac{692 + 11}{692}
+\end{equation}
+
+Let's begin then:
 
 \begin{align}
 \begin{split}
@@ -851,19 +955,27 @@ Constant offsets, which have to be added because their value was not 0 at the be
                      &= 552
 \end{split}\\
 \begin{split}
-\mathbf{Avoman}      &= ((\mathbf{Horakhun} * 11) + \mathbf{650}) \bmod 692\\
+\mathbf{Uccabala}    &= (\mathbf{Horakhun} + \mathbf{2611}) \bmod 3232\\
+                     &= 1780
+\end{split}\\
+\begin{split}
+                   a &= (\mathbf{Horakhun} * 11) + \mathbf{650}\\
+                     &= 5324309
+\end{split}\\
+\begin{split}
+\mathbf{Avoman}      &= a \bmod 692\\
                      &= 61
 \end{split}\\
 \begin{split}
-                   b &= \lfloor ((\mathbf{Horakhun} * 11) + \mathbf{650}) / 692 \rfloor\\
+                   b &= \lfloor a / 692 \rfloor\\
                      &= 7694
 \end{split}\\
 \begin{split}
-\mathbf{Masaken}     &= \lfloor (b + \mathbf{Horakhun}) / 30 \rfloor\\
+\mathbf{Masaken}     &= \lfloor (b + \mathbf{Horakhun}) / \mathbf{30} \rfloor\\
                      &= 16388
 \end{split}\\
 \begin{split}
-\mathbf{Tithi}       &= (b + \mathbf{Horakhun}) \bmod 30\\
+\mathbf{Tithi}       &= (b + \mathbf{Horakhun}) \bmod \mathbf{30}\\
                      &= 23
 \end{split}
 \end{align}
@@ -880,7 +992,8 @@ Now we can determine if the year qualifies for adhikamāsa or adhikavāra.
 The year could be adhikamāsa:
 
 - \logic{IF} the *Tithi* is between 24 and 29 inclusive,
-- \logic{OR} between 0 and 5 inclusive.
+- \logic{OR} between 0 and 5 inclusive,
+- \logic{then} it could be adhikamāsa.
   
 However:
 
@@ -912,7 +1025,7 @@ Eade, Calendrical, p.64 footnote 52
 #+begin_quote
 If the day of /tithi/ (astronomical New Year)
 lies either within 25 to 29 (in Citta-māsa) or 1 to 5 (in
-Visākha-māsa), then the year is adhikamāsa.\cite{prasert-ngan}
+Visākha-māsa), then the year is adhikamāsa.\autocite{prasert-ngan}
 
 Eade, in Interpolation
 #+end_quote
@@ -926,7 +1039,7 @@ of the year that determine the matter:
 - in a leap year, if the avoman is 126 or less, the year will have an
   extra day
 - in a normal year, if the avoman is 137 or less, the year will have
-  and extra day\cite{eade-interpolation}
+  and extra day\autocite{eade-interpolation}
 #+end_quote
 
 ** Adhikavāra conditions
@@ -942,7 +1055,9 @@ Determine if it is a leap year:
 The year could be adhikavāra:
 
 - \logic{IF} it is a leap year \logic{AND} the *Avoman* is less than or equal to 126,
-- \logic{ELSE IF} it is \logic{NOT} a leap year \logic{AND} the *Avoman* is less than 137.
+- \logic{then} it could be adhikavāra.
+- \logic{ELSE IF} it is \logic{NOT} a leap year \logic{AND} the *Avoman* is less than 137,
+- \logic{then} it could be adhikavāra.
 
 #+latex: \marginpar{%
 "Carried adhikavāra" meaning that last year qualified both for adhikamāsa and
@@ -984,7 +1099,7 @@ and the years follow the prediction of the formulas.
 ** Calculating the Position of the Sun and the Moon
 
 Eade describes the formulas at the end of his paper /Rules for interpolation in
-the Thai calendar/\cite{eade2000rules}, but his notation is a puzzle in itself,
+the Thai calendar/\autocite{eade2000rules}, but his notation is a puzzle in itself,
 with its implied conversions and obscure progression from one step to the next.
 
 The folks at [[http://astronomy.stackexchange.com/][Astronomy Stack Exchange]] helped to decipher it:
@@ -1016,53 +1131,6 @@ This allows us to continue examining the year CE 1963 (CS 1325).
 # ดาว	ราศี	องศา	ลิปดา	 
 # ๑	อาทิตย์	11 : มีน	22	33	
 # ๒	จันทร์
-
-** In Golang
-\label{suriya-go-example}
-
-Going through all this may be intriguing to calculate once, but mention
-repeating it every year, then checking and proofing it, and one is reminded of a
-phrase in Eade's /Calendrical Systems/: "Few would undertake cheerfully the
-task."\cite{eade1995calendrical}
-
-Better tell the machine how to do it and let us get on with living. Let's
-import [[https://github.com/splendidmoons/suriya-go][suriya-go]] and ask the machine in Golang:
-
-#+begin_latex
-\begin{minted}{go}
-package main
-
-import "fmt"
-import "github.com/splendidmoons/suriya-go"
-
-func main() {
-	suYear := suriya.SuriyaYear{}
-	suYear.Init(1963) // CS 1325
-
-	dateFmt := "2006-01-02"
-	fmtStr := `Year: %v
-Tithi: %v
-Adhikamāsa: %v
-Adhikavāra: %v
-Āsāḷha: %v
-`
-	fmt.Printf(fmtStr,
-		suYear.Year,
-		suYear.Tithi,
-		suYear.Is_Adhikamasa(),
-		suYear.Is_Adhikavara(),
-		suYear.AsalhaPuja().Format(dateFmt))
-}
-\end{minted}
-#+end_latex
-
-Which will print:
-
-: Year: 1963
-: Tithi: 23
-: Adhikamāsa: false
-: Adhikavāra: true
-: Āsāḷha: 1963-07-06
 
 * The Duang Chata
 \label{duangchata}
@@ -1197,13 +1265,68 @@ https://th.wikipedia.org/wiki/%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B8%B1%E0%B
 
 \clearpage
 
+* In Golang
+\label{suriya-go-example}
+
+Going through all this may be intriguing to calculate once, but mention
+repeating it every year, then checking and proofing it, and one is reminded of a
+phrase in Eade's /Calendrical Systems/: "Few would undertake cheerfully the
+task."\autocite{eade1995calendrical}
+
+Better tell the machine how to do it and let us get on with living. Let's
+import [[https://github.com/splendidmoons/suriya-go][suriya-go]] and ask the machine in Golang:
+
+#+begin_latex
+\begin{minted}{go}
+package main
+
+import "fmt"
+import "github.com/splendidmoons/suriya-go"
+
+func main() {
+	suYear := suriya.SuriyaYear{}
+	suYear.Init(1963) // CS 1325
+
+	dateFmt := "2006-01-02"
+	fmtStr := `Year: %v
+Tithi: %v
+Adhikamāsa: %v
+Adhikavāra: %v
+Āsāḷha: %v
+`
+	fmt.Printf(fmtStr,
+		suYear.Year,
+		suYear.Tithi,
+		suYear.Is_Adhikamasa(),
+		suYear.Is_Adhikavara(),
+		suYear.AsalhaPuja().Format(dateFmt))
+}
+\end{minted}
+#+end_latex
+
+Which will print:
+
+: Year: 1963
+: Tithi: 23
+: Adhikamāsa: false
+: Adhikavāra: true
+: Āsāḷha: 1963-07-06
+
+** 1288
+\label{golang-1288}
+
+We will investigate 14 April 1288, and while doing that, also 15 June 1288,
+which should turn out to be the date of Āsāḷha Pūjā.
+
+#+latex: \inputminted{go}{./includes/print-1288.go}
+
 * Adding the extra month, Pali method                              :noexport:
 \label{pali-method}
 
 # TODO: error in Aj H's sheet. 2002 is not adhikamāsa, he concatenates the cycles too early.
 
 /The following is adapted from Ajahn Khemanando for recent
-years./\cite{khemanando-adhikamasa}
+years./\autocite{khemanando-adhikamasa}
 
 Table \ref{tbl-adhikamasa-pali} shows adding the adhikamāsa in the 19-year
 cycle between 2001-2020.
@@ -1264,7 +1387,7 @@ of the 5th Thai lunar month in 2001.
 \logic{else}\\
 \logic{if} (/year/ is not exactly divisible by 400) \logic{then} (it is a common year)\\
 \logic{else} (it is a leap year)
-\cite{wp-leap-year}
+\autocite{wp-leap-year}
 #+end_quote
 
 \backmatter
@@ -1283,8 +1406,7 @@ uposatha app
 \label{bibliography}
 
 #+begin_latex
-\bibliographystyle{plain}
-\bibliography{bibentries}
+\printbibliography
 #+end_latex
 
 * Colophon

@@ -4,6 +4,8 @@
 *.toc
 *.bbl
 *.blg
+*.bcf
+*.run.xml
 *~
 *.backup
 sources/mwe.*
