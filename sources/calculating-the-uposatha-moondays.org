@@ -86,6 +86,8 @@ Download [[https://github.com/profound-labs/calculating-the-uposatha-moondays/ra
 - fill in values for formulas
 - X add duang
 - X add nasa astropixels img
+  
+- add the 1288 results to the suriya-go Golang tests
 
 - describe websites and apps
 
@@ -907,7 +909,7 @@ properties. We should find that it is an adhikavāra year. If you calculate the
 following year CE 1964 (CS 1326) as an excercise, you should find that it is
 adhikamāsa.
 
-Notation:
+Notation recap:
 
 $a \bmod b$ produces the /remainder part/ of $a/b$.\\
 E.g. $14 \bmod 5 = 4$, because $14/5 = 2*5 + 4$.
@@ -915,6 +917,9 @@ E.g. $14 \bmod 5 = 4$, because $14/5 = 2*5 + 4$.
 $\lfloor a \rfloor$ /floors/ (or truncates) a fraction value, meaning we discard
 the fraction part and only keep the integer part.\\
 E.g. $\lfloor 12.8 \rfloor = 12$.
+
+$|a|$ is the /absolute/ value of $a$.\\
+E.g. $|-4.21| = 4.21$ and $|4.21| = |4.21|$.
 
 #+begin_latex
 
@@ -1065,7 +1070,7 @@ The year could be adhikavāra:
 - \logic{ELSE IF} it is \logic{NOT} a leap year \logic{AND} the *Avoman* is less than 137,
 - \logic{then} it could be adhikavāra.
 
-#+latex: \marginpar{%
+#+latex: \marginpar{\footnotesize
 "Carried adhikavāra" meaning that last year qualified both for adhikamāsa and
 adhikavāra, so it was not allowed to be assigned the adhikavāra, which was
 "carried on" and will now be assigned to this year.
@@ -1115,6 +1120,12 @@ The folks at [[http://astronomy.stackexchange.com/][Astronomy Stack Exchange]] h
 
 This allows us to continue examining the year CE 1963 (CS 1325).
 
+We know now that the year needed an adhikavāra extra day, so Āsāḷha Pūjā is one
+day later, on day 104, which is 1963 July 6. Let's find the position of the Sun
+and the Moon on that day, to see if the Moon reached its Full phase, and if it
+is in the region of the sky associated with the correct month (i.e. the
+nakshatra).
+
 First we establish the properties of the day:
 
 #+begin_latex
@@ -1137,13 +1148,11 @@ First we establish the properties of the day:
 \end{split}\\
 \begin{split}
                       a &= (\mathbf{Horakhun} * 11) + 650\\
-                        &= x\\
         \mathbf{Avoman} &= a \bmod 692\\
                         &= x
 \end{split}\\
 \begin{split}
                       b &= \lfloor a / 692 \rfloor + \mathbf{2611} + \mathbf{Horakhun}\\
-                        &= x\\
        \mathbf{Masaken} &= \lfloor b / \mathbf{30} \rfloor\\
                         &= x
 \end{split}\\
@@ -1159,22 +1168,21 @@ Find the position of the *Mean* and *True Sun*:
 
 Degree to radian conversion noted as $a_{rad} = a * \frac{\pi}{180}$.
 
+Note that 60 converts values between degrees and arcminutes: 
+
+#+latex: \[ a\degree*60=b\minute \quad \text{and} \quad b\minute/60 = a\degree \]
+
 #+begin_latex
 \begin{align}
 \begin{split}
                       a &= \mathbf{elapsedDays} * \mathbf{800} + \mathbf{Year\_Kammacubala}\\
-                        &= x\\
-                      b &= (a / \mathbf{292207}) * 360\\
-                        &= x\\
-                  x, y, z &= \mathit{DegreeToRal}(b)\\
-                        z &= z - 3\\
-         \mathbf{MeanSun} &= \mathit{RalToDegree}(x, y, z)
+       \mathbf{MeanSun} &= (a / \mathbf{292207}) * 360\degree - 3\minute\\
+                        &= x
 \end{split}\\
 \begin{split}
-                         a &= | \mathbf{MeanSun} - 80 | \\
-                           &= x\\
-                         b &= \lfloor 134 * \mathit{sin}(a_{rad}) \rfloor\\
-          \mathbf{TrueSun} &= \mathbf{MeanSun} + b/60
+                         a &= | \mathbf{MeanSun} - 80\degree | \\
+          \mathbf{TrueSun} &= \mathbf{MeanSun} + \frac{\lfloor 134 * \mathit{sin}(a_{rad}) \rfloor}{60}\\
+                           &= x
 \end{split}
 \end{align}
 #+end_latex
@@ -1185,7 +1193,7 @@ Find the position of the *Mean* and *True Moon*:
 \begin{align}
 \begin{split}
                   a &= \frac{\mathbf{Avoman} + \lfloor \mathbf{Avoman} / 25 \rfloor}{60}\\
-  \mathbf{MeanMoon} &= \mathit{NormalizeDegree}( \mathbf{TrueSun} + a + \mathbf{Tithi} * 12 - \mathit{RalToDegree}(0, 0, 40) )\\
+  \mathbf{MeanMoon} &= \mathit{NormalizeDegree}( \mathbf{TrueSun} + a\degree + \mathbf{Tithi} * 12\degree - 40\minute )\\
                     &= x
 \end{split}
 \end{align}
@@ -1214,11 +1222,12 @@ Breaking it down:
 \begin{align}
 \begin{split}
                  a &= \mathbf{MeanMoon} - \mathbf{meanUccabala}\\
-                   &= x\\
  \mathbf{TrueMoon} &= \mathbf{MeanMoon} - \frac{296 * \mathit{sin}(a_{rad})}{60}\\
+                   &= x
 \end{split}\\
 \begin{split}
-     \mathbf{Raek} &= \mathbf{TrueMoon} / 13\degree 20\minute + 1
+     \mathbf{Raek} &= \mathbf{TrueMoon} / 13\degree 20\minute + 1\\
+                   &= x
 \end{split}
 \end{align}
 #+end_latex
@@ -1226,8 +1235,10 @@ Breaking it down:
 13\degree 20\minute is one nakshatra or lunar mansion, $360\degree / 27$.
 
 #+begin_latex
-\begin{marginfigure}[-120mm]
-\caption{1963 July 6}
+\begin{fullwidth}%
+% ============================================== %
+\begin{minipage}{0.33\linewidth}
+Day 103, 1963 July 5\\
 
 \resizebox{\linewidth}{!}{\DuangChata[Sun={0/0/0}, Moon={0/0/0}, simple, show angles]}
 
@@ -1242,9 +1253,51 @@ Tithi: & 0
 
 \bigskip
 
-The Moon is in the 20. nakshatra, Pūrva Ashādhā.
+X. nakshatra, X X.
 
-\end{marginfigure}
+\end{minipage}%
+% ============================================== %
+\begin{minipage}{0.33\linewidth}
+Day 104, 1963 July 6\\
+
+\resizebox{\linewidth}{!}{\DuangChata[Sun={0/0/0}, Moon={0/0/0}, simple, show angles]}
+
+\footnotesize
+\bigskip
+
+\begin{tabular}{l l}
+Sun: & 0:0\degree 0\minute\\
+Moon: & 0:0\degree 0\minute\\
+Tithi: & 0
+\end{tabular}
+
+\bigskip
+
+20. nakshatra, Pūrva Ashādhā.
+
+\end{minipage}%
+% ============================================== %
+\begin{minipage}{0.33\linewidth}
+Day 105, 1963 July 7\\
+
+\resizebox{\linewidth}{!}{\DuangChata[Sun={0/0/0}, Moon={0/0/0}, simple, show angles]}
+
+\footnotesize
+\bigskip
+
+\begin{tabular}{l l}
+Sun: & 0:0\degree 0\minute\\
+Moon: & 0:0\degree 0\minute\\
+Tithi: & 0
+\end{tabular}
+
+\bigskip
+
+X. nakshatra, X X.
+
+\end{minipage}%
+% ============================================== %
+\end{fullwidth}
 #+end_latex
 
 #+begin_latex
