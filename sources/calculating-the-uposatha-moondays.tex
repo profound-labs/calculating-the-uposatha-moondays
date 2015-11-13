@@ -1,4 +1,4 @@
-% Created 2015-11-12 Thu 21:03
+% Created 2015-11-13 Fri 20:54
 \documentclass[11pt,oneside]{memoir-article}
 \usepackage{local}
 \renewcommand{\docVersion}{v1.0}
@@ -1082,17 +1082,136 @@ The folks at \href{http://astronomy.stackexchange.com/}{Astronomy Stack Exchange
 
 This allows us to continue examining the year CE 1963 (CS 1325).
 
+First we establish the properties of the day:
 
 \begin{align}
 \begin{split}
-   \mathbf{detaCA} &= \mathbf{CE\_year} - 638\\
-                     &= 1325
+   \mathbf{elapsedDays} &= \mathbf{Day} - \mathbf{Year\_Tithi}\\
+                        &= x
 \end{split}\\
 \begin{split}
-                   a &= (\mathbf{CS\_year} * \mathbf{292207}) + 373\\
-                     &= 387174648
+   \mathbf{Horakhun}    &= \mathbf{Year\_Horakhun} + \mathbf{elapsedDays}\\
+                        &= x
+\end{split}\\
+\begin{split}
+  \mathbf{Kammacubala}  &= \mathbf{800} - (\mathbf{CS\_Year} * \mathbf{292207} + \mathbf{373}) \bmod \mathbf{800} + \mathbf{elapsedDays} * \mathbf{800}\\
+                        &= x
+\end{split}\\
+\begin{split}
+  \mathbf{Uccabala}     &= (\mathbf{Horakhun} + \mathbf{2611}) \bmod 3232\\
+                        &= x
+\end{split}\\
+\begin{split}
+                      a &= (\mathbf{Horakhun} * 11) + 650\\
+                        &= x\\
+        \mathbf{Avoman} &= a \bmod 692\\
+                        &= x
+\end{split}\\
+\begin{split}
+                      b &= \lfloor a / 692 \rfloor + \mathbf{2611} + \mathbf{Horakhun}\\
+                        &= x\\
+       \mathbf{Masaken} &= \lfloor b / \mathbf{30} \rfloor\\
+                        &= x
+\end{split}\\
+\begin{split}
+         \mathbf{Tithi} &= b \bmod \mathbf{30}\\
+                        &= x
 \end{split}
 \end{align}
+
+Find the position of the \textbf{Mean} and \textbf{True Sun}:
+
+Degree to radian conversion noted as $a_{rad} = a * \frac{\pi}{180}$.
+
+\begin{align}
+\begin{split}
+                      a &= \mathbf{elapsedDays} * \mathbf{800} + \mathbf{Year\_Kammacubala}\\
+                        &= x\\
+                      b &= (a / \mathbf{292207}) * 360\\
+                        &= x\\
+                  x, y, z &= \mathit{DegreeToRal}(b)\\
+                        z &= z - 3\\
+         \mathbf{MeanSun} &= \mathit{RalToDegree}(x, y, z)
+\end{split}\\
+\begin{split}
+                         a &= | \mathbf{MeanSun} - 80 | \\
+                           &= x\\
+                         b &= \lfloor 134 * \mathit{sin}(a_{rad}) \rfloor\\
+          \mathbf{TrueSun} &= \mathbf{MeanSun} + b/60
+\end{split}
+\end{align}
+
+Find the position of the \textbf{Mean} and \textbf{True Moon}:
+
+\begin{align}
+\begin{split}
+                  a &= \frac{\mathbf{Avoman} + \lfloor \mathbf{Avoman} / 25 \rfloor}{60}\\
+  \mathbf{MeanMoon} &= \mathit{NormalizeDegree}( \mathbf{TrueSun} + a + \mathbf{Tithi} * 12 - \mathit{RalToDegree}(0, 0, 40) )\\
+                    &= x
+\end{split}
+\end{align}
+
+One *Tithi* is 12\degree, $360\degree / 30 = 12\degree$.
+
+The \textbf{meanUccabala} in one step:
+
+\begin{align}
+\begin{split}
+  \mathbf{meanUccabala} &= \left( \frac{(\mathbf{Year\_Uccabala} + \mathbf{elapsedDays}) * 3}{808} * 30 * 60 + 2 \right) / 60\\
+                        &= x
+\end{split}
+\end{align}
+
+Breaking it down:
+
+\begin{itemize}
+\item Multiply by 30 to conform with the notation $r:a\degree l\minute = 30*r + a + l/60$.
+\item Division by 808 probably helps to express the length of the lunar month, since $808 / 30 = 26.9333$.
+\item Multiply by 60 to convert to arcmin
+\item Add 2, possibly correction for geographical position
+\item Divide by 60 to convert back to degree
+\end{itemize}
+
+\begin{align}
+\begin{split}
+                 a &= \mathbf{MeanMoon} - \mathbf{meanUccabala}\\
+                   &= x\\
+ \mathbf{TrueMoon} &= \mathbf{MeanMoon} - \frac{296 * \mathit{sin}(a_{rad})}{60}\\
+\end{split}\\
+\begin{split}
+     \mathbf{Raek} &= \mathbf{TrueMoon} / 13\degree 20\minute + 1
+\end{split}
+\end{align}
+
+13\degree 20\minute is one nakshatra or lunar mansion, $360\degree / 27$.
+
+\begin{marginfigure}[-80mm]
+\caption{1963 July 6}
+
+\resizebox{\linewidth}{!}{\DuangChata[Sun={0/0/0}, Moon={0/0/0}, simple, show angles]}
+
+\footnotesize
+\bigskip
+
+\begin{tabular}{l l}
+Sun: & 0:0\degree 0\minute\\
+Moon: & 0:0\degree 0\minute\\
+Tithi: & 0
+\end{tabular}
+
+\bigskip
+
+The Moon is in the 20. nakshatra, Pūrva Ashādhā.
+
+\end{marginfigure}
+
+Let's look up what NASA has for 1963 July 6:\footnote{\href{http://astropixels.com/ephemeris/phasescat/phases1901.html}{AstroPixels - Moon Phases: 1901 to 2000}}
+
+{\centering
+\includegraphics[width=0.8\linewidth]{1963-astropixels.png}
+\par}
+
+\clearpage
 
 \chapter{The Duang Chata}
 \label{sec-5}
@@ -1314,7 +1433,7 @@ Please send comments, corrections and further information to:
 
 \texttt{Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>}
 
-Last updated on 2015-11-12.
+Last updated on 2015-11-13.
 
 
 \fullpage{%
