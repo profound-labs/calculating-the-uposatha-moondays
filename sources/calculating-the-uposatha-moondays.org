@@ -10,6 +10,8 @@
 #+EMAIL: gambhiro.bhikkhu.85@gmail.com
 #+TITLE: Calculating the Uposatha Moondays
 
+\frontmatter
+
 #+BEGIN_tldr
 - The method is based on a set of formulas called /suriyayatra/ (\thai{สุริยยาตร์}),
   originating from India and including additional rules observed in Southeast
@@ -140,23 +142,39 @@ Please send comments, corrections and further information to:
 
 =Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>=
 
+* Contents
+
+# FIXME
+# \tableofcontents*
+
+\mainmatter
+
 * Mahānikāya Uposatha Calendar Tutorial
 \label{uposatha-tutorial}
 
-This section is a step-by-step guide on how to calculate the uposathas for a
-given year.
+This section is a step-by-step guide on how to calculate the uposathas for the
+period of a *solar* year.
+
+The first lunar month, Citta, is in April, so a more convenient way to cover the
+solar year is from the end of the previous Rainy Season (last November), to the
+end of this year's Rainy Season (this November), plus a couple of uposathas
+until the end of this December.
+
+The lunar month and season boundaries overlap. The lunar months end on the day
+of the New Moon, the seasons end on the day of the Full Moon. More on this at
+sec. \ref{years-seasons}.
 
 ** Collecting information about the year
 
 We need to know the following:
 
-- the last uposatha of the previous lunar year
+- the last uposatha of the previous Rainy Season, Kattika Full Moon
 - whether there is an extra lunar month (adhikamāsa),
 - or an extra day (adhikavāra),
-- or neither, and so it is a common year.
+- or neither, and so this is a common year.
 
-Find the Full Moon in last year November, this is the last uposatha of the
-previous lunar year.
+Find the Full Moon in last year November, this is Kattika Full Moon, the last
+uposatha of the previous Rainy Season.
 
 In Thai practice a lunar year can't have both an adhikamāsa and an adhikavāra.
 
@@ -164,7 +182,7 @@ Check Table \ref{tbl-cycle-adhikamasa-adhikavara-short} whether the given year
 will have an adhikamāsa or adhikavāra. For more data, see Table
 \ref{tbl-cycle-adhikamasa-adhikavara}.
 
-#+latex: \begin{margintable}[-80mm]
+#+latex: \begin{margintable}[-120mm]
 | Year | \Delta M | \Delta V |
 |------+----------+----------|
 | 2000 |          |        6 |
@@ -215,52 +233,58 @@ Gregorian leap years don't affect the lunar calendar, but it may be useful to
 check when planning ahead. Table \ref{tbl-cycle-leap-years} shows a few leap
 years.
 
+\clearpage
+
 ** Common year
 \label{common-year}
 *** Alternate 30 and 29 day months
-
-Counting from the last Full Moon of the previous lunar year (which will be in
-November), the first month is 30 days, the second is 29 days:
-
-| 15 days | \mN{} New Moon  | First uposatha of the Cold Season |
-| 15 days | \mF{} Full Moon | End of first month, 30 days       |
-| 14 days | \mN{} New Moon  |                                   |
-| 15 days | \mF{} Full Moon | End of second month, 29 days      |
-
-A Full Moon is always on the 15th day. Every second New Moon is on the 14th day.
-
-The \GaWaxingmoon{} Waxing- and \GaWaningmoon{} Waning Moons are on the 8th day.
 
 #+begin_latex
 \begin{fullwidth}
 \includegraphics[width=\linewidth]{two-months.pdf}
 \end{fullwidth}
+
+\begin{marginfigure}[20mm]
+\caption{\label{fig-common-year} Common Year.}
+\includegraphics[width=\linewidth]{common-year.png}
+\end{marginfigure}
 #+end_latex
+
+Kattika is the 8th lunar month, 30 days long. Complete the month by adding a
+15-day New Moon after the Full Moon.
+
+The 9th month is Magasira, 29 days long. Add a 15-day Full Moon and a 14-day New
+Moon.
+
+| 15 days | \mF{} Full Moon | Kattika  | Last uposatha of the Rainy Season |
+| 15 days | \mN{} New Moon  | Kattika  | End of the 8th month, 30 days     |
+| 15 days | \mF{} Full Moon | Magasira |                                   |
+| 14 days | \mN{} New Moon  | Magasira | End of the 9th month, 29 days     |
+
+The Full Moon is always on the 15th day. Every second New Moon is on the 14th day.
+
+The \GaWaxingmoon{} Waxing- and \GaWaningmoon{} Waning Moons are on the 8th day.
 
 Keep alternating 30 and 29 day months. One season is four months, one year is
 three seasons: Cold-, Hot- and Rainy Season. See Figure \ref{fig-common-year} or
 Table \ref{tbl-month-names} for the Pāli names of months and seasons.
-
-#+latex: \begin{marginfigure}[-5mm]
-#+latex: \caption{\label{fig-common-year} Common Year.}
-#+latex: \includegraphics[width=\linewidth]{common-year.png}
-#+latex: \end{marginfigure}
 
 *** Marking the Vassa and Major Moondays
 \label{marking-the-moondays-common-year}
 
 Mark the months and seasons according to Figure \ref{fig-common-year}.
 
-The key annual events are on the Full Moon of the given lunar months:
+The key annual events are on the Full Moon of the given lunar months. Note that
+Māgha Pūjā is still in the previous /lunar/ year, hence its number is 11th.
 
 #+attr_latex: :placement [h] :caption \caption{\label{tbl-major-events} Major Events in a Common Year}
 | Event              | Time                 |
 |--------------------+----------------------|
-| Māgha Pūjā         | 3rd Full Moon        |
-| Visākha Pūjā       | 6th Full Moon        |
-| Āsāḷha Pūjā        | 8th Full Moon        |
+| Māgha Pūjā         | 11th Full Moon       |
+| Visākha Pūjā       | 2nd Full Moon        |
+| Āsāḷha Pūjā        | 4th Full Moon        |
 | First Day of Vassa | the day after Āsāḷha |
-| Pavāraṇā Day       | 11th Full Moon       |
+| Pavāraṇā Day       | 7th Full Moon        |
 | Last Day of Vassa  | Pavāraṇā Day         |
 
 Mark the Vassa (Rainy Season Retreat):
@@ -273,10 +297,7 @@ season is 8 uposathas.
 
 In a common year, the calendar is finished. 
 
-Note that in /monastic/ lunar months, the Full Moon is on the last day of the month.
-
-In /Thai/ lunar months, the Full Moon is in the middle of the month, and the New
-Moon is on the last day.
+# AT HERE
 
 ** Adhikamāsa year
 *** Marking the Vassa and Major Moondays
@@ -689,6 +710,9 @@ complete an orbit around the Sun
 [fn:synodicmonth] synodic month: the time it takes the Moon to reach
 the same visual phase
 
+** Lunar years, Seasons, Months and Days
+\label{years-seasons}
+
 ** Names of the months
 
 The name of a given month is determined by the astrological sign which
@@ -698,24 +722,24 @@ The lunar year starts in April with Citta-māsa, which is 0 degrees (the vernal
 equinox) on the wheel of the zodiac (see sec. \ref{duangchata}), corresponding
 to Aries.
 
-#+attr_latex: :placement [h] :caption \caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs\autocite{hasapannyo-zodiac}}
-| Season       |    |      | Lunar Month     | Solar Month | Solar Zodiac         |
-|              |    | days |                 |             | (Western / Sanskrit) |
-|--------------+----+------+-----------------+-------------+----------------------|
-| Gimha-utu    |  1 |   30 | Citta-māsa      | April       | Aries / Meṣa         |
-| Hot Season   |  2 |   29 | Visākha-māsa    | May         | Taurus / Vṛṣabha     |
-|              |  3 |   30 | Jeṭṭha-māsa     | June        | Gemini / Mithuna     |
-|              |  4 |   29 | Āsāḷha-māsa     | July        | Cancer / Karkaṭa     |
-|--------------+----+------+-----------------+-------------+----------------------|
-| Vassāna-utu  |  5 |   30 | Savaṇa-māsa     | August      | Leo / Siṃha          |
-| Rainy Season |  6 |   29 | Bhaddapāda-māsa | September   | Virgo / Kanyā        |
-|              |  7 |   30 | Assayuja-māsa   | October     | Libra / Tulā         |
-|              |  8 |   29 | Kattika-māsa    | November    | Scorpio / Vṛścika    |
-|--------------+----+------+-----------------+-------------+----------------------|
-| Hemanta-utu  |  9 |   30 | Magasira-māsa   | December    | Sagittarius / Dhanus |
-| Cold Season  | 10 |   29 | Phussa-māsa     | January     | Capricorn / Makara   |
-|              | 11 |   30 | Māgha-māsa      | February    | Aquarius / Kumbha    |
-|              | 12 |   29 | Phagguṇa-māsa   | March       | Pisces / Mīna        |
+#+attr_latex: :placement [h] :caption \caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs}
+| Season       |    |      | Lunar Month | Solar Month | Solar Zodiac         |
+|              |    | days |             |             | (Western / Sanskrit) |
+|--------------+----+------+-------------+-------------+----------------------|
+| Gimha-utu    |  1 |   29 | Citta       | April       | Aries / Meṣa         |
+| Hot Season   |  2 |   30 | Visākha     | May         | Taurus / Vṛṣabha     |
+|              |  3 |   29 | Jeṭṭha      | June        | Gemini / Mithuna     |
+|              |  4 |   30 | Āsāḷha      | July        | Cancer / Karkaṭa     |
+|--------------+----+------+-------------+-------------+----------------------|
+| Vassāna-utu  |  5 |   29 | Savaṇa      | August      | Leo / Siṃha          |
+| Rainy Season |  6 |   30 | Bhaddapāda  | September   | Virgo / Kanyā        |
+|              |  7 |   29 | Assayuja    | October     | Libra / Tulā         |
+|              |  8 |   30 | Kattika     | November    | Scorpio / Vṛścika    |
+|--------------+----+------+-------------+-------------+----------------------|
+| Hemanta-utu  |  9 |   29 | Magasira    | December    | Sagittarius / Dhanus |
+| Cold Season  | 10 |   30 | Phussa      | January     | Capricorn / Makara   |
+|              | 11 |   29 | Māgha       | February    | Aquarius / Kumbha    |
+|              | 12 |   30 | Phagguṇa    | March       | Pisces / Mīna        |
 
 ** The first and last day of a lunar month
 \label{lunar-month-first-last}

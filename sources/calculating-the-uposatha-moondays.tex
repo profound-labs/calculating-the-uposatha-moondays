@@ -1,4 +1,4 @@
-% Created 2015-11-14 Sat 16:59
+% Created 2015-11-14 Sat 22:13
 \documentclass[11pt,oneside]{memoir-article}
 \usepackage{local}
 \renewcommand{\docVersion}{v1.0}
@@ -14,6 +14,8 @@
 \begin{document}
 
 \maketitle
+\frontmatter
+
 \begin{tldr}
 \begin{itemize}
 \item The method is based on a set of formulas called \emph{suriyayatra} (\thai{สุริยยาตร์}),
@@ -54,7 +56,7 @@ the \emph{uposathas}. The sections get progressively more involved, drop it when
 don't need more.
 
 \begin{description}
-\item[{3 pages}] To understand how to construct a given year's uposathas, see
+\item[{3 pages}] To understand how to construct the sequence of a given year's uposathas, see
 page \pageref{uposatha-tutorial}-\pageref{uposatha-tutorial-end}
 in sec. \ref{uposatha-tutorial}.
 \item[{+4 pages}] The formulas and conditions which determine the adhikamāsa and
@@ -63,8 +65,8 @@ sec. \ref{suriyayatra-formulas}.
 \item[{+2 pages}] The formulas continue with calculating the angular position
 of the Sun and Moon on a given day at sec. \ref{calculating-the-sun-and-moon}, page
 \pageref{calculating-the-sun-and-moon}-\pageref{calculating-the-sun-and-moon-end}.
-\item[{+4 pages}] A given day is visualized with the zodiac wheel diagrams
-(a.k.a \emph{duang chata}). Making sense of these is in sec. \ref{duangchata},
+\item[{+2 pages}] A given day at the time of midnight is visualized with the zodiac
+wheel diagrams (a.k.a \emph{duang chata}). Making sense of these is in sec. \ref{duangchata},
 page \pageref{duangchata}-\pageref{duangchata-end}.
 \end{description}
 
@@ -81,39 +83,54 @@ Related:
 
 Download \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/raw/master/calculating-the-uposatha-moondays.pdf}{this PDF} or a \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/archive/master.zip}{ZIP archive}. The ZIP contains the PDFs referenced in this document.
 
-\AddToShipoutPictureFG*{\put(0,0){%
-\begin{minipage}[b]{\paperwidth}%
-
-\includegraphics[width=50mm]{formula-sample.pdf}
-\includegraphics[width=50mm]{code-sample.pdf}
-\includegraphics[width=50mm]{duangchata-sample.pdf}
-
-\end{minipage}%
-}}%
+%\AddToShipoutPictureFG*{\put(0,0){%
+%\begin{minipage}[b]{\paperwidth}%
+%
+%\includegraphics[width=50mm]{formula-sample.pdf}
+%\includegraphics[width=50mm]{code-sample.pdf}
+%\includegraphics[width=50mm]{duangchata-sample.pdf}
+%
+%\end{minipage}%
+%}}%
 
 \clearpage
 
-\chapter{Mahānikāya Uposatha Calendar Tutorial}
+\chapter{Contents}
 \label{sec-1}
+
+
+\mainmatter
+
+\chapter{Mahānikāya Uposatha Calendar Tutorial}
+\label{sec-2}
 \label{uposatha-tutorial}
 
-This section is a step-by-step guide on how to calculate the uposathas for a
-given year.
+This section is a step-by-step guide on how to calculate the uposathas for the
+period of a \textbf{solar} year.
+
+The first lunar month, Citta, is in April, so a more convenient way to cover the
+solar year is from the end of the previous Rainy Season (last November), to the
+end of this year's Rainy Season (this November), plus a couple of uposathas
+until the end of this December.
+
+The lunar month and season boundaries overlap. The lunar months end on the day
+of the New Moon, the seasons end on the day of the Full Moon. More on this at
+sec. \ref{years-seasons}.
 
 \section{Collecting information about the year}
-\label{sec-1-1}
+\label{sec-2-1}
 
 We need to know the following:
 
 \begin{itemize}
-\item the last uposatha of the previous lunar year
+\item the last uposatha of the previous Rainy Season, Kattika Full Moon
 \item whether there is an extra lunar month (adhikamāsa),
 \item or an extra day (adhikavāra),
-\item or neither, and so it is a common year.
+\item or neither, and so this is a common year.
 \end{itemize}
 
-Find the Full Moon in last year November, this is the last uposatha of the
-previous lunar year.
+Find the Full Moon in last year November, this is Kattika Full Moon, the last
+uposatha of the previous Rainy Season.
 
 In Thai practice a lunar year can't have both an adhikamāsa and an adhikavāra.
 
@@ -121,7 +138,7 @@ Check Table \ref{tbl-cycle-adhikamasa-adhikavara-short} whether the given year
 will have an adhikamāsa or adhikavāra. For more data, see Table
 \ref{tbl-cycle-adhikamasa-adhikavara}.
 
-\begin{margintable}[-80mm]
+\begin{margintable}[-120mm]
 \begin{center}
 \begin{tabular}{rrr}
 Year & $\Delta$ M & $\Delta$ V\\
@@ -178,48 +195,54 @@ Gregorian leap years don't affect the lunar calendar, but it may be useful to
 check when planning ahead. Table \ref{tbl-cycle-leap-years} shows a few leap
 years.
 
+\clearpage
+
 \section{Common year}
-\label{sec-1-2}
+\label{sec-2-2}
 \label{common-year}
 \subsection{Alternate 30 and 29 day months}
-\label{sec-1-2-1}
-
-Counting from the last Full Moon of the previous lunar year (which will be in
-November), the first month is 30 days, the second is 29 days:
-
-\begin{center}
-\begin{tabular}{lll}
-15 days & \mN{} New Moon & First uposatha of the Cold Season\\
-15 days & \mF{} Full Moon & End of first month, 30 days\\
-14 days & \mN{} New Moon & \\
-15 days & \mF{} Full Moon & End of second month, 29 days\\
-\end{tabular}
-\end{center}
-
-A Full Moon is always on the 15th day. Every second New Moon is on the 14th day.
-
-The \GaWaxingmoon{} Waxing- and \GaWaningmoon{} Waning Moons are on the 8th day.
+\label{sec-2-2-1}
 
 \begin{fullwidth}
 \includegraphics[width=\linewidth]{two-months.pdf}
 \end{fullwidth}
 
-Keep alternating 30 and 29 day months. One season is four months, one year is
-three seasons: Cold-, Hot- and Rainy Season. See Figure \ref{fig-common-year} or
-Table \ref{tbl-month-names} for the Pāli names of months and seasons.
-
-\begin{marginfigure}[-5mm]
+\begin{marginfigure}[20mm]
 \caption{\label{fig-common-year} Common Year.}
 \includegraphics[width=\linewidth]{common-year.png}
 \end{marginfigure}
 
+Kattika is the 8th lunar month, 30 days long. Complete the month by adding a
+15-day New Moon after the Full Moon.
+
+The 9th month is Magasira, 29 days long. Add a 15-day Full Moon and a 14-day New
+Moon.
+
+\begin{center}
+\begin{tabular}{llll}
+15 days & \mF{} Full Moon & Kattika & Last uposatha of the Rainy Season\\
+15 days & \mN{} New Moon & Kattika & End of the 8th month, 30 days\\
+15 days & \mF{} Full Moon & Magasira & \\
+14 days & \mN{} New Moon & Magasira & End of the 9th month, 29 days\\
+\end{tabular}
+\end{center}
+
+The Full Moon is always on the 15th day. Every second New Moon is on the 14th day.
+
+The \GaWaxingmoon{} Waxing- and \GaWaningmoon{} Waning Moons are on the 8th day.
+
+Keep alternating 30 and 29 day months. One season is four months, one year is
+three seasons: Cold-, Hot- and Rainy Season. See Figure \ref{fig-common-year} or
+Table \ref{tbl-month-names} for the Pāli names of months and seasons.
+
 \subsection{Marking the Vassa and Major Moondays}
-\label{sec-1-2-2}
+\label{sec-2-2-2}
 \label{marking-the-moondays-common-year}
 
 Mark the months and seasons according to Figure \ref{fig-common-year}.
 
-The key annual events are on the Full Moon of the given lunar months:
+The key annual events are on the Full Moon of the given lunar months. Note that
+Māgha Pūjā is still in the previous \emph{lunar} year, hence its number is 11th.
 
 \begin{table}[h]
 \caption{\label{tbl-major-events} Major Events in a Common Year}
@@ -227,11 +250,11 @@ The key annual events are on the Full Moon of the given lunar months:
 \begin{tabular}{ll}
 Event & Time\\
 \hline
-Māgha Pūjā & 3rd Full Moon\\
-Visākha Pūjā & 6th Full Moon\\
-Āsāḷha Pūjā & 8th Full Moon\\
+Māgha Pūjā & 11th Full Moon\\
+Visākha Pūjā & 2nd Full Moon\\
+Āsāḷha Pūjā & 4th Full Moon\\
 First Day of Vassa & the day after Āsāḷha\\
-Pavāraṇā Day & 11th Full Moon\\
+Pavāraṇā Day & 7th Full Moon\\
 Last Day of Vassa & Pavāraṇā Day\\
 \end{tabular}
 \end{table}
@@ -248,15 +271,10 @@ season is 8 uposathas.
 
 In a common year, the calendar is finished. 
 
-Note that in \emph{monastic} lunar months, the Full Moon is on the last day of the month.
-
-In \emph{Thai} lunar months, the Full Moon is in the middle of the month, and the New
-Moon is on the last day.
-
 \section{Adhikamāsa year}
-\label{sec-1-3}
+\label{sec-2-3}
 \subsection{Marking the Vassa and Major Moondays}
-\label{sec-1-3-1}
+\label{sec-2-3-1}
 \label{marking-the-moondays-adhikamasa-year}
 
 Adding the extra month has three consequences:
@@ -298,7 +316,7 @@ Figure \ref{fig-adhikamasa-year} shows how the sequence of the uposathas and the
 major moondays fall in an adhikamāsa year.
 
 \section{Adhikavāra year}
-\label{sec-1-4}
+\label{sec-2-4}
 
 \begin{marginfigure}
 \caption{\label{fig-adhikavara-year} Adhikavāra Year.}
@@ -331,9 +349,9 @@ order & name & days\\
 \clearpage
 
 \chapter{The Mahānikāya Uposatha Calendar Method}
-\label{sec-2}
+\label{sec-3}
 \section{Adding the extra month}
-\label{sec-2-1}
+\label{sec-3-1}
 
 The extra month (adhikamāsa) is added 7 times in a 19 year period. This is
 determined by the formulas at sec. \ref{suriyayatra-formulas}, which generate a pattern
@@ -366,7 +384,7 @@ In adhikamāsa years the Vassa starts 30 days later, after the 2nd
 Āsāḷha, on the day after the Full Moon uposatha of 8/8.
 
 \section{Adding the extra day}
-\label{sec-2-2}
+\label{sec-3-2}
 \label{adding-extra-day}
 
 The extra day (adhikavāra) is added 11 times in every 57 year.
@@ -403,7 +421,7 @@ calendar at pace
 \end{itemize}
 
 \section{Marking the Vassa and Major Moondays}
-\label{sec-2-3}
+\label{sec-3-3}
 
 Common year: sec. \ref{marking-the-moondays-common-year}
 
@@ -530,7 +548,7 @@ CE year & BE year & K & A & T & nM & $\Delta$ M & nV & $\Delta$ V & Āsāḷha b
 \clearpage
 
 \chapter{The Thai luni-solar calendar}
-\label{sec-3}
+\label{sec-4}
 
 Luni-solar calendars are constructed so as to count \textbf{years} according to the
 \emph{solar} cycle, but to count \textbf{months} according to the \emph{lunar} cycle.
@@ -687,8 +705,12 @@ years'' rule of thumb for adhikavāra years. This resulted in wrong dates being
 used on any inscriptions made until the error was corrected in the
 calendar.\autocite{eade2007irregular}
 
+\section{Lunar years, Seasons, Months and Days}
+\label{sec-4-1}
+\label{years-seasons}
+
 \section{Names of the months}
-\label{sec-3-1}
+\label{sec-4-2}
 
 The name of a given month is determined by the astrological sign which
 the Full Moon enters at midnight. See Table \ref{tbl-month-names}.
@@ -698,31 +720,31 @@ equinox) on the wheel of the zodiac (see sec. \ref{duangchata}), corresponding
 to Aries.
 
 \begin{table}[h]
-\caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs\autocite{hasapannyo-zodiac}}
+\caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs}
 \centering
 \begin{tabular}{lrrlll}
 Season &  &  & Lunar Month & Solar Month & Solar Zodiac\\
  &  & days &  &  & (Western / Sanskrit)\\
 \hline
-Gimha-utu & 1 & 30 & Citta-māsa & April & Aries / Meṣa\\
-Hot Season & 2 & 29 & Visākha-māsa & May & Taurus / Vṛṣabha\\
- & 3 & 30 & Jeṭṭha-māsa & June & Gemini / Mithuna\\
- & 4 & 29 & Āsāḷha-māsa & July & Cancer / Karkaṭa\\
+Gimha-utu & 1 & 29 & Citta & April & Aries / Meṣa\\
+Hot Season & 2 & 30 & Visākha & May & Taurus / Vṛṣabha\\
+ & 3 & 29 & Jeṭṭha & June & Gemini / Mithuna\\
+ & 4 & 30 & Āsāḷha & July & Cancer / Karkaṭa\\
 \hline
-Vassāna-utu & 5 & 30 & Savaṇa-māsa & August & Leo / Siṃha\\
-Rainy Season & 6 & 29 & Bhaddapāda-māsa & September & Virgo / Kanyā\\
- & 7 & 30 & Assayuja-māsa & October & Libra / Tulā\\
- & 8 & 29 & Kattika-māsa & November & Scorpio / Vṛścika\\
+Vassāna-utu & 5 & 29 & Savaṇa & August & Leo / Siṃha\\
+Rainy Season & 6 & 30 & Bhaddapāda & September & Virgo / Kanyā\\
+ & 7 & 29 & Assayuja & October & Libra / Tulā\\
+ & 8 & 30 & Kattika & November & Scorpio / Vṛścika\\
 \hline
-Hemanta-utu & 9 & 30 & Magasira-māsa & December & Sagittarius / Dhanus\\
-Cold Season & 10 & 29 & Phussa-māsa & January & Capricorn / Makara\\
- & 11 & 30 & Māgha-māsa & February & Aquarius / Kumbha\\
- & 12 & 29 & Phagguṇa-māsa & March & Pisces / Mīna\\
+Hemanta-utu & 9 & 29 & Magasira & December & Sagittarius / Dhanus\\
+Cold Season & 10 & 30 & Phussa & January & Capricorn / Makara\\
+ & 11 & 29 & Māgha & February & Aquarius / Kumbha\\
+ & 12 & 30 & Phagguṇa & March & Pisces / Mīna\\
 \end{tabular}
 \end{table}
 
 \section{The first and last day of a lunar month}
-\label{sec-3-2}
+\label{sec-4-3}
 \label{lunar-month-first-last}
 
 The lunar year starts at the spring equinox in April with Citta month, Hot
@@ -762,7 +784,7 @@ Nth & phase & month & Monastic & Thai\\
 \end{table}
 
 \section{The first month of the lunar year}
-\label{sec-3-3}
+\label{sec-4-4}
 
 The lunar year begins at the spring equinox in April, which is 0\degree on the
 zodiac wheel, corresponding to Aries.
@@ -778,7 +800,7 @@ Is there a day 0?
 The \textbf{Year$_{\text{Horakhun}}$} is on day 0 + Tithi.
 
 \section{Year Types and lengths}
-\label{sec-3-4}
+\label{sec-4-5}
 
 \begin{multicols}{2}
 
@@ -844,10 +866,10 @@ difference & +12 & +11 & -18\\
 \clearpage
 
 \chapter{Suriyayatra formulas}
-\label{sec-4}
+\label{sec-5}
 \label{suriyayatra-formulas}
 \section{Overview}
-\label{sec-4-1}
+\label{sec-5-1}
 
 The formulas take two inputs: the year, and the n$^{\text{th}}$ day in the lunar year.
 They go through a series of operations step by step to produce certain values
@@ -948,7 +970,7 @@ following the steps, and still this allows him to obtain the necessary
 information to describe the progression of these events in any year.
 
 \section{Calculating the properties of the year}
-\label{sec-4-2}
+\label{sec-5-2}
 
 First we will see if we should add and extra month or extra day to keep the
 lunar year in sync with the solar year.
@@ -1048,7 +1070,7 @@ Let's begin then:
 Now we can determine if the year qualifies for adhikamāsa or adhikavāra.
 
 \section{Adhikamāsa conditions}
-\label{sec-4-3}
+\label{sec-5-3}
 \label{adhikamasa-years}
 
 (Thai: atikamat \thai{อธิกมาส})
@@ -1076,7 +1098,7 @@ In the above example for year CS 1325, the \textbf{Tithi} is 23, which doesn't s
 the first condition, and so it can't be adhikamāsa.
 
 \section{Adhikavāra conditions}
-\label{sec-4-4}
+\label{sec-5-4}
 \label{adhikavara-years}
 
 (Thai: atikawan \thai{อธิกวาร})
@@ -1139,7 +1161,7 @@ and the years follow the prediction of the formulas.
 \label{adhikavara-years-end}
 
 \section{Calculating the Position of the Sun and the Moon}
-\label{sec-4-5}
+\label{sec-5-5}
 \label{calculating-the-sun-and-moon}
 
 Eade describes the formulas at the end of his paper \emph{Rules for interpolation in
@@ -1337,7 +1359,7 @@ Let's look up what NASA has for 1963 July 6:\footnote{\href{http://astropixels.c
 \clearpage
 
 \chapter{The Duang Chata}
-\label{sec-5}
+\label{sec-6}
 \label{duangchata}
 
 \begin{figure}[h]
@@ -1359,14 +1381,14 @@ Rasi is 0-11, Nakshatra is 1-27. Sun = \theSun, Moon = \theMoon.
 \label{duangchata-end}
 
 \section{Tithi progression}
-\label{sec-5-1}
+\label{sec-6-1}
 
 30 Tithi, 15 is Full Moon
 
 Duang at Tithi: 0 3 6 9 12 15 18 21 24 27 29(?)
 
 \section{Rasi}
-\label{sec-5-2}
+\label{sec-6-2}
 
 Rasi \thai{ราศี}
 
@@ -1401,7 +1423,7 @@ The notation $x:y\degree z\minute = x*30 + y + z/60$, thus 36\degree 5\minute is
 $1:6\degree 5\minute$.
 
 \section{Nakshatra, lunar mansions}
-\label{sec-5-3}
+\label{sec-6-3}
 
 Nakshatra \thai{นักษัตร}
 
@@ -1451,7 +1473,7 @@ lunar mansion per day.
 \clearpage
 
 \chapter{In Golang}
-\label{sec-6}
+\label{sec-7}
 \label{suriya-go-example}
 
 Going through all this may be intriguing to calculate once, but mention
@@ -1499,7 +1521,7 @@ Adhikavāra: true
 \end{verbatim}
 
 \section{1288}
-\label{sec-6-1}
+\label{sec-7-1}
 \label{golang-1288}
 
 We will investigate 14 April 1288, and while doing that, also 15 June 1288,
@@ -1508,7 +1530,7 @@ which should turn out to be the date of Āsāḷha Pūjā.
 \inputminted{go}{./includes/print-1288.go}
 
 \chapter{Gregorian leap years}
-\label{sec-7}
+\label{sec-8}
 
 \begin{table}[h]
 \caption{\label{tbl-cycle-leap-years} Gregorian leap years}
@@ -1533,7 +1555,7 @@ which should turn out to be the date of Āsāḷha Pūjā.
 \backmatter
 
 \chapter{Websites and Apps}
-\label{sec-8}
+\label{sec-9}
 
 TODO
 
@@ -1544,13 +1566,13 @@ myhora.com
 uposatha app
 
 \chapter{Bibliography}
-\label{sec-9}
+\label{sec-10}
 \label{bibliography}
 
 \printbibliography
 
 \chapter{Colophon}
-\label{sec-10}
+\label{sec-11}
 
 \href{http://orgmode.org/}{Org-mode} and \LaTeX. Sources at \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{Github}.
 
