@@ -1,4 +1,4 @@
-% Created 2015-11-13 Fri 22:12
+% Created 2015-11-14 Sat 16:59
 \documentclass[11pt,oneside]{memoir-article}
 \usepackage{local}
 \renewcommand{\docVersion}{v1.0}
@@ -21,12 +21,15 @@ originating from India and including additional rules observed in Southeast
 Asia.
 \item These formulas are now implemented in \href{https://github.com/splendidmoons/suriya-go}{suriya-go} for generating the \emph{uposatha}
   moondays for any arbitrary year.
+\item The lunar year starts at the spring equinox in April with Citta month, Hot
+Season. The lunar month ends on the New Moon day, the Full Moon is in the
+middle. Visākha 15, Āsāḷha 15, etc. is always Full Moon.
 \item To keep the lunar year in sync with the solar, add an extra month 7 times in
 19 years (the adhikamāsa, \thai{อธิกมาส}), and add an extra day 11 times in 57
 years (the adhikavāra, \thai{อธิกวาร}).
 \item Conditions on the values produced by formulas determine if a year should be
 assigned an adhikamāsa or adhikavāra.
-\item The 3-3-2 - 3-3-3-2 shorthand for adhikamāsa years is not sufficient.
+\item The 3-3-2 - 3-3-3-2 shorthand to determine adhikamāsa years is not sufficient.
 \item Conventions on how to practise this can differ by countries and monastic groups.
 \item Common and adhikamāsa years have been regular in past calendars and thus
 reliable to predict. Some adhikavāra years have been irregular, approx. 1
@@ -46,14 +49,23 @@ or see how we can ask the machine to do it in Golang at sec. \ref{suriya-go-exam
 Reading time:
 \par}
 
-You don't need to read everything here to have a better understanding of the
-\emph{uposathas}. The sections get progressively more involved, drop it when you
+You don't need to read everything here just to have a better understanding of
+the \emph{uposathas}. The sections get progressively more involved, drop it when you
 don't need more.
 
 \begin{description}
-\item[{Short}] Read section 1 (3 pages). You will understand how to construct a given year's uposathas.
-\item[{Long}] Up to X, to understand to formulas which determine the adhikamāsa and adhikavāra.
-\item[{Longer}] even more, position of the Sun and Moon, up to the Raek.
+\item[{3 pages}] To understand how to construct a given year's uposathas, see
+page \pageref{uposatha-tutorial}-\pageref{uposatha-tutorial-end}
+in sec. \ref{uposatha-tutorial}.
+\item[{+4 pages}] The formulas and conditions which determine the adhikamāsa and
+adhikavāra are described on page \pageref{suriyayatra-formulas}-\pageref{adhikavara-years-end} in
+sec. \ref{suriyayatra-formulas}.
+\item[{+2 pages}] The formulas continue with calculating the angular position
+of the Sun and Moon on a given day at sec. \ref{calculating-the-sun-and-moon}, page
+\pageref{calculating-the-sun-and-moon}-\pageref{calculating-the-sun-and-moon-end}.
+\item[{+4 pages}] A given day is visualized with the zodiac wheel diagrams
+(a.k.a \emph{duang chata}). Making sense of these is in sec. \ref{duangchata},
+page \pageref{duangchata}-\pageref{duangchata-end}.
 \end{description}
 
 {\centering\large\bfseries
@@ -83,6 +95,7 @@ Download \href{https://github.com/profound-labs/calculating-the-uposatha-moonday
 
 \chapter{Mahānikāya Uposatha Calendar Tutorial}
 \label{sec-1}
+\label{uposatha-tutorial}
 
 This section is a step-by-step guide on how to calculate the uposathas for a
 given year.
@@ -312,6 +325,8 @@ order & name & days\\
 \end{center}
 
 \includegraphics[width=\linewidth]{adding-the-extra-day.pdf}
+
+\label{uposatha-tutorial-end}
 
 \clearpage
 
@@ -710,6 +725,10 @@ Cold Season & 10 & 29 & Phussa-māsa & January & Capricorn / Makara\\
 \label{sec-3-2}
 \label{lunar-month-first-last}
 
+The lunar year starts at the spring equinox in April with Citta month, Hot
+Season. The lunar month ends on the New Moon day, the Full Moon is in the
+middle. Visākha 15, Āsāḷha 15, etc. is always Full Moon.
+
 In monastic practice, the Full Moon day is on the last day of a given
 month. The next month starts on the following day (first day of the
 waning phase), thus the first uposatha will be on a New Moon.
@@ -742,6 +761,55 @@ Nth & phase & month & Monastic & Thai\\
 \end{tabular}
 \end{table}
 
+\section{The first month of the lunar year}
+\label{sec-3-3}
+
+The lunar year begins at the spring equinox in April, which is 0\degree on the
+zodiac wheel, corresponding to Aries.
+
+TODO:
+
+\begin{itemize}
+\item 0\degree = April = Citta 1 = Day 1
+\end{itemize}
+
+Is there a day 0?
+
+The \textbf{Year$_{\text{Horakhun}}$} is on day 0 + Tithi.
+
+\section{Year Types and lengths}
+\label{sec-3-4}
+
+\begin{multicols}{2}
+
+We are concerned with three types of calendar years:
+
+\begin{description}
+\item[{Cal A}] Normal with 354 days
+\item[{Cal B}] Adhikavāra with 355 days
+\item[{Cal C}] Adhikamāsa with 384 days
+\end{description}
+
+\columnbreak
+
+Comparing these to normal and solar leap years:
+
+\begin{center}
+\begin{tabular}{lrrr}
+ & A & B & C\\
+Lunar & 354 & 355 & 384\\
+Solar & 365 & 365 & 365\\
+difference & +11 & +10 & -19\\
+\hline
+ & A & B & C\\
+Lunar & 354 & 355 & 384\\
+Solar Leap & 366 & 366 & 366\\
+difference & +12 & +11 & -18\\
+\end{tabular}
+\end{center}
+
+\end{multicols}
+
 
 \begin{table}[p]
 \caption{\label{tbl-calendars-1958} Adhikamāsa and adhikavāra in the period 1958 to 1978 (CS 1320-1340).\autocite{eade-interpolation}}\legend{m for adhikamāsa, d for adhikavāra years, \Delta m and \Delta d for years since last adhikamāsa and adhikavāra.}
@@ -772,7 +840,6 @@ Nth & phase & month & Monastic & Thai\\
 19 & 5 &  &  & 1340 & d & 21:05 & \\
 \end{tabular}
 \end{table}
-
 
 \clearpage
 
@@ -1069,8 +1136,11 @@ least two irregular years. This can be observed in past calendars (Table
 \ref{tbl-adhikavara-irregularities}), but recently this hasn't been happening,
 and the years follow the prediction of the formulas.
 
+\label{adhikavara-years-end}
+
 \section{Calculating the Position of the Sun and the Moon}
 \label{sec-4-5}
+\label{calculating-the-sun-and-moon}
 
 Eade describes the formulas at the end of his paper \emph{Rules for interpolation in
 the Thai calendar}\autocite{eade2000rules}, but his notation is a puzzle in itself,
@@ -1262,6 +1332,8 @@ Let's look up what NASA has for 1963 July 6:\footnote{\href{http://astropixels.c
 \includegraphics[width=0.8\linewidth]{1963-astropixels.png}
 \par}
 
+\label{calculating-the-sun-and-moon-end}
+
 \clearpage
 
 \chapter{The Duang Chata}
@@ -1283,6 +1355,8 @@ Moon on Thai duang: \thai{๒}
 Rasi is 0-11, Nakshatra is 1-27. Sun = \theSun, Moon = \theMoon.
 
 0:1\degree 2\minute = Rasi:Angsa\degree Lipda\minute or Rasi:Degree\degree Minute\minute.
+
+\label{duangchata-end}
 
 \section{Tithi progression}
 \label{sec-5-1}
@@ -1484,7 +1558,7 @@ Please send comments, corrections and further information to:
 
 \texttt{Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>}
 
-Last updated on 2015-11-13.
+Last updated on 2015-11-14.
 
 
 \fullpage{%
