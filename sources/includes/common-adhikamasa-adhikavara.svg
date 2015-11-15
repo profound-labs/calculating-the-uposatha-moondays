@@ -30,10 +30,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="479.6051"
-     inkscape:cy="618.19358"
+     inkscape:cx="28.264574"
+     inkscape:cy="558.15499"
      inkscape:document-units="px"
-     inkscape:current-layer="g8907"
+     inkscape:current-layer="g8307"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -96,6 +96,38 @@
        position="520.14173,403.433"
        orientation="0,1"
        id="guide9455" />
+    <sodipodi:guide
+       position="428.11608,912.95413"
+       orientation="1,0"
+       id="guide4742" />
+    <sodipodi:guide
+       position="339.14172,787.43087"
+       orientation="0,1"
+       id="guide4744" />
+    <sodipodi:guide
+       position="339.14172,851.4314"
+       orientation="0,1"
+       id="guide4746" />
+    <sodipodi:guide
+       position="339.14159,883.4318"
+       orientation="0,1"
+       id="guide4748" />
+    <sodipodi:guide
+       position="339.14172,915.43195"
+       orientation="0,1"
+       id="guide4750" />
+    <sodipodi:guide
+       position="339.14172,723.43034"
+       orientation="0,1"
+       id="guide4752" />
+    <sodipodi:guide
+       position="339.14172,595.42927"
+       orientation="0,1"
+       id="guide4766" />
+    <sodipodi:guide
+       position="339.14172,531.42873"
+       orientation="0,1"
+       id="guide4768" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -546,7 +578,7 @@
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"
        id="path8331"
-       d="m 317.05949,280.73658 125.94054,0"
+       d="m 317.05949,344.73658 125.94054,0"
        style="fill:#fce94f;fill-rule:evenodd;stroke:#edd400;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <text
        sodipodi:linespacing="125%"
@@ -805,11 +837,11 @@
     <text
        sodipodi:linespacing="125%"
        id="text8411"
-       y="277.36243"
+       y="281.00085"
        x="320.05948"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:10px;line-height:125%;font-family:'Input Sans Condensed';-inkscape-font-specification:'Input Sans Condensed, Condensed';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="277.36243"
+         y="281.00085"
          x="320.05948"
          id="tspan8413"
          sodipodi:role="line">H6</tspan></text>
@@ -827,11 +859,11 @@
     <text
        sodipodi:linespacing="125%"
        id="text8419"
-       y="345.36243"
+       y="341.27411"
        x="320.05948"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:10px;line-height:125%;font-family:'Input Sans Condensed';-inkscape-font-specification:'Input Sans Condensed, Condensed';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="345.36243"
+         y="341.27411"
          x="320.05948"
          id="tspan8421"
          sodipodi:role="line">H8</tspan></text>
@@ -871,11 +903,11 @@
     <text
        sodipodi:linespacing="125%"
        id="text8435"
-       y="467.36243"
+       y="473.00247"
        x="320.05948"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:10px;line-height:125%;font-family:'Input Sans Condensed';-inkscape-font-specification:'Input Sans Condensed, Condensed';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="467.36243"
+         y="473.00247"
          x="320.05948"
          id="tspan8437"
          sodipodi:role="line">G4</tspan></text>
@@ -893,11 +925,11 @@
     <text
        sodipodi:linespacing="125%"
        id="text8443"
-       y="535.36243"
+       y="533.27576"
        x="320.05948"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:10px;line-height:125%;font-family:'Input Sans Condensed';-inkscape-font-specification:'Input Sans Condensed, Condensed';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="535.36243"
+         y="533.27576"
          x="320.05948"
          id="tspan8445"
          sodipodi:role="line">G6</tspan></text>
@@ -1223,12 +1255,12 @@
     <text
        sodipodi:linespacing="125%"
        id="text8564"
-       y="342.36243"
-       x="392.05948"
+       y="327.45334"
+       x="390.61392"
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.00000095px;line-height:125%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Italic';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="342.36243"
-         x="392.05948"
+         y="327.45334"
+         x="390.61392"
          id="tspan8566"
          sodipodi:role="line">Phagguṇa</tspan></text>
     <text
@@ -1245,12 +1277,12 @@
     <text
        sodipodi:linespacing="125%"
        id="text8572"
-       y="532.36243"
-       x="392.05948"
+       y="519.81757"
+       x="392.59146"
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.00000095px;line-height:125%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Italic';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="532.36243"
-         x="392.05948"
+         y="519.81757"
+         x="392.59146"
          id="tspan8574"
          sodipodi:role="line">Jeṭṭha</tspan></text>
     <text
@@ -1523,13 +1555,13 @@
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:semi-condensed;font-size:10px;line-height:125%;font-family:'Input Sans Narrow';-inkscape-font-specification:'Input Sans Narrow, Semi-Condensed';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="265.05948"
-       y="470.36243"
+       y="472.957"
        id="text8672"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan8674"
          x="265.05948"
-         y="470.36243">15d</tspan></text>
+         y="472.957">15d</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text8676"
@@ -1803,12 +1835,12 @@
     <text
        sodipodi:linespacing="125%"
        id="text8762"
-       y="277.45334"
-       x="389.07977"
+       y="341.45334"
+       x="390.62369"
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.00000095px;line-height:125%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Italic';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
-         y="277.45334"
-         x="389.07977"
+         y="341.45334"
+         x="390.62369"
          id="tspan8764"
          sodipodi:role="line">Māgha Pūjā</tspan></text>
     <text
@@ -1918,19 +1950,20 @@
          sodipodi:role="line">Āsāḷha Pūjā</tspan></text>
     <path
        sodipodi:nodetypes="cc"
-       style="fill:#fce94f;fill-rule:evenodd;stroke:#edd400;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 317.05949,470.95333 132.94054,0"
+       style="fill:#fce94f;fill-rule:evenodd;stroke:#edd400;stroke-width:4.00006342;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 317.05949,536.79534 129.72672,0"
        id="path8804"
        inkscape:connector-curvature="0" />
     <text
        sodipodi:linespacing="125%"
        id="text8806"
-       y="467.45334"
-       x="392.05948"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.00000095px;line-height:125%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Italic';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         y="467.45334"
-         x="392.05948"
+       y="533.28784"
+       x="390.12134"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.00015926px;line-height:125%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Italic';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"
+       transform="scale(0.99998602,1.000014)"><tspan
+         y="533.28784"
+         x="390.12134"
          id="tspan8808"
          sodipodi:role="line">Visākha Pūjā</tspan></text>
     <text
@@ -2076,6 +2109,26 @@
          id="tspan8890"
          x="392.05948"
          y="648.42731">2nd Āsāḷha</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.00000089px;line-height:125%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Italic';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       x="391.03384"
+       y="277.36447"
+       id="text4754"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4758">Māgha</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.00000095px;line-height:125%;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Italic';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="390.11588"
+       y="469.26846"
+       id="text4760"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4764"
+         x="390.11588"
+         y="469.26846">Visākha</tspan></text>
   </g>
   <g
      inkscape:label="common year"

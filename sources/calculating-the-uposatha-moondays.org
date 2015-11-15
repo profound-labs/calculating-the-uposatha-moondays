@@ -18,9 +18,9 @@
   Asia.
 - These formulas are now implemented in [[https://github.com/splendidmoons/suriya-go][suriya-go]] for generating the /uposatha/
   moondays for any arbitrary year.
-- The lunar year starts at the spring equinox in April with Citta month, Hot
-  Season. The lunar month ends on the New Moon day, the Full Moon is in the
-  middle. Visākha 15, Āsāḷha 15, etc. is always Full Moon.
+- The lunar year starts with Magasira month in November. The Seasons end on the
+  Full Moon day. The lunar months end on the New Moon day, the Full Moon is in
+  the middle. Visākha 15, Āsāḷha 15, etc. is always Full Moon.
 - To keep the lunar year in sync with the solar, add an extra month 7 times in
   19 years (the adhikamāsa, \thai{อธิกมาส}), and add an extra day 11 times in 57
   years (the adhikavāra, \thai{อธิกวาร}).
@@ -131,6 +131,11 @@ this needs a diagram
 
 - ? is there an update of Hasapannyo's Zodiac PDF
 
+*** TODO later
+
+small inconsistencies in the uposatha sequence diagrams, text not aligned with
+the center of the moons
+
 *** notes                                                          :noexport:
 
 Much appreciation for the answers from the Venerable Ajahns who endured my
@@ -155,14 +160,9 @@ Please send comments, corrections and further information to:
 This section is a step-by-step guide on how to calculate the uposathas for the
 period of a *solar* year.
 
-The first lunar month, Citta, is in April, so a more convenient way to cover the
-solar year is from the end of the previous Rainy Season (last November), to the
-end of this year's Rainy Season (this November), plus a couple of uposathas
-until the end of this December.
-
-The lunar month and season boundaries overlap. The lunar months end on the day
-of the New Moon, the seasons end on the day of the Full Moon. More on this at
-sec. \ref{years-seasons}.
+The boundaries of lunar months and season overlap. The months end on the day of
+the New Moon, the seasons end on the day of the Full Moon. More on this at sec.
+\ref{years-seasons}.
 
 ** Collecting information about the year
 
@@ -182,7 +182,7 @@ Check Table \ref{tbl-cycle-adhikamasa-adhikavara-short} whether the given year
 will have an adhikamāsa or adhikavāra. For more data, see Table
 \ref{tbl-cycle-adhikamasa-adhikavara}.
 
-#+latex: \begin{margintable}[-120mm]
+#+latex: \begin{margintable}[-100mm]
 | Year | \Delta M | \Delta V |
 |------+----------+----------|
 | 2000 |          |        6 |
@@ -250,16 +250,16 @@ years.
 \end{marginfigure}
 #+end_latex
 
-Kattika is the 8th lunar month, 30 days long. Complete the month by adding a
+Kattika is the 12th lunar month, 30 days long. Complete the month by adding a
 15-day New Moon after the Full Moon.
 
-The 9th month is Magasira, 29 days long. Add a 15-day Full Moon and a 14-day New
+The 1st month is Magasira, 29 days long. Add a 15-day Full Moon and a 14-day New
 Moon.
 
 | 15 days | \mF{} Full Moon | Kattika  | Last uposatha of the Rainy Season |
-| 15 days | \mN{} New Moon  | Kattika  | End of the 8th month, 30 days     |
+| 15 days | \mN{} New Moon  | Kattika  | End of the 12th month, 30 days    |
 | 15 days | \mF{} Full Moon | Magasira |                                   |
-| 14 days | \mN{} New Moon  | Magasira | End of the 9th month, 29 days     |
+| 14 days | \mN{} New Moon  | Magasira | End of the 1st month, 29 days     |
 
 The Full Moon is always on the 15th day. Every second New Moon is on the 14th day.
 
@@ -274,17 +274,16 @@ Table \ref{tbl-month-names} for the Pāli names of months and seasons.
 
 Mark the months and seasons according to Figure \ref{fig-common-year}.
 
-The key annual events are on the Full Moon of the given lunar months. Note that
-Māgha Pūjā is still in the previous /lunar/ year, hence its number is 11th.
+The key annual events are on the Full Moon of the given lunar months.
 
 #+attr_latex: :placement [h] :caption \caption{\label{tbl-major-events} Major Events in a Common Year}
 | Event              | Time                 |
 |--------------------+----------------------|
-| Māgha Pūjā         | 11th Full Moon       |
-| Visākha Pūjā       | 2nd Full Moon        |
-| Āsāḷha Pūjā        | 4th Full Moon        |
+| Māgha Pūjā         | 3rd Full Moon        |
+| Visākha Pūjā       | 6th Full Moon        |
+| Āsāḷha Pūjā        | 8th Full Moon        |
 | First Day of Vassa | the day after Āsāḷha |
-| Pavāraṇā Day       | 7th Full Moon        |
+| Pavāraṇā Day       | 11th Full Moon       |
 | Last Day of Vassa  | Pavāraṇā Day         |
 
 Mark the Vassa (Rainy Season Retreat):
@@ -292,16 +291,30 @@ Mark the Vassa (Rainy Season Retreat):
 - The first day of the Vassa is the day after Āsāḷha Pūjā
 - The last day of the Vassa is Pavāraṇā Day
 
+\enlargethispage{2\baselineskip}
+
 The Vassa Retreat therefore is 6 uposathas long (5 + Pavāraṇā), and the Vassāna
 season is 8 uposathas.
 
 In a common year, the calendar is finished. 
 
-# AT HERE
+\clearpage
 
 ** Adhikamāsa year
 *** Marking the Vassa and Major Moondays
 \label{marking-the-moondays-adhikamasa-year}
+
+#+begin_latex
+\begin{marginfigure}[-25mm]
+\caption{\label{fig-adhikamasa-year} Adhikamāsa Year.}
+\includegraphics[width=\linewidth]{adhikamasa-year.png}
+\end{marginfigure}
+
+\begin{marginfigure}
+\caption{\label{fig-adhikavara-year} Adhikavāra Year.}
+\includegraphics[width=\linewidth]{adhikavara-year.png}
+\end{marginfigure}
+#+end_latex
 
 Adding the extra month has three consequences:
 
@@ -309,59 +322,43 @@ Adding the extra month has three consequences:
 - Gimhāna (Hot Season) has 10 uposathas instead of 8
 - the Vassa starts 30 days later
 
-\clearpage
-
-#+begin_latex
-\begin{marginfigure}[-22mm]
-\caption{\label{fig-adhikamasa-year} Adhikamāsa Year.}
-\includegraphics[width=\linewidth]{adhikamasa-year.png}
-\end{marginfigure}
-#+end_latex
-
-The extra month is a 30 day month. In Thai practice, it is appended to the end
-of the Hot Season, after the 8th month (Āsāḷha). The convention is to call this
-the 'second 8th' or 'second Āsāḷha', marked as 8/8.
+The extra month is a 30 day month. In Thai practice, it is added after the 8th
+month (Āsāḷha). The convention is to call this the 'second 8th' or 'second
+Āsāḷha', marked as 8/8. The Hot Season will end on the Full Moon day of the 2nd
+Āsāḷha.
 
 Āsāḷha Pūjā will be held in the 8/8 2nd Āsāḷha month, the first day of the
 Vassa being on the following day. The Vassa remains the same length, 8 uposathas.
 
-Āsāḷha Pūjā and Pavāraṇā Day therefore shifted because we added an extra month
-to the end of the Hot Season.
+Āsāḷha Pūjā and Pavāraṇā Day therefore shifted 30 days later in the year.
 
-From a practical perspective, Māgha Pūjā and Visākha Pūjā are simply moved to
-the next month, and are marked in the 4th and 7th month instead of the 3rd and
-6th. This is as though the Major Moons had a parallel, separate system of
-numbering, in which the adhikamāsa was assumed to be added at the beginning of
-the year, but this doesn't influence the actual numbering or length of the
-months.
+Māgha Pūjā and Visākha Pūjā are moved to the next month, and are marked in the
+4th and 7th month instead of the 3rd and 6th. The origin of this practice is not
+clear, but it has the advantage that there will not be a large gap between
+Visākha and Āsāḷha Pūjā (now in the 2nd Āsāḷha).
 
-This has the advantage that there will not be a large gap between Visākha and
-Āsāḷha Pūjā (now in the 2nd Āsāḷha).
+# This is as though the Major Moons had a parallel, separate system of numbering,
+# in which the adhikamāsa was assumed to be added at the beginning of the year,
+# but this doesn't influence the actual numbering or length of the months.
 
 Figure \ref{fig-adhikamasa-year} shows how the sequence of the uposathas and the
 major moondays fall in an adhikamāsa year.
 
 ** Adhikavāra year
 
-#+latex: \begin{marginfigure}
-#+latex: \caption{\label{fig-adhikavara-year} Adhikavāra Year.}
-#+latex: \includegraphics[width=\linewidth]{adhikavara-year.png}
-#+latex: \end{marginfigure}
-
-The extra day is inserted in the 8th month (Āsāḷha), at the New Moon uposatha
-before Āsāḷha Full Moon, making the 7th uposatha of the Hot Season a 15-day
-uposatha instead of the expected 14-day, and making Āsāḷha a 30-day month that
+The extra day is inserted at the 7th uposatha of the Hot Season (the New Moon
+uposatha before Āsāḷha Full Moon), making it a 15-day uposatha instead of the
+expected 14-day, and making Jeṭṭha a 30-day month that
 year.\autocite{hasapannyo-zodiac}
 
 In adhikavāra years the Vassa starts one day later.
 
-| order | name       | days |
-|-------+------------+------|
-|     6 | Visākha    |   29 |
-|     7 | Jeṭṭha     |   30 |
-|     8 | Āsāḷha     | *30* |
-|     9 | Savaṇa     |   30 |
-|    10 | Bhaddapāda |   29 |
+| order | name    | days |
+|-------+---------+------|
+|     6 | Visākha |   30 |
+|     7 | Jeṭṭha  | *30* |
+|     8 | Āsāḷha  |   30 |
+|     9 | Savaṇa  |   29 |
 
 #+begin_latex
 \includegraphics[width=\linewidth]{adding-the-extra-day.pdf}
@@ -788,32 +785,6 @@ Is there a day 0?
 
 The *Year_Horakhun* is on day 0 + Tithi.
 
-** Year Types and lengths
-   
-#+latex: \begin{multicols}{2}
-
-We are concerned with three types of calendar years:
-
-- Cal A :: Normal with 354 days
-- Cal B :: Adhikavāra with 355 days
-- Cal C :: Adhikamāsa with 384 days
-
-#+latex: \columnbreak
-
-Comparing these to normal and solar leap years:
-
-|            |   A |   B |   C |
-| Lunar      | 354 | 355 | 384 |
-| Solar      | 365 | 365 | 365 |
-| difference | +11 | +10 | -19 |
-|------------+-----+-----+-----|
-|            |   A |   B |   C |
-| Lunar      | 354 | 355 | 384 |
-| Solar Leap | 366 | 366 | 366 |
-| difference | +12 | +11 | -18 |
-
-#+latex: \end{multicols}
-
 # Big tables that need a separate page
 
 #+attr_latex: :placement [p] :caption \caption{\label{tbl-calendars-1958} Adhikamāsa and adhikavāra in the period 1958 to 1978 (CS 1320-1340).\autocite{eade-interpolation}}\legend{m for adhikamāsa, d for adhikavāra years, \Delta m and \Delta d for years since last adhikamāsa and adhikavāra.}
@@ -843,6 +814,32 @@ Comparing these to normal and solar leap years:
 
 # Clear floats
 \clearpage
+
+** Year Types and lengths                                          :noexport:
+
+#+latex: \begin{multicols}{2}
+
+We are concerned with three types of calendar years:
+
+- Cal A :: Normal with 354 days
+- Cal B :: Adhikavāra with 355 days
+- Cal C :: Adhikamāsa with 384 days
+
+#+latex: \columnbreak
+
+Comparing these to normal and solar leap years:
+
+|            |   A |   B |   C |
+| Lunar      | 354 | 355 | 384 |
+| Solar      | 365 | 365 | 365 |
+| difference | +11 | +10 | -19 |
+|------------+-----+-----+-----|
+|            |   A |   B |   C |
+| Lunar      | 354 | 355 | 384 |
+| Solar Leap | 366 | 366 | 366 |
+| difference | +12 | +11 | -18 |
+
+#+latex: \end{multicols}
 
 * Suriyayatra formulas
 \label{suriyayatra-formulas}
