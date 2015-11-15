@@ -99,7 +99,7 @@ Download [[https://github.com/profound-labs/calculating-the-uposatha-moondays/ra
 - get date for day 0
 - fill in values for formulas
 - X add duang
-- X add nasa astropixels img
+- X add astropixels img
   
 - add the 1288 results to the suriya-go Golang tests
 
@@ -588,8 +588,8 @@ to give a detailed exposition of what is involved.\autocite{eade-interpolation}
 #+end_quote
 
 Southeast Asian astronomers refined a fraction to obtain the length of the year.
-Taking 800 years as one Era, and 292207 days in the Era, they expressesed the
-length of one year in days as\autocite{eade-interpolation}:
+Taking 800 years as one Era and 292207 days in the Era, they expressesed the
+length of one year in days as:\autocite{eade-interpolation}
 
 #+begin_latex
 \begin{equation}
@@ -615,6 +615,7 @@ lunar year, counting from Citta 1. While checking that, we might as well see day
 #+begin_latex
 \begin{marginfigure}
 \caption{1288 April 14}
+\raggedright
 
 \resizebox{\linewidth}{!}{\DuangChata[Sun={0/19/58}, Moon={5/11/27}, simple, show angles]}
 
@@ -635,6 +636,7 @@ The Moon is in the 13. nakshatra, Hasta.
 
 \begin{marginfigure}
 \caption{1288 June 15}
+\raggedright
 
 \resizebox{\linewidth}{!}{\DuangChata[Sun={2/19/9}, Moon={8/19/1}, simple, show angles]}
 
@@ -674,7 +676,8 @@ On day 103, tithi 15 means 15 lunar days since last New Moon, i.e. it is Full
 Moon. The Sun and Moon are angularly opposite, which also means Full Moon, and
 it appears in the 20. nakshatra, so the month is Āsāḷha.
 
-#+latex: As a reality check, we can look up the phase at NASA:\footnote{\href{http://astropixels.com/ephemeris/phasescat/phases1201.html}{AstroPixels - Moon Phases: 1201 to 1300}}
+#+latex: As a reality check, we can look up the historical phases and see if
+#+latex: the day was listed under the Full Moons:\footnote{\href{http://astropixels.com/ephemeris/phasescat/phases1201.html}{AstroPixels - Moon Phases: 1201 to 1300}}
 
 #+latex: {\centering
 #+latex: \includegraphics[width=0.8\linewidth]{1288-astropixels.png}
@@ -954,8 +957,8 @@ lunar year in sync with the solar year.
 Then we will calculate the position of the Moon on that day, and see if we are
 in Āsāḷha month, and not at some other Full Moon.
 
-We can confirm this by looking up the Moon phases published by NASA and check if
-the Āsāḷha Pūjā date had in fact been a Full Moon.
+We can confirm this by looking up historical phases of the Moon and check if the
+Āsāḷha Pūjā date had in fact been a Full Moon.
 
 Let's take the year CE 1963 (CS 1325) as an example and calculate its
 properties. We should find that it is an adhikavāra year. If you calculate the
@@ -1357,7 +1360,7 @@ X. nakshatra, X X.
 #+end_latex
 
 #+begin_latex
-Let's look up what NASA has for 1963 July 6:\footnote{\href{http://astropixels.com/ephemeris/phasescat/phases1901.html}{AstroPixels - Moon Phases: 1901 to 2000}}
+Let's look up if 1963 July 6 is listed under Full Moons:\footnote{\href{http://astropixels.com/ephemeris/phasescat/phases1901.html}{AstroPixels - Moon Phases: 1901 to 2000}}
 
 {\centering
 \includegraphics[width=0.8\linewidth]{1963-astropixels.png}
@@ -1389,6 +1392,29 @@ Tithi
 
 \end{figure}
 #+end_latex
+
+Aka horasat โหราศาสตร์
+
+month: duean เดือน
+
+month 8/8: เดือน ๘/๘
+
+Waxing : khang khuen (ข้างขึ้น), the period from new moon to full moon, is always 15 days long.
+Waning : khang raem (ข้างแรม), the period from full moon to new moon
+
+"...it is now appropriate for Thailand to observe New Year's Day on the first day of January."
+
+https://en.wikisource.org/wiki/Proclamation_on_Observance_of_New_Year%27s_Day_on_1_January,_dated_24_December_1940
+
+normal year: Prokkatimat ปรกติมาส
+
+ปกติมาส, rtgs: (pi) pakatimat,
+
+อธิกวาร, rtgs: (pi) athikawan
+
+อธิกมาส, rtgs: (pi) athikamat
+
+https://en.wikipedia.org/wiki/Thai_lunar_calendar
 
 Sun on Thai duang: \thai{๑}\\
 Moon on Thai duang: \thai{๒}
