@@ -612,7 +612,7 @@ lunar year, counting from Citta 1. While checking that, we might as well see day
 \caption{1288 April 14}
 \raggedright
 
-\resizebox{\linewidth}{!}{\DuangChata[Sun={0/19/58}, Moon={5/11/27}, simple, show angles]}
+\resizebox{\linewidth}{!}{\DuangChata[Sun={0/19/58}, Moon={5/11/27}, simple]}
 
 \footnotesize
 \bigskip
@@ -633,7 +633,7 @@ The Moon is in the 13. nakshatra, Hasta.
 \caption{1288 June 15}
 \raggedright
 
-\resizebox{\linewidth}{!}{\DuangChata[Sun={2/19/9}, Moon={8/19/1}, simple, show angles]}
+\resizebox{\linewidth}{!}{\DuangChata[Sun={2/19/9}, Moon={8/19/1}, simple]}
 
 \footnotesize
 \bigskip
@@ -882,16 +882,19 @@ The formulas take two inputs: the year, and the n^th day in the lunar year.
 They go through a series of operations step by step to produce certain values
 which describe properties of the lunar year and the given day.
 
-For $\mathbf{day} = 0$, the results are used to determine whether the year is
-common, adhikamāsa or adhikavāra. They can also give us the angular position of
-the Sun and the Moon on the given day.
+In this context, the lunar year starts at the spring equinox: this is 0\degree{}
+on the zodiac wheel, Aries, Citta 1, April.
+
+The results are used to determine whether the year is common, adhikamāsa or
+adhikavāra. They can also give us the angular position of the Sun and the Moon
+on a particular day.
 
 #+begin_latex
 \begin{marginfigure}
 \raggedright
 \caption{\label{fig-wheel-2014-asalha} 2014 July 11, Āsāḷha Full Moon}
 
-\resizebox{\linewidth}{!}{\DuangChata[Sun={2/25/22}, Moon={8/16/6}, simple, show angles]}
+\resizebox{\linewidth}{!}{\DuangChata[Sun={2/25/22}, Moon={8/16/6}, simple]}
 
 \footnotesize
 \bigskip
@@ -928,15 +931,15 @@ three will determine the adhikamāsa and adhikavāra:
 
 \savenotes
 
-- Kammacubala \thai{กัมมัชพล} :: Remaining 800ths of a day
-- Avoman \thai{อวมาน} :: For the Moon's mean motion
-- Tithi\footnote{a.k.a. Thaloengsok or New Year's Day} \thai{ดีถี} :: Age of the Moon, at the start of the year if $\mathbf{day} = 0$ 
+- Kammacubala \thai{กัมมัชพล} :: remaining 800ths of a day
+- Avoman \thai{อวมาน} :: used for the Moon's mean motion
+- Tithi\footnote{a.k.a. Thaloengsok or New Year's Day} \thai{ดีถี} :: age of the Moon, from 0-29
 
 As we follow the steps, we will also obtain:
 
-- Horakhun \thai{อหรคุณ} :: Elapsed days of the era
-- Uccabala \thai{อุจจพล} :: Age of the Moon's Apogee
-- Masaken \thai{มาสเกณฑ์} :: Elapsed months of the era
+- Horakhun \thai{อหรคุณ} :: day index, or elapsed days of the era
+- Uccabala \thai{อุจจพล} :: age of the Moon's apogee
+- Masaken \thai{มาสเกณฑ์} :: elapsed months of the era
 
 - MeanSun, TrueSun, MeanMoon, TrueMoon :: Mean and True angular position of the Sun and the Moon
 - Raek :: The position of the Moon in terms of the 27 lunar mansions, which will determine the month
@@ -980,14 +983,15 @@ information to describe the progression of these events in any year.
 
 ** Calculating the properties of the year
 
-First we will see if we should add and extra month or extra day to keep the
+First we will see if we should add an extra month or extra day to keep the
 lunar year in sync with the solar year.
 
-Then we will calculate the position of the Moon on that day, and see if we are
-in Āsāḷha month, and not at some other Full Moon.
+Then we will calculate the position of the Moon for the day that should be
+Āsāḷha Pūjā, see if the Moon is Full, and if we are in fact in Āsāḷha month, and
+not at some other Full Moon.
 
-We can confirm this by looking up historical phases of the Moon and check if the
-Āsāḷha Pūjā date had in fact been a Full Moon.
+We can also use other sources to check us, looking up historical phases of the
+Moon can show us if the Āsāḷha Pūjā date had in fact been a Full Moon.
 
 Let's take the year CE 1963 (CS 1325) as an example and calculate its
 properties. We should find that it is an adhikavāra year. If you calculate the
@@ -1008,21 +1012,62 @@ E.g. $|-4.21| = 4.21$ and $|4.21| = |4.21|$.
 
 #+begin_latex
 
-Era Constants. For readability, in the formulas we will use their values directly, set in \textbf{bold}.
+Era Constants. The offsets are required because their value was not 0 at the beginning of the Era.
+For readability, where the meaning is not ambiguous, we will use their values directly.
 
-\begin{align*}
-  \mathbf{EraYears} & = 800 & \mathbf{EraDays} & = 292207 & \mathbf{MonthLength} & = 30
-\end{align*}
+\begin{fullwidth}
+\begin{multicols}{2}
 
-Constant offsets, which have to be added because their value was not 0 at the beginning of the Era:
+\begin{tabular}{l l l}
+  $CS_{diff}    $ & $638   $ & CE - CS Era difference \\
+	$Days_{Era}   $ & $292207$ & Days in the Era \\
+	$Years_{Era}  $ & $800   $ & Years in the Era \\
+	$H_{Era}      $ & $373   $ & Horakhun Era offset \\
+	$U_{Era}      $ & $2611  $ & Uccabala Era offset \\
+	$A_{Era}      $ & $650   $ & Avoman Era offset \\
+\end{tabular}
 
-\begin{align*}
-  \mathbf{EraHorakhun} & = 373 & \mathbf{EraUccabala} & = 2611 & \mathbf{EraAvoman} & = 650 
-\end{align*}
+\columnbreak
 
-3232 is a "base" for 360 degrees.\autocite[p. 48]{eade1995calendrical}
+\begin{tabular}{l l l}
+  $U_{base}     $ & $3232  $ & Uccabala base for 360\degrees \\
+	$Days_{M}     $ & $30    $ & Days in a month \\
+	$Days_{Cycle} $ & $692   $ & Days in a cycle \\
+	$Tithi_{Cycle}$ & $703   $ & Tithi in a cycle \\
+	$Cycle_{inc}  $ & $11    $ & Tithi daily increase \\
+	$Kc_{inc}     $ & $800   $ & Kammacubala daily increase \\
+\end{tabular}
 
-The relationship between periods of \textbf{solar days} and \textbf{tithi}:
+\end{multicols}
+\end{fullwidth}
+
+\makeatletter
+\newcommand\cheatsheetText{%
+\begin{tabular}{l l}
+  $CS_{diff}    $ & $638   $ \\
+	$Days_{Era}   $ & $292207$ \\
+	$Years_{Era}  $ & $800   $ \\
+	$H_{Era}      $ & $373   $ \\
+	$U_{Era}      $ & $2611  $ \\
+	$A_{Era}      $ & $650   $ \\
+  $U_{base}     $ & $3232  $ \\
+	$Days_{M}     $ & $30    $ \\
+	$Days_{Cycle} $ & $692   $ \\
+	$Tithi_{Cycle}$ & $703   $ \\
+	$Cycle_{inc}  $ & $11    $ \\
+	$Kc_{inc}     $ & $800   $ \\
+\end{tabular}%
+}
+
+\newcommand\cheatsheetPar{\marginpar{\vspace*{1\baselineskip}\footnotesize\cheatsheetText}}
+
+\makeatother
+
+% 3232 is a "base" for 360 degrees.\autocite[p. 48]{eade1995calendrical}
+
+\clearpage
+
+The relationship between cycles of \textbf{solar days} and \textbf{tithi}:
 "For every 692 solar days that elapse there are also 703 tithi.
 Since 703 / 692 can be expressed as 692 + 11 / 692, the ratio is simplified to these terms ...
 11 is the daily increase (excess tithi over days)."\autocite[p. 48]{eade1995calendrical}
@@ -1033,29 +1078,31 @@ Since 703 / 692 can be expressed as 692 + 11 / 692, the ratio is simplified to t
 
 Let's begin then:
 
+\cheatsheetPar
+
 \begin{align}
 \begin{split}
    \mathbf{CS\_year} &= \mathbf{CE\_year} - 638\\
                      &= 1325
 \end{split}\\
 \begin{split}
-                   a &= (\mathbf{CS\_year} * \mathbf{292207}) + \mathbf{373}\\
+                   a &= (\mathbf{CS\_year} * 292207) + 373\\
                      &= 387174648
 \end{split}\\
 \begin{split}
-\mathbf{Horakhun}    &= \lfloor a / \mathbf{800} + 1 \rfloor\\
+\mathbf{Horakhun}    &= \lfloor a / 800 + 1 \rfloor\\
                      &= 483969
 \end{split}\\
 \begin{split}
-\mathbf{Kammacubala} &= \mathbf{800} - (a \bmod \mathbf{800})\\
+\mathbf{Kammacubala} &= 800 - (a \bmod 800)\\
                      &= 552
 \end{split}\\
 \begin{split}
-\mathbf{Uccabala}    &= (\mathbf{Horakhun} + \mathbf{2611}) \bmod 3232\\
+\mathbf{Uccabala}    &= (\mathbf{Horakhun} + 2611) \bmod 3232\\
                      &= 1780
 \end{split}\\
 \begin{split}
-                   a &= (\mathbf{Horakhun} * 11) + \mathbf{650}\\
+                   a &= (\mathbf{Horakhun} * 11) + 650\\
                      &= 5324309
 \end{split}\\
 \begin{split}
@@ -1067,11 +1114,11 @@ Let's begin then:
                      &= 7694
 \end{split}\\
 \begin{split}
-\mathbf{Masaken}     &= \lfloor (b + \mathbf{Horakhun}) / \mathbf{30} \rfloor\\
+\mathbf{Masaken}     &= \lfloor (b + \mathbf{Horakhun}) / 30 \rfloor\\
                      &= 16388
 \end{split}\\
 \begin{split}
-\mathbf{Tithi}       &= (b + \mathbf{Horakhun}) \bmod \mathbf{30}\\
+\mathbf{Tithi}       &= (b + \mathbf{Horakhun}) \bmod 30\\
                      &= 23
 \end{split}
 \end{align}
@@ -1080,10 +1127,12 @@ Let's begin then:
 
 Now we can determine if the year qualifies for adhikamāsa or adhikavāra.
 
+\clearpage
+
 ** Adhikamāsa conditions
 \label{adhikamasa-years}
 
-(Thai: atikamat \thai{อธิกมาส})
+#+latex: \marginpar{Thai: atikamat \thai{อธิกมาส}}
 
 The year could be adhikamāsa:
 
@@ -1141,7 +1190,7 @@ of the year that determine the matter:
 ** Adhikavāra conditions
 \label{adhikavara-years}
 
-(Thai: atikawan \thai{อธิกวาร})
+#+latex: \marginpar{Thai: atikawan \thai{อธิกวาร}}
 
 Determine if it is a leap year:
 
@@ -1178,7 +1227,7 @@ examine it further. The *Kammacubala* is 552 so it is not a leap year. The
 *Avoman* is 61, so the year qualifies to be assigned an adhikavāra.
 
 Now we know if the year is adhikamāsa, adhikamāsa or common, and we can plan the
-/uposathas/ as shown in the diagram on
+uposathas as shown in the diagram on
 p.\pageref{dia-common-adhikamasa-adhikavara}.
 
 Checking the past calendars for year CS 1325 (see Table
@@ -1198,15 +1247,18 @@ and the years follow the prediction of the formulas.
 \label{calculating-the-sun-and-moon}
 
 Eade describes the formulas at the end of his paper /Rules for interpolation in
-the Thai calendar/\autocite{eade2000rules}, but his notation is a puzzle in itself,
-with its implied conversions and obscure progression from one step to the next.
+the Thai calendar/.\autocite{eade2000rules} This allows us to continue examining
+the year CE 1963 (CS 1325).
+
+#+latex: \marginpar{\vspace*{-1.5\baselineskip}\footnotesize
+His notation however, is a puzzle in itself, with its implied conversions and
+obscure progression from one step to the next.
 
 The folks at [[http://astronomy.stackexchange.com/][Astronomy Stack Exchange]] helped to decipher it:
 
 - [[http://astronomy.stackexchange.com/questions/11753/how-to-interpret-this-old-degree-notation][How to interpret this old degree notation?]]
 - [[http://astronomy.stackexchange.com/questions/12052/from-mean-moon-to-true-moon-in-an-old-procedural-calendar][From Mean Moon to True Moon in an old procedural calendar]]
-
-This allows us to continue examining the year CE 1963 (CS 1325).
+#+latex: }
 
 We know now that the year needed an adhikavāra extra day, so Āsāḷha Pūjā is one
 day later, on day 104, which is 1963 July 6. Let's find the position of the Sun
@@ -1214,39 +1266,43 @@ and the Moon on that day, to see if the Moon reached its Full phase, and if it
 is in the region of the sky associated with the correct month (i.e. the
 nakshatra).
 
+The *Horakhun*, etc. values now relate to the *day*, unless marked otherwise.
 First we establish the properties of the day:
 
 #+begin_latex
+\cheatsheetPar
+
 \begin{align}
 \begin{split}
    \mathbf{elapsedDays} &= \mathbf{Day} - \mathbf{Year\_Tithi}\\
-                        &= x
+                        &= 81
 \end{split}\\
 \begin{split}
    \mathbf{Horakhun}    &= \mathbf{Year\_Horakhun} + \mathbf{elapsedDays}\\
-                        &= x
+                        &= 484050
 \end{split}\\
 \begin{split}
-  \mathbf{Kammacubala}  &= \mathbf{800} - (\mathbf{CS\_Year} * \mathbf{292207} + \mathbf{373}) \bmod \mathbf{800} + \mathbf{elapsedDays} * \mathbf{800}\\
-                        &= x
+  \mathbf{Kammacubala}  &= Kc_{inc} - (\mathbf{CS\_Year} * 292207 + 373) \bmod Years_{Era}\\
+                        & \quad + \mathbf{elapsedDays} * Kc_{inc}\\
+                        &= 65352
 \end{split}\\
 \begin{split}
-  \mathbf{Uccabala}     &= (\mathbf{Horakhun} + \mathbf{2611}) \bmod 3232\\
-                        &= x
+  \mathbf{Uccabala}     &= (\mathbf{Horakhun} + 2611) \bmod 3232\\
+                        &= 1861
 \end{split}\\
 \begin{split}
                       a &= (\mathbf{Horakhun} * 11) + 650\\
         \mathbf{Avoman} &= a \bmod 692\\
-                        &= x
+                        &= 260
 \end{split}\\
 \begin{split}
-                      b &= \lfloor a / 692 \rfloor + \mathbf{2611} + \mathbf{Horakhun}\\
-       \mathbf{Masaken} &= \lfloor b / \mathbf{30} \rfloor\\
-                        &= x
+                      b &= \lfloor a / 692 \rfloor + 2611 + \mathbf{Horakhun}\\
+       \mathbf{Masaken} &= \lfloor b / 30 \rfloor\\
+                        &= 16391
 \end{split}\\
 \begin{split}
-         \mathbf{Tithi} &= b \bmod \mathbf{30}\\
-                        &= x
+         \mathbf{Tithi} &= b \bmod 30\\
+                        &= 15
 \end{split}
 \end{align}
 
@@ -1260,17 +1316,21 @@ Note that 60 converts values between degrees and arcminutes:
 
 #+latex: \[ a\degree*60=b\minute \quad \text{and} \quad b\minute/60 = a\degree \]
 
+\clearpage
+
 #+begin_latex
+\cheatsheetPar
+
 \begin{align}
 \begin{split}
-                      a &= \mathbf{elapsedDays} * \mathbf{800} + \mathbf{Year\_Kammacubala}\\
-       \mathbf{MeanSun} &= (a / \mathbf{292207}) * 360\degree - 3\minute\\
-                        &= x
+                      a &= \mathbf{elapsedDays} * Years_{Era} + \mathbf{Year\_Kammacubala}\\
+       \mathbf{MeanSun} &= (a / Days_{Era}) * 360\degree - 3\minute\\
+                        &= 80.45\degree = 2:20\degree 27\minute
 \end{split}\\
 \begin{split}
                          a &= | \mathbf{MeanSun} - 80\degree | \\
           \mathbf{TrueSun} &= \mathbf{MeanSun} + \frac{\lfloor 134 * \mathit{sin}(a_{rad}) \rfloor}{60}\\
-                           &= x
+                           &= 80.4666\degree = 2:20\degree 27\minute
 \end{split}
 \end{align}
 #+end_latex
@@ -1278,22 +1338,29 @@ Note that 60 converts values between degrees and arcminutes:
 Find the position of the *Mean* and *True Moon*:
 
 #+begin_latex
+\marginpar{\footnotesize
+One \textbf{Tithi} is 12\degree, from\\
+$360\degree / 30 = 12\degree$.
+
+\bigskip
+
+$-40\minute$ is geographical correction.
+}
+
 \begin{align}
 \begin{split}
                   a &= \frac{\mathbf{Avoman} + \lfloor \mathbf{Avoman} / 25 \rfloor}{60}\\
-  \mathbf{MeanMoon} &= \mathit{NormalizeDegree}( \mathbf{TrueSun} + a\degree + \mathbf{Tithi} * 12\degree - 40\minute )\\
-                    &= x
+  \mathbf{MeanMoon} &= \mathbf{TrueSun} + a\degree + \mathbf{Tithi} * 12\degree - 40\minute\\
+                    &= 264.2999\degree = 8:24\degree 17\minute
 \end{split}
 \end{align}
-
-One \textbf{Tithi} is 12\degree, from $360\degree / 30 = 12\degree$.
 
 The \textbf{meanUccabala} in one step:
 
 \begin{align}
 \begin{split}
 	\mathbf{meanUccabala} &= \left( \frac{(\mathbf{Year\_Uccabala} + \mathbf{elapsedDays}) * 3}{808} * 30 * 60 + 2 \right) / 60\\
-                        &= x
+                        &= 207.4343\degree = 6:27\degree 26\minute
 \end{split}
 \end{align}
 #+end_latex
@@ -1303,60 +1370,62 @@ Breaking it down:
 - Multiply by 30 to conform with the notation $r:a\degree l\minute = 30*r + a + l/60$.
 - Division by 808 probably helps to express the length of the lunar month, since $808 / 30 = 26.9333$.
 - Multiply by 60 to convert to arcmin
-- Add 2, possibly correction for geographical position
+- Add 2, correction for geographical position
 - Divide by 60 to convert back to degree
 
 #+begin_latex
+\marginpar{\footnotesize $13\degree 20\minute$ is one nakshatra or lunar mansion, $360\degree / 27$.}
+
 \begin{align}
 \begin{split}
                  a &= \mathbf{MeanMoon} - \mathbf{meanUccabala}\\
  \mathbf{TrueMoon} &= \mathbf{MeanMoon} - \frac{296 * \mathit{sin}(a_{rad})}{60}\\
-                   &= x
+                   &= 260.1636\degree = 8:20\degree 9\minute
 \end{split}\\
 \begin{split}
      \mathbf{Raek} &= \mathbf{TrueMoon} / 13\degree 20\minute + 1\\
-                   &= x
+                   &= 20.5123\degree = 20\degree 30\minute
 \end{split}
 \end{align}
-#+end_latex
 
-13\degree 20\minute is one nakshatra or lunar mansion, $360\degree / 27$.
-
-#+begin_latex
 \begin{fullwidth}%
 % ============================================== %
 \begin{minipage}{0.33\linewidth}
-Day 103, 1963 July 5\\
+\centering
 
-\resizebox{\linewidth}{!}{\DuangChata[Sun={0/0/0}, Moon={0/0/0}, simple, show angles]}
+Day 103, 1963 July 5
+\bigskip
 
-\footnotesize
+\resizebox{!}{0.55\height}{\DuangChata[Sun={2/19/28}, Moon={8/7/41}, simple]}
+
 \bigskip
 
 \begin{tabular}{l l}
-Sun: & 0:0\degree 0\minute\\
-Moon: & 0:0\degree 0\minute\\
-Tithi: & 0
+Sun: & 2:19\degree 28\minute\\
+Moon: & 8:7\degree 41\minute\\
+Tithi: & 14
 \end{tabular}
 
 \bigskip
 
-X. nakshatra, X X.
+19. nakshatra, Mūla.
 
 \end{minipage}%
 % ============================================== %
 \begin{minipage}{0.33\linewidth}
-Day 104, 1963 July 6\\
+\centering
 
-\resizebox{\linewidth}{!}{\DuangChata[Sun={0/0/0}, Moon={0/0/0}, simple, show angles]}
+Day 104, 1963 July 6
+\bigskip
 
-\footnotesize
+\resizebox{!}{0.55\height}{\DuangChata[Sun={2/20/27}, Moon={8/20/9}, simple]}
+
 \bigskip
 
 \begin{tabular}{l l}
-Sun: & 0:0\degree 0\minute\\
-Moon: & 0:0\degree 0\minute\\
-Tithi: & 0
+Sun: & 2:20\degree 27\minute\\
+Moon: & 8:20\degree 9\minute\\
+Tithi: & 15
 \end{tabular}
 
 \bigskip
@@ -1366,30 +1435,34 @@ Tithi: & 0
 \end{minipage}%
 % ============================================== %
 \begin{minipage}{0.33\linewidth}
-Day 105, 1963 July 7\\
+\centering
 
-\resizebox{\linewidth}{!}{\DuangChata[Sun={0/0/0}, Moon={0/0/0}, simple, show angles]}
+Day 105, 1963 July 7
+\bigskip
 
-\footnotesize
+\resizebox{!}{0.55\height}{\DuangChata[Sun={2/21/28}, Moon={9/2/51}, simple]}
+
 \bigskip
 
 \begin{tabular}{l l}
-Sun: & 0:0\degree 0\minute\\
-Moon: & 0:0\degree 0\minute\\
-Tithi: & 0
+Sun: & 2:21\degree 28\minute\\
+Moon: & 9:2\degree 51\minute\\
+Tithi: & 16
 \end{tabular}
 
 \bigskip
 
-X. nakshatra, X X.
+21. nakshatra, Uttara Ashādhā.
 
 \end{minipage}%
 % ============================================== %
 \end{fullwidth}
-#+end_latex
 
-#+begin_latex
+\bigskip
+
 Let's look up if 1963 July 6 is listed under Full Moons:\footnote{\href{http://astropixels.com/ephemeris/phasescat/phases1901.html}{AstroPixels - Moon Phases: 1901 to 2000}}
+
+\bigskip
 
 {\centering
 \includegraphics[width=0.8\linewidth]{1963-astropixels.png}
