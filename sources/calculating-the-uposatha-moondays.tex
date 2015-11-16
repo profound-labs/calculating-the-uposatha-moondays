@@ -1,4 +1,4 @@
-% Created 2015-11-16 Mon 16:13
+% Created 2015-11-16 Mon 20:53
 \documentclass[11pt,oneside]{memoir-article}
 \usepackage{local}
 \renewcommand{\docVersion}{v1.0}
@@ -41,7 +41,7 @@ pattern.
 \thispagestyle{empty}
 
 \marginpar{%
-\textbf{Just looking for the formulas?}
+\textbf{Just here for the formulas?}
 
 Dive in at sec. \ref{suriyayatra-formulas},
 or see how we can ask the machine to do it in Golang at sec. \ref{suriya-go-example}.
@@ -700,8 +700,8 @@ calendar.\autocite{eade2007irregular}
 The officially used new year date in Thailand is January 1st, after a government
 ruling in 1940:
 
-``\ldots{}it is now appropriate for Thailand to observe New Year's Day on the first day of January."\autocite{TODO}
-
+``\ldots{}it is now appropriate for Thailand to observe New Year's Day on the first
+day of January."\autocite{wp-thai-new-year-day}
 
 The Songkran festival, commonly called the Thai New Year, is held on April
 13-14-15, at the time of the spring equinox.
@@ -732,8 +732,7 @@ the last day.
 
 The lunar months (duean \thai{เดือน}) are alternatingly 29 or 30 days long. The
 waxing phase (khang khuen \thai{ข้างขึ้น}) to the Full Moon is always 15 days,
-every second waning phase (khang raem \thai{ข้างแรม}) is 14 days.\autocite{TODO}
-
+every second waning phase (khang raem \thai{ข้างแรม}) is 14 days.\autocite{wp-thai-lunar-calendar}
 
 This convention gives a consistent way to refer to the day of the Full Moon,
 which are always on the 15th day of the month: Visākha 15, Āsāḷha 15, etc.
@@ -896,7 +895,6 @@ Tithi: & 14
 At midnight the Moon would be seen in the 20. Nakshatra, Pūrva Ashādhā, around the stars δ and ε Sagittarii.
 
 \end{marginfigure}
-
 
 For example in a common year, when we calculate the Moon's position for
 $\mathbf{day} = 103$, it should tell us that it is Full Moon, and it is found in
@@ -1604,6 +1602,9 @@ which should turn out to be the date of Āsāḷha Pūjā.
 
 \inputminted{go}{./includes/print-1288.go}
 
+
+\backmatter
+
 \chapter{Gregorian leap years}
 \label{sec-7}
 
@@ -1627,40 +1628,26 @@ which should turn out to be the date of Āsāḷha Pūjā.
 \autocite{wp-leap-year}
 \end{quote}
 
-\backmatter
-
-\chapter{Websites and Apps}
+\chapter{Reading the Thai calendar layout}
 \label{sec-8}
 
-TODO
+\href{http://www.myhora.com/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99-100%E0%B8%9B%E0%B8%B5-%E0%B8%9E.%E0%B8%A8.2558.aspx}{myhora.com - 2015 - \thai{ปฏิทิน 100 ปี 2558 ปฏิทินร้อยปี ปีมะแม}}
 
-myhora.com
+\href{http://horoscope.thaiorc.com/calendar/thaicalendar.php?y=2558}{horoscope.thaiorc.com - 2015 - \thai{ปฏิทิน 150 ปี ปฏิทินจันทรคติ ปฏิทินสุริยคติ}}
 
-\url{http://horoscope.thaiorc.com/calendar/thaicalendar.php}
-
-uposatha app
-
-\chapter{Glossary}
-\label{sec-9}
-
-Aka horasat โหราศาสตร์
-
-month: duean เดือน
-
-month 8/8: เดือน ๘/๘
-
-Waxing : khang khuen (ข้างขึ้น), the period from new moon to full moon, is always 15 days long.
-Waning : khang raem (ข้างแรม), the period from full moon to new moon
-
+\begin{fullwidth}
+\centering
+\includegraphics[width=\linewidth]{2015-myhora.png}
+\end{fullwidth}
 
 \chapter{Bibliography}
-\label{sec-10}
+\label{sec-9}
 \label{bibliography}
 
 \printbibliography
 
 \chapter{Colophon}
-\label{sec-11}
+\label{sec-10}
 
 \href{http://orgmode.org/}{Org-mode} and \LaTeX. Sources at \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{Github}.
 

@@ -12,4 +12,4 @@ once:
 	$(LATEX) $(LATEX_OPTS) $(MAIN)
 
 clean:
-	rm -v *.dvi *.ps *.aux *.log *.bbl *.blg *.toc
+	rm -v *.dvi *.ps *.aux *.log *.bbl *.blg *.bcf *.toc

@@ -713,9 +713,8 @@ the same visual phase
 The officially used new year date in Thailand is January 1st, after a government
 ruling in 1940:
 
-"...it is now appropriate for Thailand to observe New Year's Day on the first day of January."\autocite{TODO}
-
-# https://en.wikisource.org/wiki/Proclamation_on_Observance_of_New_Year%27s_Day_on_1_January,_dated_24_December_1940
+"...it is now appropriate for Thailand to observe New Year's Day on the first
+day of January."\autocite{wp-thai-new-year-day}
 
 The Songkran festival, commonly called the Thai New Year, is held on April
 13-14-15, at the time of the spring equinox.
@@ -743,9 +742,7 @@ the last day.
 
 The lunar months (duean \thai{เดือน}) are alternatingly 29 or 30 days long. The
 waxing phase (khang khuen \thai{ข้างขึ้น}) to the Full Moon is always 15 days,
-every second waning phase (khang raem \thai{ข้างแรม}) is 14 days.\autocite{TODO}
-
-# https://en.wikipedia.org/wiki/Thai_lunar_calendar
+every second waning phase (khang raem \thai{ข้างแรม}) is 14 days.\autocite{wp-thai-lunar-calendar}
 
 This convention gives a consistent way to refer to the day of the Full Moon,
 which are always on the 15th day of the month: Visākha 15, Āsāḷha 15, etc.
@@ -919,10 +916,6 @@ At midnight the Moon would be seen in the 20. Nakshatra, Pūrva Ashādhā, aroun
 
 \end{marginfigure}
 #+end_latex
-
-# Year 2014 http://www.myhora.com/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99-%E0%B8%9E.%E0%B8%A8.2557.aspx
-# Day 2014 July 11 http://www.myhora.com/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99/11-%E0%B8%81%E0%B8%A3%E0%B8%81%E0%B8%8E%E0%B8%B2%E0%B8%84%E0%B8%A1-%E0%B8%9E.%E0%B8%A8.2557.aspx
-# Large http://www.myhora.com/calendar/astrology-daily-analysis.aspx?dd=11&mm=7&yyyy=2014&h=23&m=59&s=59&cal=suriyayas&lat=13.75258&lon=105.00000&zone=%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E+%E0%B8%AF+%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B8%B1%E0%B8%95%E0%B8%A3%E0%B9%8C&timezone=%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%A8%E0%B9%84%E0%B8%97%E0%B8%A2+(UTC%2B07%3A00)&lux_selected=4&option=false
 
 For example in a common year, when we calculate the Moon's position for
 $\mathbf{day} = 103$, it should tell us that it is Full Moon, and it is found in
@@ -1683,6 +1676,39 @@ which should turn out to be the date of Āsāḷha Pūjā.
 
 #+latex: \inputminted{go}{./includes/print-1288.go}
 
+
+\backmatter
+
+* Gregorian leap years
+
+#+attr_latex: :placement [h] :caption \caption{\label{tbl-cycle-leap-years} Gregorian leap years}
+| 2004 | 2016 | 2028 | 2040 |
+| 2008 | 2020 | 2032 | 2044 |
+| 2012 | 2024 | 2036 | 2048 |
+
+#+begin_quote
+\logic{if} (/year/ is not exactly divisible by 4) \logic{then} (it is a common year)\\
+\logic{else}\\
+\logic{if} (/year/ is not exactly divisible by 100) \logic{then} (it is a leap year)\\
+\logic{else}\\
+\logic{if} (/year/ is not exactly divisible by 400) \logic{then} (it is a common year)\\
+\logic{else} (it is a leap year)
+\autocite{wp-leap-year}
+#+end_quote
+
+* Reading the Thai calendar layout
+
+#+latex: \href{http://www.myhora.com/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99-100%E0%B8%9B%E0%B8%B5-%E0%B8%9E.%E0%B8%A8.2558.aspx}{myhora.com - 2015 - \thai{ปฏิทิน 100 ปี 2558 ปฏิทินร้อยปี ปีมะแม}}
+
+#+latex: \href{http://horoscope.thaiorc.com/calendar/thaicalendar.php?y=2558}{horoscope.thaiorc.com - 2015 - \thai{ปฏิทิน 150 ปี ปฏิทินจันทรคติ ปฏิทินสุริยคติ}}
+  
+#+begin_latex
+\begin{fullwidth}
+\centering
+\includegraphics[width=\linewidth]{2015-myhora.png}
+\end{fullwidth}
+#+end_latex
+
 * Adding the extra month, Pali method                              :noexport:
 \label{pali-method}
 
@@ -1736,26 +1762,7 @@ of the 5th Thai lunar month in 2001.
 # Clear floats
 \clearpage
 
-* Gregorian leap years
-
-#+attr_latex: :placement [h] :caption \caption{\label{tbl-cycle-leap-years} Gregorian leap years}
-| 2004 | 2016 | 2028 | 2040 |
-| 2008 | 2020 | 2032 | 2044 |
-| 2012 | 2024 | 2036 | 2048 |
-
-#+begin_quote
-\logic{if} (/year/ is not exactly divisible by 4) \logic{then} (it is a common year)\\
-\logic{else}\\
-\logic{if} (/year/ is not exactly divisible by 100) \logic{then} (it is a leap year)\\
-\logic{else}\\
-\logic{if} (/year/ is not exactly divisible by 400) \logic{then} (it is a common year)\\
-\logic{else} (it is a leap year)
-\autocite{wp-leap-year}
-#+end_quote
-
-\backmatter
-
-* Websites and Apps
+* Websites and Apps                                                :noexport:
 
 TODO
 
@@ -1765,7 +1772,7 @@ http://horoscope.thaiorc.com/calendar/thaicalendar.php
 
 uposatha app
 
-* Glossary
+* Glossary                                                         :noexport:
 
 Aka horasat โหราศาสตร์
 
@@ -1775,7 +1782,6 @@ month 8/8: เดือน ๘/๘
 
 Waxing : khang khuen (ข้างขึ้น), the period from new moon to full moon, is always 15 days long.
 Waning : khang raem (ข้างแรม), the period from full moon to new moon
-
 
 * Bibliography
 \label{bibliography}
