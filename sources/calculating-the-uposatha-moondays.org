@@ -36,7 +36,9 @@
 
 #+begin_latex
 \marginpar{%
-Just looking for the formulas? Dive in at sec. \ref{suriyayatra-formulas},
+\textbf{Just here for the formulas?}
+
+Dive in at sec. \ref{suriyayatra-formulas},
 or see how we can ask the machine to do it in Golang at sec. \ref{suriya-go-example}.
 }
 #+end_latex
