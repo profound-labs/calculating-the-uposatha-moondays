@@ -10,8 +10,6 @@
 #+EMAIL: gambhiro.bhikkhu.85@gmail.com
 #+TITLE: Calculating the Uposatha Moondays
 
-\frontmatter
-
 #+BEGIN_tldr
 - The method is based on a set of formulas called /suriyayatra/ (\thai{สุริยยาตร์}),
   originating from India and including additional rules observed in Southeast
@@ -94,7 +92,11 @@ Download [[https://github.com/profound-labs/calculating-the-uposatha-moondays/ra
 \clearpage
 
 *** TODO before release
-    
+
+# Add somewhere: Asia doesn't express any desire for grand unified theories.
+# When there are two ways of doing things, it doesn't unify them, but uses them
+# both.
+
 - diff b/w year and day horakhun
 - get date for day 0
 - fill in values for formulas
@@ -146,13 +148,6 @@ only possible with their experience and understanding.
 Please send comments, corrections and further information to:
 
 =Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>=
-
-* Contents
-
-# FIXME
-# \tableofcontents*
-
-\mainmatter
 
 * Mahānikāya Uposatha Calendar Tutorial
 \label{uposatha-tutorial}
@@ -677,7 +672,7 @@ Moon. The Sun and Moon are angularly opposite, which also means Full Moon, and
 it appears in the 20. nakshatra, so the month is Āsāḷha.
 
 #+latex: As a reality check, we can look up the historical phases and see if
-#+latex: the day was listed under the Full Moons:\footnote{\href{http://astropixels.com/ephemeris/phasescat/phases1201.html}{AstroPixels - Moon Phases: 1201 to 1300}}
+#+latex: the day is listed under the Full Moons:\footnote{\href{http://astropixels.com/ephemeris/phasescat/phases1201.html}{AstroPixels - Moon Phases: 1201 to 1300}}
 
 #+latex: {\centering
 #+latex: \includegraphics[width=0.8\linewidth]{1288-astropixels.png}
@@ -711,83 +706,117 @@ complete an orbit around the Sun
 [fn:synodicmonth] synodic month: the time it takes the Moon to reach
 the same visual phase
 
-** Lunar years, Seasons, Months and Days
+** Date of New Year in Thailand
+
+The officially used new year date in Thailand is January 1st, after a government
+ruling in 1940:
+
+"...it is now appropriate for Thailand to observe New Year's Day on the first day of January."\autocite{TODO}
+
+# https://en.wikisource.org/wiki/Proclamation_on_Observance_of_New_Year%27s_Day_on_1_January,_dated_24_December_1940
+
+The Songkran festival, commonly called the Thai New Year, is held on April
+13-14-15, at the time of the spring equinox.
+
+** Time periods in the Calendar
 \label{years-seasons}
+
+*** Years
+
+The reckoning of the lunar year has an everyday convention which is aligned with
+the solar year. Here, the first month of the lunar year is Magasira in November.
+
+By this reckoning Āsāḷha is the 8th month, and hence the 2nd Āsāḷha is marked
+8/8, \thai{เดือน ๘/๘}.
+
+A different reckoning is assumed in the formulas which is based on the zodiac
+wheel. Here, the first month is Citta in April. This is at the spring equinox,
+which is at 0\degrees{} on the wheel, corresponding to Aries.
+
+*** Months
+
+In Thai practice, a lunar month is a wave: it has a waxing phase, its crest is
+in the middle at Full Moon, and has a waning phase ending with the New Moon on
+the last day.
+
+The lunar months (duean \thai{เดือน}) are alternatingly 29 or 30 days long. The
+waxing phase (khang khuen \thai{ข้างขึ้น}) to the Full Moon is always 15 days,
+every second waning phase (khang raem \thai{ข้างแรม}) is 14 days.\autocite{TODO}
+
+# https://en.wikipedia.org/wiki/Thai_lunar_calendar
+
+This convention gives a consistent way to refer to the day of the Full Moon,
+which are always on the 15th day of the month: Visākha 15, Āsāḷha 15, etc.
+
+The waxing and waning moons are marked on the 8th day from the Full- or New Moon
+day.
+
+\clearpage
+
+*** Seasons
+
+#+latex: \marginpar{%
+| Cold Season  | Hemanta     |
+| ends on:     | Phagguṇa 15 |
+|--------------+-------------|
+| Hot Season   | Gimhāna     |
+| ends on:     | Āsāḷha 15   |
+|--------------+-------------|
+| Rainy Season | Vassāna     |
+| ends on:     | Kattika 15  |
+#+latex: }
+
+The first season of the lunar year is the Cold Season, which begins after
+Kattika Full Moon.
+
+Marking the seasons is a monastic tradition. Periods in the monastic calendar
+are observed between certain Full Moon days of the year, and so the seasons end
+on Full Moon days.
+
+The lunar months end on the New Moon day, the month and season boundaries
+therefore overlap.
+
+The months and seasons are two separate way of referencing lunar phases, they
+are never used together in the same expression.
+
+They are used in different contexts too, so the overlap doesn't seem to bother
+anyone. Secular society marks periods by /months/ in the year, but the monastic
+tradition is concerned instead with the number of /uposathas/ in the season.
+
+#+latex: The monastic tradition references Full- and New Moons as the ``Nth uposatha of the X~Season.''
+
+*** Days
+
+A 'day' marks the time at midnight on that day, unless the time is specified.
+Positions of the Sun, the Moon and other calculated properties of the day are
+understood to reach that value at midnight.
 
 ** Names of the months
 
-The name of a given month is determined by the astrological sign which
-the Full Moon enters at midnight. See Table \ref{tbl-month-names}.
+The zodiac wheel is divided in 27 segments called /nakshatra/, associated with
+and area of the sky around certain stars.
 
-The lunar year starts in April with Citta-māsa, which is 0 degrees (the vernal
-equinox) on the wheel of the zodiac (see sec. \ref{duangchata}), corresponding
-to Aries.
+The name of a given month is determined by the nakshatra which the Full Moon
+enters at midnight. See Table \ref{tbl-month-names}.
 
-#+attr_latex: :placement [h] :caption \caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs}
+#+attr_latex: :placement [h] :caption \caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs\autocite{hasapannyo-zodiac}}
 | Season       |    |      | Lunar Month | Solar Month | Solar Zodiac         |
 |              |    | days |             |             | (Western / Sanskrit) |
 |--------------+----+------+-------------+-------------+----------------------|
-| Gimha-utu    |  1 |   29 | Citta       | April       | Aries / Meṣa         |
-| Hot Season   |  2 |   30 | Visākha     | May         | Taurus / Vṛṣabha     |
-|              |  3 |   29 | Jeṭṭha      | June        | Gemini / Mithuna     |
-|              |  4 |   30 | Āsāḷha      | July        | Cancer / Karkaṭa     |
+| Hemanta      |  1 |   29 | Magasira    | December    | Sagittarius / Dhanus |
+| Cold Season  |  2 |   30 | Phussa      | January     | Capricorn / Makara   |
+|              |  3 |   29 | Māgha       | February    | Aquarius / Kumbha    |
+|              |  4 |   30 | Phagguṇa    | March       | Pisces / Mīna        |
 |--------------+----+------+-------------+-------------+----------------------|
-| Vassāna-utu  |  5 |   29 | Savaṇa      | August      | Leo / Siṃha          |
-| Rainy Season |  6 |   30 | Bhaddapāda  | September   | Virgo / Kanyā        |
-|              |  7 |   29 | Assayuja    | October     | Libra / Tulā         |
-|              |  8 |   30 | Kattika     | November    | Scorpio / Vṛścika    |
+| Gimhāna      |  5 |   29 | Citta       | April       | Aries / Meṣa         |
+| Hot Season   |  6 |   30 | Visākha     | May         | Taurus / Vṛṣabha     |
+|              |  7 |   29 | Jeṭṭha      | June        | Gemini / Mithuna     |
+|              |  8 |   30 | Āsāḷha      | July        | Cancer / Karkaṭa     |
 |--------------+----+------+-------------+-------------+----------------------|
-| Hemanta-utu  |  9 |   29 | Magasira    | December    | Sagittarius / Dhanus |
-| Cold Season  | 10 |   30 | Phussa      | January     | Capricorn / Makara   |
-|              | 11 |   29 | Māgha       | February    | Aquarius / Kumbha    |
-|              | 12 |   30 | Phagguṇa    | March       | Pisces / Mīna        |
-
-** The first and last day of a lunar month
-\label{lunar-month-first-last}
-
-The lunar year starts at the spring equinox in April with Citta month, Hot
-Season. The lunar month ends on the New Moon day, the Full Moon is in the
-middle. Visākha 15, Āsāḷha 15, etc. is always Full Moon.
-
-In monastic practice, the Full Moon day is on the last day of a given
-month. The next month starts on the following day (first day of the
-waning phase), thus the first uposatha will be on a New Moon.
-
-In many Thai calendars, the New Moon day is the last day of the month,
-and the Full Moon day is in the middle. This only changes the
-numbering of the months, not the actual moondays. In these calendars
-the thresholds of months are shifted two weeks forward relative to the
-monastic calendar.
-
-This can be particularly important to watch at the end of the lunar year:
-
-The New Moon of the 12th /Thai/ lunar month is the New Moon (1st uposatha) of
-the 1st /monastic/ lunar month.
-
-#+attr_latex: :placement [h] :caption \caption{\label{monastic-thai-year} Monastic and Thai lunar months in a year}
-| Nth | phase | month    | Monastic | Thai |
-|-----+-------+----------+----------+------|
-|   1 | New   |          |        1 |   12 |
-|   2 | Full  | Magasira |        1 |    1 |
-|   3 | New   |          |        2 |    1 |
-|   4 | Full  | Phussa   |        2 |    2 |
-|   5 | New   |          |        3 |    2 |
-|   6 | Full  | Māgha    |        3 |    3 |
-|   7 | New   |          |        4 |    3 |
-|   8 | Full  | Phagguṇa |        4 |    4 |
-
-** The first month of the lunar year
-   
-The lunar year begins at the spring equinox in April, which is 0\degree on the
-zodiac wheel, corresponding to Aries.
-
-TODO:
-
-- 0\degree = April = Citta 1 = Day 1
-
-Is there a day 0?
-
-The *Year_Horakhun* is on day 0 + Tithi.
+| Vassāna      |  9 |   29 | Savaṇa      | August      | Leo / Siṃha          |
+| Rainy Season | 10 |   30 | Bhaddapāda  | September   | Virgo / Kanyā        |
+|              | 11 |   29 | Assayuja    | October     | Libra / Tulā         |
+|              | 12 |   30 | Kattika     | November    | Scorpio / Vṛścika    |
 
 # Big tables that need a separate page
 
@@ -1395,17 +1424,6 @@ Tithi
 
 Aka horasat โหราศาสตร์
 
-month: duean เดือน
-
-month 8/8: เดือน ๘/๘
-
-Waxing : khang khuen (ข้างขึ้น), the period from new moon to full moon, is always 15 days long.
-Waning : khang raem (ข้างแรม), the period from full moon to new moon
-
-"...it is now appropriate for Thailand to observe New Year's Day on the first day of January."
-
-https://en.wikisource.org/wiki/Proclamation_on_Observance_of_New_Year%27s_Day_on_1_January,_dated_24_December_1940
-
 normal year: Prokkatimat ปรกติมาส
 
 ปกติมาส, rtgs: (pi) pakatimat,
@@ -1413,8 +1431,6 @@ normal year: Prokkatimat ปรกติมาส
 อธิกวาร, rtgs: (pi) athikawan
 
 อธิกมาส, rtgs: (pi) athikamat
-
-https://en.wikipedia.org/wiki/Thai_lunar_calendar
 
 Sun on Thai duang: \thai{๑}\\
 Moon on Thai duang: \thai{๒}
@@ -1673,6 +1689,18 @@ myhora.com
 http://horoscope.thaiorc.com/calendar/thaicalendar.php
 
 uposatha app
+
+* Glossary
+
+Aka horasat โหราศาสตร์
+
+month: duean เดือน
+
+month 8/8: เดือน ๘/๘
+
+Waxing : khang khuen (ข้างขึ้น), the period from new moon to full moon, is always 15 days long.
+Waning : khang raem (ข้างแรม), the period from full moon to new moon
+
 
 * Bibliography
 \label{bibliography}

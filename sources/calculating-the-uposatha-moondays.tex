@@ -1,4 +1,4 @@
-% Created 2015-11-15 Sun 21:20
+% Created 2015-11-16 Mon 12:36
 \documentclass[11pt,oneside]{memoir-article}
 \usepackage{local}
 \renewcommand{\docVersion}{v1.0}
@@ -14,8 +14,6 @@
 \begin{document}
 
 \maketitle
-\frontmatter
-
 \begin{tldr}
 \begin{itemize}
 \item The method is based on a set of formulas called \emph{suriyayatra} (\thai{สุริยยาตร์}),
@@ -95,14 +93,8 @@ Download \href{https://github.com/profound-labs/calculating-the-uposatha-moonday
 
 \clearpage
 
-\chapter{Contents}
-\label{sec-1}
-
-
-\mainmatter
-
 \chapter{Mahānikāya Uposatha Calendar Tutorial}
-\label{sec-2}
+\label{sec-1}
 \label{uposatha-tutorial}
 
 This section is a step-by-step guide on how to calculate the uposathas for the
@@ -113,7 +105,7 @@ the New Moon, the seasons end on the day of the Full Moon. More on this at sec.
 \ref{years-seasons}.
 
 \section{Collecting information about the year}
-\label{sec-2-1}
+\label{sec-1-1}
 
 We need to know the following:
 
@@ -193,10 +185,10 @@ years.
 \clearpage
 
 \section{Common year}
-\label{sec-2-2}
+\label{sec-1-2}
 \label{common-year}
 \subsection{Alternate 30 and 29 day months}
-\label{sec-2-2-1}
+\label{sec-1-2-1}
 
 \begin{fullwidth}
 \includegraphics[width=\linewidth]{two-months.pdf}
@@ -231,7 +223,7 @@ three seasons: Cold-, Hot- and Rainy Season. See Figure \ref{fig-common-year} or
 Table \ref{tbl-month-names} for the Pāli names of months and seasons.
 
 \subsection{Marking the Vassa and Major Moondays}
-\label{sec-2-2-2}
+\label{sec-1-2-2}
 \label{marking-the-moondays-common-year}
 
 Mark the months and seasons according to Figure \ref{fig-common-year}.
@@ -270,9 +262,9 @@ In a common year, the calendar is finished.
 \clearpage
 
 \section{Adhikamāsa year}
-\label{sec-2-3}
+\label{sec-1-3}
 \subsection{Marking the Vassa and Major Moondays}
-\label{sec-2-3-1}
+\label{sec-1-3-1}
 \label{marking-the-moondays-adhikamasa-year}
 
 \begin{marginfigure}[-25mm]
@@ -313,7 +305,7 @@ Figure \ref{fig-adhikamasa-year} shows how the sequence of the uposathas and the
 major moondays fall in an adhikamāsa year.
 
 \section{Adhikavāra year}
-\label{sec-2-4}
+\label{sec-1-4}
 
 The extra day is inserted at the 7th uposatha of the Hot Season (the New Moon
 uposatha before Āsāḷha Full Moon), making it a 15-day uposatha instead of the
@@ -340,9 +332,9 @@ order & name & days\\
 \clearpage
 
 \chapter{The Mahānikāya Uposatha Calendar Method}
-\label{sec-3}
+\label{sec-2}
 \section{Adding the extra month}
-\label{sec-3-1}
+\label{sec-2-1}
 
 The extra month (adhikamāsa) is added 7 times in a 19 year period. This is
 determined by the formulas at sec. \ref{suriyayatra-formulas}, which generate a pattern
@@ -376,7 +368,7 @@ In adhikamāsa years the Vassa starts 30 days later, on the day after the Full
 Moon uposatha of the 2nd Āsāḷha.
 
 \section{Adding the extra day}
-\label{sec-3-2}
+\label{sec-2-2}
 \label{adding-extra-day}
 
 The extra day (adhikavāra) is added 11 times in every 57 year.
@@ -413,7 +405,7 @@ calendar at pace
 \end{itemize}
 
 \section{Marking the Vassa and Major Moondays}
-\label{sec-3-3}
+\label{sec-2-3}
 
 Common year: sec. \ref{marking-the-moondays-common-year}
 
@@ -540,7 +532,7 @@ CE year & BE year & K & A & T & nM & $\Delta$ M & nV & $\Delta$ V & Āsāḷha b
 \clearpage
 
 \chapter{The Thai luni-solar calendar}
-\label{sec-4}
+\label{sec-3}
 
 Luni-solar calendars are constructed so as to count \textbf{years} according to the
 \emph{solar} cycle, but to count \textbf{months} according to the \emph{lunar} cycle.
@@ -675,7 +667,7 @@ Moon. The Sun and Moon are angularly opposite, which also means Full Moon, and
 it appears in the 20. nakshatra, so the month is Āsāḷha.
 
 As a reality check, we can look up the historical phases and see if
-the day was listed under the Full Moons:\footnote{\href{http://astropixels.com/ephemeris/phasescat/phases1201.html}{AstroPixels - Moon Phases: 1201 to 1300}}
+the day is listed under the Full Moons:\footnote{\href{http://astropixels.com/ephemeris/phasescat/phases1201.html}{AstroPixels - Moon Phases: 1201 to 1300}}
 
 {\centering
 \includegraphics[width=0.8\linewidth]{1288-astropixels.png}
@@ -700,99 +692,131 @@ years'' rule of thumb for adhikavāra years. This resulted in wrong dates being
 used on any inscriptions made until the error was corrected in the
 calendar.\autocite{eade2007irregular}
 
-\section{Lunar years, Seasons, Months and Days}
-\label{sec-4-1}
+\section{Date of New Year in Thailand}
+\label{sec-3-1}
+
+The officially used new year date in Thailand is January 1st, after a government
+ruling in 1940:
+
+``\ldots{}it is now appropriate for Thailand to observe New Year's Day on the first day of January."\autocite{TODO}
+
+
+The Songkran festival, commonly called the Thai New Year, is held on April
+13-14-15, at the time of the spring equinox.
+
+\section{Time periods in the Calendar}
+\label{sec-3-2}
 \label{years-seasons}
 
+\subsection{Years}
+\label{sec-3-2-1}
+
+The reckoning of the lunar year has an everyday convention which is aligned with
+the solar year. Here, the first month of the lunar year is Magasira in November.
+
+By this reckoning Āsāḷha is the 8th month, and hence the 2nd Āsāḷha is marked
+8/8, \thai{เดือน ๘/๘}.
+
+A different reckoning is assumed in the formulas which is based on the zodiac
+wheel. Here, the first month is Citta in April. This is at the spring equinox,
+which is at 0\degrees{} on the wheel, corresponding to Aries.
+
+\subsection{Months}
+\label{sec-3-2-2}
+
+In Thai practice, a lunar month is a wave: it has a waxing phase, its crest is
+in the middle at Full Moon, and has a waning phase ending with the New Moon on
+the last day.
+
+The lunar months (duean \thai{เดือน}) are alternatingly 29 or 30 days long. The
+waxing phase (khang khuen \thai{ข้างขึ้น}) to the Full Moon is always 15 days,
+every second waning phase (khang raem \thai{ข้างแรม}) is 14 days.\autocite{TODO}
+
+
+This convention gives a consistent way to refer to the day of the Full Moon,
+which are always on the 15th day of the month: Visākha 15, Āsāḷha 15, etc.
+
+The waxing and waning moons are marked on the 8th day from the Full- or New Moon
+day.
+
+\clearpage
+
+\subsection{Seasons}
+\label{sec-3-2-3}
+
+\marginpar{%
+\begin{center}
+\begin{tabular}{ll}
+Cold Season & Hemanta\\
+ends on: & Phagguṇa 15\\
+\hline
+Hot Season & Gimhāna\\
+ends on: & Āsāḷha 15\\
+\hline
+Rainy Season & Vassāna\\
+ends on: & Kattika 15\\
+\end{tabular}
+\end{center}
+}
+
+The first season of the lunar year is the Cold Season, which begins after
+Kattika Full Moon.
+
+Marking the seasons is a monastic tradition. Periods in the monastic calendar
+are observed between certain Full Moon days of the year, and so the seasons end
+on Full Moon days.
+
+The lunar months end on the New Moon day, the month and season boundaries
+therefore overlap.
+
+The months and seasons are two separate way of referencing lunar phases, they
+are never used together in the same expression.
+
+They are used in different contexts too, so the overlap doesn't seem to bother
+anyone. Secular society marks periods by \emph{months} in the year, but the monastic
+tradition is concerned instead with the number of \emph{uposathas} in the season.
+
+The monastic tradition references Full- and New Moons as the ``Nth uposatha of the X~Season.''
+
+\subsection{Days}
+\label{sec-3-2-4}
+
+A `day' marks the time at midnight on that day, unless the time is specified.
+Positions of the Sun, the Moon and other calculated properties of the day are
+understood to reach that value at midnight.
+
 \section{Names of the months}
-\label{sec-4-2}
+\label{sec-3-3}
 
-The name of a given month is determined by the astrological sign which
-the Full Moon enters at midnight. See Table \ref{tbl-month-names}.
+The zodiac wheel is divided in 27 segments called \emph{nakshatra}, associated with
+and area of the sky around certain stars.
 
-The lunar year starts in April with Citta-māsa, which is 0 degrees (the vernal
-equinox) on the wheel of the zodiac (see sec. \ref{duangchata}), corresponding
-to Aries.
+The name of a given month is determined by the nakshatra which the Full Moon
+enters at midnight. See Table \ref{tbl-month-names}.
 
 \begin{table}[h]
-\caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs}
+\caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs\autocite{hasapannyo-zodiac}}
 \centering
 \begin{tabular}{lrrlll}
 Season &  &  & Lunar Month & Solar Month & Solar Zodiac\\
  &  & days &  &  & (Western / Sanskrit)\\
 \hline
-Gimha-utu & 1 & 29 & Citta & April & Aries / Meṣa\\
-Hot Season & 2 & 30 & Visākha & May & Taurus / Vṛṣabha\\
- & 3 & 29 & Jeṭṭha & June & Gemini / Mithuna\\
- & 4 & 30 & Āsāḷha & July & Cancer / Karkaṭa\\
+Hemanta & 1 & 29 & Magasira & December & Sagittarius / Dhanus\\
+Cold Season & 2 & 30 & Phussa & January & Capricorn / Makara\\
+ & 3 & 29 & Māgha & February & Aquarius / Kumbha\\
+ & 4 & 30 & Phagguṇa & March & Pisces / Mīna\\
 \hline
-Vassāna-utu & 5 & 29 & Savaṇa & August & Leo / Siṃha\\
-Rainy Season & 6 & 30 & Bhaddapāda & September & Virgo / Kanyā\\
- & 7 & 29 & Assayuja & October & Libra / Tulā\\
- & 8 & 30 & Kattika & November & Scorpio / Vṛścika\\
+Gimhāna & 5 & 29 & Citta & April & Aries / Meṣa\\
+Hot Season & 6 & 30 & Visākha & May & Taurus / Vṛṣabha\\
+ & 7 & 29 & Jeṭṭha & June & Gemini / Mithuna\\
+ & 8 & 30 & Āsāḷha & July & Cancer / Karkaṭa\\
 \hline
-Hemanta-utu & 9 & 29 & Magasira & December & Sagittarius / Dhanus\\
-Cold Season & 10 & 30 & Phussa & January & Capricorn / Makara\\
- & 11 & 29 & Māgha & February & Aquarius / Kumbha\\
- & 12 & 30 & Phagguṇa & March & Pisces / Mīna\\
+Vassāna & 9 & 29 & Savaṇa & August & Leo / Siṃha\\
+Rainy Season & 10 & 30 & Bhaddapāda & September & Virgo / Kanyā\\
+ & 11 & 29 & Assayuja & October & Libra / Tulā\\
+ & 12 & 30 & Kattika & November & Scorpio / Vṛścika\\
 \end{tabular}
 \end{table}
-
-\section{The first and last day of a lunar month}
-\label{sec-4-3}
-\label{lunar-month-first-last}
-
-The lunar year starts at the spring equinox in April with Citta month, Hot
-Season. The lunar month ends on the New Moon day, the Full Moon is in the
-middle. Visākha 15, Āsāḷha 15, etc. is always Full Moon.
-
-In monastic practice, the Full Moon day is on the last day of a given
-month. The next month starts on the following day (first day of the
-waning phase), thus the first uposatha will be on a New Moon.
-
-In many Thai calendars, the New Moon day is the last day of the month,
-and the Full Moon day is in the middle. This only changes the
-numbering of the months, not the actual moondays. In these calendars
-the thresholds of months are shifted two weeks forward relative to the
-monastic calendar.
-
-This can be particularly important to watch at the end of the lunar year:
-
-The New Moon of the 12th \emph{Thai} lunar month is the New Moon (1st uposatha) of
-the 1st \emph{monastic} lunar month.
-
-\begin{table}[h]
-\caption{\label{monastic-thai-year} Monastic and Thai lunar months in a year}
-\centering
-\begin{tabular}{rllrr}
-Nth & phase & month & Monastic & Thai\\
-\hline
-1 & New &  & 1 & 12\\
-2 & Full & Magasira & 1 & 1\\
-3 & New &  & 2 & 1\\
-4 & Full & Phussa & 2 & 2\\
-5 & New &  & 3 & 2\\
-6 & Full & Māgha & 3 & 3\\
-7 & New &  & 4 & 3\\
-8 & Full & Phagguṇa & 4 & 4\\
-\end{tabular}
-\end{table}
-
-\section{The first month of the lunar year}
-\label{sec-4-4}
-
-The lunar year begins at the spring equinox in April, which is 0\degree on the
-zodiac wheel, corresponding to Aries.
-
-TODO:
-
-\begin{itemize}
-\item 0\degree = April = Citta 1 = Day 1
-\end{itemize}
-
-Is there a day 0?
-
-The \textbf{Year$_{\text{Horakhun}}$} is on day 0 + Tithi.
 
 
 \begin{table}[p]
@@ -828,10 +852,10 @@ The \textbf{Year$_{\text{Horakhun}}$} is on day 0 + Tithi.
 \clearpage
 
 \chapter{Suriyayatra formulas}
-\label{sec-5}
+\label{sec-4}
 \label{suriyayatra-formulas}
 \section{Overview}
-\label{sec-5-1}
+\label{sec-4-1}
 
 The formulas take two inputs: the year, and the n$^{\text{th}}$ day in the lunar year.
 They go through a series of operations step by step to produce certain values
@@ -932,7 +956,7 @@ following the steps, and still this allows him to obtain the necessary
 information to describe the progression of these events in any year.
 
 \section{Calculating the properties of the year}
-\label{sec-5-2}
+\label{sec-4-2}
 
 First we will see if we should add and extra month or extra day to keep the
 lunar year in sync with the solar year.
@@ -1032,7 +1056,7 @@ Let's begin then:
 Now we can determine if the year qualifies for adhikamāsa or adhikavāra.
 
 \section{Adhikamāsa conditions}
-\label{sec-5-3}
+\label{sec-4-3}
 \label{adhikamasa-years}
 
 (Thai: atikamat \thai{อธิกมาส})
@@ -1060,7 +1084,7 @@ In the above example for year CS 1325, the \textbf{Tithi} is 23, which doesn't s
 the first condition, and so it can't be adhikamāsa.
 
 \section{Adhikavāra conditions}
-\label{sec-5-4}
+\label{sec-4-4}
 \label{adhikavara-years}
 
 (Thai: atikawan \thai{อธิกวาร})
@@ -1123,7 +1147,7 @@ and the years follow the prediction of the formulas.
 \label{adhikavara-years-end}
 
 \section{Calculating the Position of the Sun and the Moon}
-\label{sec-5-5}
+\label{sec-4-5}
 \label{calculating-the-sun-and-moon}
 
 Eade describes the formulas at the end of his paper \emph{Rules for interpolation in
@@ -1321,7 +1345,7 @@ Let's look up if 1963 July 6 is listed under Full Moons:\footnote{\href{http://a
 \clearpage
 
 \chapter{The Duang Chata}
-\label{sec-6}
+\label{sec-5}
 \label{duangchata}
 
 \begin{figure}[h]
@@ -1335,17 +1359,6 @@ Tithi
 
 Aka horasat โหราศาสตร์
 
-month: duean เดือน
-
-month 8/8: เดือน ๘/๘
-
-Waxing : khang khuen (ข้างขึ้น), the period from new moon to full moon, is always 15 days long.
-Waning : khang raem (ข้างแรม), the period from full moon to new moon
-
-``\ldots{}it is now appropriate for Thailand to observe New Year's Day on the first day of January.''
-
-\url{https://en.wikisource.org/wiki/Proclamation_on_Observance_of_New_Year\%27s_Day_on_1_January,_dated_24_December_1940}
-
 normal year: Prokkatimat ปรกติมาส
 
 ปกติมาส, rtgs: (pi) pakatimat,
@@ -1353,8 +1366,6 @@ normal year: Prokkatimat ปรกติมาส
 อธิกวาร, rtgs: (pi) athikawan
 
 อธิกมาส, rtgs: (pi) athikamat
-
-\url{https://en.wikipedia.org/wiki/Thai_lunar_calendar}
 
 Sun on Thai duang: \thai{๑}\\
 Moon on Thai duang: \thai{๒}
@@ -1366,14 +1377,14 @@ Rasi is 0-11, Nakshatra is 1-27. Sun = \theSun, Moon = \theMoon.
 \label{duangchata-end}
 
 \section{Tithi progression}
-\label{sec-6-1}
+\label{sec-5-1}
 
 30 Tithi, 15 is Full Moon
 
 Duang at Tithi: 0 3 6 9 12 15 18 21 24 27 29(?)
 
 \section{Rasi}
-\label{sec-6-2}
+\label{sec-5-2}
 
 Rasi \thai{ราศี}
 
@@ -1408,7 +1419,7 @@ The notation $x:y\degree z\minute = x*30 + y + z/60$, thus 36\degree 5\minute is
 $1:6\degree 5\minute$.
 
 \section{Nakshatra, lunar mansions}
-\label{sec-6-3}
+\label{sec-5-3}
 
 Nakshatra \thai{นักษัตร}
 
@@ -1458,7 +1469,7 @@ lunar mansion per day.
 \clearpage
 
 \chapter{In Golang}
-\label{sec-7}
+\label{sec-6}
 \label{suriya-go-example}
 
 Going through all this may be intriguing to calculate once, but mention
@@ -1506,7 +1517,7 @@ Adhikavāra: true
 \end{verbatim}
 
 \section{1288}
-\label{sec-7-1}
+\label{sec-6-1}
 \label{golang-1288}
 
 We will investigate 14 April 1288, and while doing that, also 15 June 1288,
@@ -1515,7 +1526,7 @@ which should turn out to be the date of Āsāḷha Pūjā.
 \inputminted{go}{./includes/print-1288.go}
 
 \chapter{Gregorian leap years}
-\label{sec-8}
+\label{sec-7}
 
 \begin{table}[h]
 \caption{\label{tbl-cycle-leap-years} Gregorian leap years}
@@ -1540,7 +1551,7 @@ which should turn out to be the date of Āsāḷha Pūjā.
 \backmatter
 
 \chapter{Websites and Apps}
-\label{sec-9}
+\label{sec-8}
 
 TODO
 
@@ -1549,6 +1560,19 @@ myhora.com
 \url{http://horoscope.thaiorc.com/calendar/thaicalendar.php}
 
 uposatha app
+
+\chapter{Glossary}
+\label{sec-9}
+
+Aka horasat โหราศาสตร์
+
+month: duean เดือน
+
+month 8/8: เดือน ๘/๘
+
+Waxing : khang khuen (ข้างขึ้น), the period from new moon to full moon, is always 15 days long.
+Waning : khang raem (ข้างแรม), the period from full moon to new moon
+
 
 \chapter{Bibliography}
 \label{sec-10}
@@ -1565,7 +1589,7 @@ Please send comments, corrections and further information to:
 
 \texttt{Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>}
 
-Last updated on 2015-11-15.
+Last updated on 2015-11-16.
 
 
 \fullpage{%

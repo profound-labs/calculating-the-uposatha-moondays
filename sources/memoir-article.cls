@@ -144,9 +144,10 @@
 \settrimmedsize{\stockheight}{\stockwidth}{*}
 \settrims{0pt}{0pt}
 \setlrmarginsandblock{0.1\paperwidth}{*}{3}
-\setulmarginsandblock{0.1\paperheight}{*}{1}
-\setheadfoot{\baselineskip}{2\baselineskip}
+\setulmarginsandblock{0.1\paperheight}{0.1\paperheight - 2\baselineskip}{*}
+\setheadfoot{\baselineskip}{\baselineskip}
 \setheaderspaces{*}{15pt}{*}
+\setfootins{2\baselineskip}{\bigskipamount}
 
 \setmarginnotes{17pt}{45mm}{20pt}
 %\addtolength{\marginparsep}{10pt}
