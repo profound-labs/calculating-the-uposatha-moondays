@@ -926,13 +926,15 @@ three will determine the adhikamāsa and adhikavāra:
 
 \savenotes
 
-- Kammacubala \thai{กัมมัชพล} :: remaining 800ths of a day
-- Avoman \thai{อวมาน} :: used for the Moon's mean motion
-- Tithi\footnote{a.k.a. Thaloengsok or New Year's Day} \thai{ดีถี} :: age of the Moon, from 0-29
+- Kammacubala \thai{กัมมัชพล} :: used as a remainder value for 800ths of a day,\\
+  1 day = 800 kammacubala
+- Avoman \thai{อวมาน} :: used for the Moon's mean motion,\\ 1 day = 11 avoman
+- Tithi\footnote{a.k.a. Thaloengsok or New Year's Day} \thai{ดีถี} :: age of the Moon in /lunar/ days, from 0-29, \\
+  692 solar days = 692 + 11 lunar days
 
 As we follow the steps, we will also obtain:
 
-- Horakhun \thai{อหรคุณ} :: day index, or elapsed days of the era
+- Horakhun\footnote{a.k.a. Ahargana} \thai{อหรคุณ} :: day index, or elapsed days of the era
 - Uccabala \thai{อุจจพล} :: age of the Moon's apogee
 - Masaken \thai{มาสเกณฑ์} :: elapsed months of the era
 
@@ -942,17 +944,18 @@ As we follow the steps, we will also obtain:
 \spewnotes
 
 The zodiac wheel (a.k.a /duang chata/, sec. \ref{duangchata}) is divided into 12
-segments called /rasi/ (\thai{ราศี}), each marking 30 degrees.
-
-The wheel is also divided into 27 lunar mansions called /nakshatra/
-(\thai{นักษัตร}).
+segments called /rasi/ (\thai{ราศี}), $30\degree$ each, and into 27 lunar
+mansions called /nakshatra/ (\thai{นักษัตร}), $13\degree 20\minute$ each.
 
 Angular positions are given in a notation that expresses the rasi number plus
 the degrees and arcminutes. These values are also called the /rasi/, /angsa/ and
 /lipda/.
 
-The notation $r:a\degree l\minute = r*30 + a + l/60$, thus $85\degree 22\minute$ is
-$2:25\degree 22\minute$.
+#+latex: \marginpar{\vspace*{-2\baselineskip}%
+$2:25\degree 22\minute$ notation means:\\
+$r:a\degree l\minute = r*30 + a + l/60$,\\
+thus $85\degree 22\minute$ is $2:25\degree 22\minute$.
+#+latex: }
 
 # TODO: maybe a note about the difference b/w mean and true positions
 
@@ -992,18 +995,6 @@ Let's take the year CE 1963 (CS 1325) as an example and calculate its
 properties. We should find that it is an adhikavāra year. If you calculate the
 following year CE 1964 (CS 1326) as an excercise, you should find that it is
 adhikamāsa.
-
-Notation recap:
-
-$a \bmod b$ produces the /remainder part/ of $a/b$.\\
-E.g. $14 \bmod 5 = 4$, because $14/5 = 2*5 + 4$.
-
-$\lfloor a \rfloor$ /floors/ (or truncates) a fraction value, meaning we discard
-the fraction part and only keep the integer part.\\
-E.g. $\lfloor 12.8 \rfloor = 12$.
-
-$|a|$ is the /absolute/ value of $a$.\\
-E.g. $|-4.21| = 4.21$ and $|4.21| = |4.21|$.
 
 #+begin_latex
 
@@ -1070,6 +1061,27 @@ Since 703 / 692 can be expressed as 692 + 11 / 692, the ratio is simplified to t
 \begin{equation}
 \frac{703}{692} = \frac{692 + 11}{692}
 \end{equation}
+
+\marginpar{%
+\vspace*{-6\baselineskip}%
+\setlength{\parskip}{5pt}%
+\footnotesize
+
+Notation recap:
+
+$a \bmod b$ produces the \textit{remainder part} of $a/b$.
+
+$14 \bmod 5 = 4$, because\\ $14/5 = 2*5 + 4$.
+
+$\lfloor a \rfloor$ \textit{floors} (or truncates) a fraction value, meaning we discard
+the fraction part and only keep the integer part.
+
+$\lfloor 12.8 \rfloor = 12$.
+
+$|a|$ is the \textit{absolute value} of $a$.
+
+$|-4.21| = 4.21$ and $|4.21| = |4.21|$.
+}
 
 Let's begin then:
 
@@ -1246,7 +1258,7 @@ the Thai calendar/.\autocite{eade2000rules} This allows us to continue examining
 the year CE 1963 (CS 1325).
 
 #+latex: \marginpar{\vspace*{-1.5\baselineskip}\footnotesize
-His notation however, is a puzzle in itself, with its implied conversions and
+His notation however, is a puzzle in \mbox{itself}, with its implied conversions and
 obscure progression from one step to the next.
 
 The folks at [[http://astronomy.stackexchange.com/][Astronomy Stack Exchange]] helped to decipher it:
@@ -1332,15 +1344,22 @@ Note that 60 converts values between degrees and arcminutes:
 
 Find the position of the *Mean* and *True Moon*:
 
+\savenotes
+
 #+begin_latex
-\marginpar{\footnotesize
+\marginpar{%
+\setlength{\parskip}{5pt}%
+\footnotesize
+
+$-3\minute$ and $-40\minute$ are geographical correction for the Sun and the Moon.\autocite[p. 6, fn. 13]{eade2000rules}
+
+$-80\degree$ is the Sun's apogee value for Mean- to True longitude conversion.\autocite[p. 134]{eade1995calendrical}
+
 One \textbf{Tithi} is 12\degree, from\\
 $360\degree / 30 = 12\degree$.
-
-\bigskip
-
-$-40\minute$ is geographical correction.
 }
+
+\spewnotes
 
 \begin{align}
 \begin{split}
@@ -1479,16 +1498,29 @@ Let's look up if 1963 July 6 is listed under Full Moons:\footnote{\href{http://a
 * The Duang Chata
 \label{duangchata}
 
+#+latex: \marginpar{\vspace*{-\baselineskip}%
+TODO Horakhun, Tithi, etc.
+
+$0\degree$ (Aries) is the spring equinox.
+#+latex: }
+
+#+latex: \marginpar{%
+$2:25\degree 22\minute$ notation means:\\
+$r:a\degree l\minute = r*30 + a + l/60$,\\
+thus $85\degree 22\minute$ is $2:25\degree 22\minute$.
+#+latex: }
+
 #+begin_latex
 \begin{figure}[h]
 \caption{Duang Chata \thai{ดวงชะตา}.}
 \resizebox{\linewidth}{!}{\DuangChata[Sun={2/0/0}, Moon={4/5/10}, fancy]}
+\end{figure}
+#+end_latex
+
+*** notes                                                          :noexport:
 
 Horakhun\\
 Tithi
-
-\end{figure}
-#+end_latex
 
 Aka horasat โหราศาสตร์
 
@@ -1506,10 +1538,6 @@ Moon on Thai duang: \thai{๒}
 Rasi is 0-11, Nakshatra is 1-27. Sun = \theSun, Moon = \theMoon.
 
 0:1\degree 2\minute = Rasi:Angsa\degree Lipda\minute or Rasi:Degree\degree Minute\minute.
-
-\label{duangchata-end}
-
-*** notes                                                          :noexport:
 
 https://en.wikipedia.org/wiki/Nakshatra 
 Nakshatra, Thai
@@ -1539,15 +1567,13 @@ moon will normally be occupying at Full Moon.
 
 p.78: duang chata / zata
 
-** Tithi progression
-
-30 Tithi, 15 is Full Moon
-
-Duang at Tithi: 0 3 6 9 12 15 18 21 24 27 29(?)
-
 ** Rasi
 
-Rasi \thai{ราศี}
+#+latex: \marginpar{\vspace*{-\baselineskip} Thai: rasi \thai{ราศี}}
+
+The circle is divided into 12 segments called /rasi/, each marking 30 degrees.
+Their numbering starts from 0, to express $x*30\degree$. See Table
+\ref{tbl-rasi-names}.
    
 #+attr_latex: :placement [h] :caption \caption{\label{tbl-rasi-names} Names of the 12 Rasi.}
 |    | Western     | Sanskrit | Thai        |
@@ -1565,46 +1591,55 @@ Rasi \thai{ราศี}
 | 10 | Aquarius    | Kumbha   | \thai{กุมภ์}  |
 | 11 | Pisces      | Mīna     | \thai{มีน}   |
 
-The circle is divided into 12 segments called /rasi/, each marking 30 degrees.
-Their numbering starts from 0, to express $x*30\degree$. See Table
-\ref{tbl-rasi-names}.
-
-0 degree (Aries) is the vernal equinox.
-
-The notation $x:y\degree z\minute = x*30 + y + z/60$, thus 36\degree 5\minute is
-$1:6\degree 5\minute$.
-
 ** Nakshatra, lunar mansions
 
-Nakshatra \thai{นักษัตร}
+#+latex: \marginpar{\vspace*{-\baselineskip} Thai: naksat \thai{นักษัตร}}
 
-# Eade, Calendrical, p.31
+#+begin_quote
+The Thai term for nakshatra is "raek", and the Burmese term is "nekkhat". The
+reference is to the 27 segments into which the moon's orbit is
+divided.\footnote{The Southeast Asian system makes no use of a 28th raek.} Each
+segment is therefore $13\degree 20\minute$ in extent, and the inclination of the
+Moon's orbit relative to the Sun's orbit is not taken into account, so that the
+lunar mansions can be considered as lying in the same plane as the Sun's rasi.
+In very general terms, and since the Moon's average motion is $13\degree$ a day,
+the Moon can be considered to traverse one lunar mansion per day.\autocite[p. 31]{eade1995calendrical}
+#+end_quote
+   
+#+begin_quote
+The names of the lunar month are derived from the name of the nakshatra that the
+Moon will normally be occupying at Full Moon. But caution is required: since the
+Moon's speed varies sharply, it may be that the mansion at Full Moon is one
+(even two) short of, or past, where it "ought" to be.\autocite[p. 34]{eade1995calendrical}
+#+end_quote
 
-The Moon moves about 13\degree\ a day, which in general means it traverses one
-lunar mansion per day.
+#+begin_latex
+\begin{table}[h]
+\caption{\label{tbl-nakshatra-names} Names of the 27 Nakshatra.}
+\begin{multicols}{2}
+#+end_latex
 
-# Eade, Calendrical, p.33
+|    | Sanskrit        | Thai           |
+|----+-----------------+----------------|
+|  1 | Ashvinī         | \thai{อัศวินี}    |
+|  2 | Bharanī         | \thai{ภรณี}     |
+|  3 | Kṛttikā         | \thai{กฤติกา}   |
+|  4 | Rohinī          | \thai{โรหิณี}    |
+|  5 | Mrigashīra      | \thai{มฤคศีรษะ} |
+|  6 | Ārdrā           | \thai{อาทรา}   |
+|  7 | Punarvasu       | \thai{ปุนวสุ}    |
+|  8 | Pushya          | \thai{ปุษยะ}    |
+|  9 | Āshleshā        | \thai{อาศเลศา} |
+| 10 | Maghā           | \thai{มฆา}     |
+| 11 | Pūrva Phalgunī  | \thai{บูรพผลคุณี} |
+| 12 | Uttara Phalgunī | \thai{อุตรผลคุณี} |
+| 13 | Hasta           | \thai{หัสตะ}    |
+| 14 | Chitrā          | \thai{จิตรา}    |
 
-https://en.wikipedia.org/wiki/Nakshatra 
-
-https://th.wikipedia.org/wiki/%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%82%E0%B8%B1%E0%B8%95%E0%B8%A4%E0%B8%81%E0%B8%A9%E0%B9%8C
+\columnbreak
 
 |    | Sanskrit          | Thai            |
 |----+-------------------+-----------------|
-|  1 | Ashvinī           | \thai{อัศวินี}     |
-|  2 | Bharanī           | \thai{ภรณี}      |
-|  3 | Kṛttikā           | \thai{กฤติกา}    |
-|  4 | Rohinī            | \thai{โรหิณี}     |
-|  5 | Mrigashīra        | \thai{มฤคศีรษะ}  |
-|  6 | Ārdrā             | \thai{อาทรา}    |
-|  7 | Punarvasu         | \thai{ปุนวสุ}     |
-|  8 | Pushya            | \thai{ปุษยะ}     |
-|  9 | Āshleshā          | \thai{อาศเลศา}  |
-| 10 | Maghā             | \thai{มฆา}      |
-| 11 | Pūrva Phalgunī    | \thai{บูรพผลคุณี}  |
-| 12 | Uttara Phalgunī   | \thai{อุตรผลคุณี}  |
-| 13 | Hasta             | \thai{หัสตะ}     |
-| 14 | Chitrā            | \thai{จิตรา}     |
 | 15 | Svātī             | \thai{สวาตี}     |
 | 16 | Vishākhā          | \thai{วิศาขา}    |
 | 17 | Anurādhā          | \thai{อนุราธา}   |
@@ -1619,7 +1654,20 @@ https://th.wikipedia.org/wiki/%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B8%B1%E0%B
 | 26 | Uttara Bhādrapadā | \thai{อุตรภัทรบท} |
 | 27 | Revatī            | \thai{เรวตี}     |
 
+#+begin_latex
+\end{multicols}
+\end{table}
+#+end_latex
+
+\label{duangchata-end}
+
 \clearpage
+
+*** notes                                                          :noexport:
+
+https://en.wikipedia.org/wiki/Nakshatra 
+
+https://th.wikipedia.org/wiki/%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%82%E0%B8%B1%E0%B8%95%E0%B8%A4%E0%B8%81%E0%B8%A9%E0%B9%8C
 
 * In Golang
 \label{suriya-go-example}
@@ -1698,9 +1746,9 @@ which should turn out to be the date of Āsāḷha Pūjā.
 
 * Reading the Thai calendar layout
 
-#+latex: \href{http://www.myhora.com/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99-100%E0%B8%9B%E0%B8%B5-%E0%B8%9E.%E0%B8%A8.2558.aspx}{myhora.com - 2015 - \thai{ปฏิทิน 100 ปี 2558 ปฏิทินร้อยปี ปีมะแม}}
+#+latex: \href{http://www.myhora.com/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99-100%E0%B8%9B%E0%B8%B5-%E0%B8%9E.%E0%B8%A8.2558.aspx}{myhora.com - 2015}
 
-#+latex: \href{http://horoscope.thaiorc.com/calendar/thaicalendar.php?y=2558}{horoscope.thaiorc.com - 2015 - \thai{ปฏิทิน 150 ปี ปฏิทินจันทรคติ ปฏิทินสุริยคติ}}
+#+latex: \href{http://horoscope.thaiorc.com/calendar/thaicalendar.php?y=2558}{horoscope.thaiorc.com - 2015}
   
 #+begin_latex
 \begin{fullwidth}
