@@ -2,7 +2,7 @@
 #+LATEX_HEADER: \usepackage{local}
 #+LATEX_HEADER: \renewcommand{\docVersion}{v1.0}
 #+LATEX_HEADER: \renewcommand{\docUrl}{\href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{link}}
-#+LATEX_HEADER: \hypersetup{ pdfauthor={Hāsapañño Bhikkhu, Gambhīro Bhikkhu}, }
+#+LATEX_HEADER: \hypersetup{ pdfauthor={Gambhīro Bhikkhu, Hāsapañño Bhikkhu}, }
 #+OPTIONS: toc:nil tasks:nil ':t H:4
 #+BIBLIOGRAPHY: bibentries plain option:-d
 #+SOURCES_URL: https://github.com/profound-labs/calculating-the-uposatha-moondays/
@@ -25,7 +25,7 @@
 - Conditions on the values produced by formulas determine if a year should be
   assigned an adhikamāsa or adhikavāra.
 - The 3-3-2 - 3-3-3-2 shorthand to determine adhikamāsa years is not sufficient.
-- Conventions on how to practise this can differ by countries and monastic groups.
+- Conventions on how to practise this can be differ by countries and monastic groups.
 - Common and adhikamāsa years have been regular in past calendars and thus
   reliable to predict. Some adhikavāra years have been irregular, approx. 1
   in 20. However, everything since 1997 have been according to the regular
@@ -35,7 +35,18 @@
 \thispagestyle{empty}
 
 #+begin_latex
-\marginpar{%
+\savenotes
+
+\marginpar{\vspace*{-65pt}\footnotesize
+``One must acquire the habit of saying `different' rather than `wrong.'\thinspace ''
+
+{\raggedleft
+JC Eade, \textit{Calendrical Systems}, p. 4.
+\par}}
+
+\spewnotes
+
+\marginpar{\vspace*{\baselineskip}%
 \textbf{Just here for the formulas?}
 
 Dive in at sec. \ref{suriyayatra-formulas},
@@ -49,9 +60,9 @@ Reading time:
 \par}
 #+end_latex
 
-You don't need to read everything here just to have a better understanding of
-the /uposathas/. The sections get progressively more involved, drop it when you
-don't need more.
+The first section (3 pages) is already informative if you just wish to have a
+better understanding of the /uposathas/. The sections get progressively more
+involved, drop it when you don't need more.
 
 - 3 pages :: To understand how to construct the sequence of a given year's uposathas, see
   page \pageref{uposatha-tutorial}-\pageref{uposatha-tutorial-end}
@@ -66,6 +77,12 @@ don't need more.
   wheel diagrams (a.k.a /duang chata/). Making sense of these is in sec. \ref{duangchata},
   page \pageref{duangchata}-\pageref{duangchata-end}.
 
+\clearpage
+
+*** TODO later
+
+Footer on front page:
+
 #+begin_latex
 {\centering\large\bfseries
 Related:
@@ -79,63 +96,6 @@ Related:
 
 Download [[https://github.com/profound-labs/calculating-the-uposatha-moondays/raw/master/calculating-the-uposatha-moondays.pdf][this PDF]] or a [[https://github.com/profound-labs/calculating-the-uposatha-moondays/archive/master.zip][ZIP archive]]. The ZIP contains the PDFs referenced in this document.
 
-#+begin_latex
-%\AddToShipoutPictureFG*{\put(0,0){%
-%\begin{minipage}[b]{\paperwidth}%
-%
-%\includegraphics[width=50mm]{formula-sample.pdf}
-%\includegraphics[width=50mm]{code-sample.pdf}
-%\includegraphics[width=50mm]{duangchata-sample.pdf}
-%
-%\end{minipage}%
-%}}%
-#+end_latex
-
-\clearpage
-
-*** TODO before release
-
-# Add somewhere: Asia doesn't express any desire for grand unified theories.
-# When there are two ways of doing things, it doesn't unify them, but uses them
-# both.
-
-- diff b/w year and day horakhun
-- get date for day 0
-- fill in values for formulas
-- X add duang
-- X add astropixels img
-  
-- add the 1288 results to the suriya-go Golang tests
-
-- describe websites and apps
-
-- get to Raek:
-
-add: the Suriyayatra year starts at Citta 1, not Magasira 1
-
-hence also the Thai new year in April
-
-Zodiac position of Sun and Moon:
-section to explain how to covert to and from Eade's sign notation, refer to them
-as functions, diagram how it shows up on a Zodiac circle.
-
-describe the steps as in the code.
-
-demonstrate it with golang at the end.
-
-- rubbish table: Monastic and Thai lunar months in a year
-
-this needs a diagram
-
-- explain how to get zodiac position from formula with Eade notation
-
-- Hasapannyo's zodiacs are in the wrong position?
-
-- ? can fix footnote references
-
-- ? is there an update of Hasapannyo's Zodiac PDF
-
-*** TODO later
 
 small inconsistencies in the uposatha sequence diagrams, text not aligned with
 the center of the moons
@@ -229,6 +189,11 @@ Now we know that the year is either:
 Gregorian leap years don't affect the lunar calendar, but it may be useful to
 check when planning ahead. Table \ref{tbl-cycle-leap-years} shows a few leap
 years.
+
+#+attr_latex: :placement [h] :caption \caption{\label{tbl-cycle-leap-years} Gregorian leap years}
+| 2004 | 2016 | 2028 | 2040 |
+| 2008 | 2020 | 2032 | 2044 |
+| 2012 | 2024 | 2036 | 2048 |
 
 \clearpage
 
@@ -555,7 +520,32 @@ Luni-solar calendars are constructed so as to count *years* according to the
 | tropical year[fn:tropicalyear]\space of the Earth | 365.24219 days                      |
 | synodic month[fn:synodicmonth]\space of the Moon  | ~29.53 days, can vary up to 7 hours |
 
-The epoch of the Thai lunar calendar is 25 March 638 BCE, this is the beginning
+#+begin_latex
+\begin{marginfigure}[-\baselineskip]
+\raggedright\footnotesize
+The program prints:
+
+\begin{verbatim}
+Horakhun: 1
+Date: 0638 March 25
+True Sun: 0:2°38'
+True Moon: 0:20°30'
+Tithi: 1
+\end{verbatim}
+
+Which can be represented on a zodiac wheel:
+
+\bigskip
+
+{\centering
+\resizebox{0.9\linewidth}{!}{\DuangChata[Sun={0/2/38}, Moon={0/20/30}, simple]}
+\par}
+
+\caption{Horakhun 1, first day of the CS Era}
+\end{marginfigure}
+#+end_latex
+
+The epoch of the Thai lunar calendar is 25 March 638 CE, this is the beginning
 of the /Chulasakkarat Era/.\autocite{eade1995calendrical}
 
 The epoch of the /Buddhist Era/ is the date when the Buddha attained
@@ -614,7 +604,7 @@ lunar year, counting from Citta 1. While checking that, we might as well see day
 \caption{1288 April 14}
 \raggedright
 
-\resizebox{\linewidth}{!}{\DuangChata[Sun={0/19/58}, Moon={5/11/27}, simple]}
+\resizebox{0.9\linewidth}{!}{\DuangChata[Sun={0/19/58}, Moon={5/11/27}, simple]}
 
 \footnotesize
 \bigskip
@@ -696,8 +686,8 @@ Eade discusses a calendar error in CS 855 (CE 1493) when the formulas have
 determined a /twelfth/ adhikavāra year in a 57 year period, which was not
 noticed by several astronomers at the time, who were using the "11 times in 57
 years" rule of thumb for adhikavāra years. This resulted in wrong dates being
-used on any inscriptions made until the error was corrected in the
-calendar.\autocite{eade2007irregular}
+used on any inscriptions (carved into stone) until the error was corrected in
+the civil calendar.\autocite{eade2007irregular}
 
 # If this \clearpage is after the fn texts, it is included in them
 # \clearpage
@@ -779,8 +769,9 @@ The months and seasons are two separate way of referencing lunar phases, they
 are never used together in the same expression.
 
 They are used in different contexts too, so the overlap doesn't seem to bother
-anyone. Secular society marks periods by /months/ in the year, but the monastic
-tradition is concerned instead with the number of /uposathas/ in the season.
+anyone. The civil calendar marks periods by /months/ in the year, but the
+monastic calendar is concerned instead with the number of /uposathas/ in the
+season.
 
 #+latex: The monastic tradition references Full- and New Moons as the ``Nth uposatha of the X~Season.''
 
@@ -797,6 +788,8 @@ and area of the sky around certain stars.
 
 The name of a given month is determined by the nakshatra which the Full Moon
 enters at midnight. See Table \ref{tbl-month-names}.
+
+\savenotes
 
 #+attr_latex: :placement [h] :caption \caption{\label{tbl-month-names} Lunar and Solar Months and Zodiacs\autocite{hasapannyo-zodiac}}
 | Season       |    |      | Lunar Month | Solar Month | Solar Zodiac         |
@@ -817,9 +810,13 @@ enters at midnight. See Table \ref{tbl-month-names}.
 |              | 11 |   29 | Assayuja    | October     | Libra / Tulā         |
 |              | 12 |   30 | Kattika     | November    | Scorpio / Vṛścika    |
 
+\spewnotes
+
 # Big tables that need a separate page
 
-#+attr_latex: :placement [p] :caption \caption{\label{tbl-calendars-1958} Adhikamāsa and adhikavāra in the period 1958 to 1978 (CS 1320-1340).\autocite{eade-interpolation}}\legend{m for adhikamāsa, d for adhikavāra years, \Delta m and \Delta d for years since last adhikamāsa and adhikavāra.}
+\savenotes
+
+#+attr_latex: :placement [h] :caption \caption{\label{tbl-calendars-1958} Adhikamāsa and adhikavāra in the period 1958 to 1978 (CS 1320-1340).\autocite{eade-interpolation}}\legend{m for adhikamāsa, d for adhikavāra years, \Delta m and \Delta d for years since last adhikamāsa and adhikavāra.}
 |    | \Delta d |    | \Delta m | year | type | Asalha | 2nd Asalha |
 |----+----------+----+----------+------+------+--------+------------|
 |    |          |  0 |          | 1320 | m    |  19:42 |      22:24 |
@@ -843,6 +840,8 @@ enters at midnight. See Table \ref{tbl-month-names}.
 | 17 |          | 18 |          | 1338 |      |  21:11 |            |
 | 18 |          | 19 |        2 | 1339 | m    |  19:45 |      22:35 |
 | 19 |        5 |    |          | 1340 | d    |  21:05 |            |
+
+\spewnotes
 
 # Clear floats
 \clearpage
@@ -889,7 +888,7 @@ adhikavāra. They can also give us the angular position of the Sun and the Moon
 on a particular day.
 
 #+begin_latex
-\begin{marginfigure}
+\begin{marginfigure}[-10mm]
 \raggedright
 \caption{\label{fig-wheel-2014-asalha} 2014 July 11, Āsāḷha Full Moon}
 
@@ -938,8 +937,16 @@ As we follow the steps, we will also obtain:
 - Uccabala \thai{อุจจพล} :: age of the Moon's apogee
 - Masaken \thai{มาสเกณฑ์} :: elapsed months of the era
 
-- MeanSun, TrueSun, MeanMoon, TrueMoon :: Mean and True angular position of the Sun and the Moon
+- MeanSun, TrueSun, MeanMoon, TrueMoon :: Mean- and True longitude of the Sun and the Moon
 - Raek :: The position of the Moon in terms of the 27 lunar mansions, which will determine the month
+
+#+begin_latex
+\marginpar{\vspace*{-5\baselineskip}\footnotesize
+While mean longitude measures a mean position and assumes constant speed,
+true longitude meausures the actual longitude and assumes the body has moved
+with its actual speed, which varies around its elliptical \mbox{orbit}.\autocite{wp-mean-longitude}
+}
+#+end_latex
 
 \spewnotes
 
@@ -951,13 +958,12 @@ Angular positions are given in a notation that expresses the rasi number plus
 the degrees and arcminutes. These values are also called the /rasi/, /angsa/ and
 /lipda/.
 
-#+latex: \marginpar{\vspace*{-2\baselineskip}%
-$2:25\degree 22\minute$ notation means:\\
+#+latex: \marginpar{\vspace*{-2\baselineskip}\footnotesize
+$2:25\degree 22\minute$ notation represents /rasi/, /angsa/ (degrees), /lipda/ (minutes).
+
 $r:a\degree l\minute = r*30 + a + l/60$,\\
 thus $85\degree 22\minute$ is $2:25\degree 22\minute$.
 #+latex: }
-
-# TODO: maybe a note about the difference b/w mean and true positions
 
 Only basic operations in a series of simple steps are necessary to produce these
 results. It can be carried out entirely on paper, although the aim here is to
@@ -1001,6 +1007,8 @@ adhikamāsa.
 Era Constants. The offsets are required because their value was not 0 at the beginning of the Era.
 For readability, where the meaning is not ambiguous, we will use their values directly.
 
+\bigskip
+
 \begin{fullwidth}
 \begin{multicols}{2}
 
@@ -1020,7 +1028,7 @@ For readability, where the meaning is not ambiguous, we will use their values di
 	$Days_{M}     $ & $30    $ & Days in a month \\
 	$Days_{Cycle} $ & $692   $ & Days in a cycle \\
 	$Tithi_{Cycle}$ & $703   $ & Tithi in a cycle \\
-	$Cycle_{inc}  $ & $11    $ & Tithi daily increase \\
+	$Tithi_{inc}  $ & $11    $ & Tithi daily increase \\
 	$Kc_{inc}     $ & $800   $ & Kammacubala daily increase \\
 \end{tabular}
 
@@ -1040,7 +1048,7 @@ For readability, where the meaning is not ambiguous, we will use their values di
 	$Days_{M}     $ & $30    $ \\
 	$Days_{Cycle} $ & $692   $ \\
 	$Tithi_{Cycle}$ & $703   $ \\
-	$Cycle_{inc}  $ & $11    $ \\
+	$Tithi_{inc}  $ & $11    $ \\
 	$Kc_{inc}     $ & $800   $ \\
 \end{tabular}%
 }
@@ -1053,7 +1061,7 @@ For readability, where the meaning is not ambiguous, we will use their values di
 
 \clearpage
 
-The relationship between cycles of \textbf{solar days} and \textbf{tithi}:
+The relationship between cycles of \textbf{solar days} and \textbf{tithi} (lunar days):
 "For every 692 solar days that elapse there are also 703 tithi.
 Since 703 / 692 can be expressed as 692 + 11 / 692, the ratio is simplified to these terms ...
 11 is the daily increase (excess tithi over days)."\autocite[p. 48]{eade1995calendrical}
@@ -1498,31 +1506,93 @@ Let's look up if 1963 July 6 is listed under Full Moons:\footnote{\href{http://a
 * The Duang Chata
 \label{duangchata}
 
-#+latex: \marginpar{\vspace*{-\baselineskip}%
-TODO Horakhun, Tithi, etc.
+The /duang chata/ \thai{ดวงชะตา}, or /horasat/ \thai{โหราศาสตร์} represents date
+and time by the positions of the celestial bodies. When it represents a day, the
+positions are at the time of midnight.
 
-$0\degree$ (Aries) is the spring equinox.
-#+latex: }
-
-#+latex: \marginpar{%
-$2:25\degree 22\minute$ notation means:\\
-$r:a\degree l\minute = r*30 + a + l/60$,\\
-thus $85\degree 22\minute$ is $2:25\degree 22\minute$.
-#+latex: }
+$0\degree$ (Aries) is the spring equinox, the segments 0-11 are the /rasi/, the
+segments 1-27 are the /nakshatra/ or lunar mansions.
 
 #+begin_latex
-\begin{figure}[h]
-\caption{Duang Chata \thai{ดวงชะตา}.}
-\resizebox{\linewidth}{!}{\DuangChata[Sun={2/0/0}, Moon={4/5/10}, fancy]}
-\end{figure}
+\begin{marginfigure}[\baselineskip]
+\raggedright\footnotesize
+Wat Chai Phra Kiat:\\
+\href{https://encrypted.google.com/maps/place/Wat+Chai+Phrakiat/@18.7886216,98.9857345,20z/}{Google Maps}\\
+\href{https://www.renown-travel.com/temples/wat-chai-phra-kiat.html}{renown-travel.com}
+\end{marginfigure}
 #+end_latex
+
+On the Thai historical inscriptions, the planets are labelled by a
+number.\autocite[p. 79]{eade1995calendrical} The stone inscription below is
+found on the base of the Buddha image at Wat Chai Phra Kiat, Chiang Mai, and
+records the date of casting the image.\footnotemark{} The photo was republished by
+JC Eade in his paper.\autocite{eade1993mangrai}
+
+#+begin_latex
+\footnotetext{The image caption in the paper places the inscription at Wat
+Chang Kham, which is probably an editorial mistake. Wat Chang Kham is in the Nan
+province, and the paper only discusses Wat Chai Phra Kiat in Chiang Mai.}
+#+end_latex
+
+We can look at the inscription and find the date for which the formulas
+reproduce the given positions.
+
+\bigskip
+
+#+begin_latex
+\begin{extrafullwidth}%
+\begin{minipage}[c]{0.6\linewidth}%
+\centering
+\resizebox{\linewidth}{!}{\DuangChata[Sun={8/25/29}, Moon={9/20/50}, fancy]}
+\par
+\end{minipage}%
+\begin{minipage}[c]{0.4\linewidth}%
+\centering
+\includegraphics[width=0.9\linewidth]{wat-chai-phra-kiat-buddha-inscription.png}
+\par
+\end{minipage}%
+\end{extrafullwidth}
+#+end_latex
+
+\bigskip
+
+Here we only calculate the Sun \theSun{} (1, \thai{๑}) and the Moon \theMoon{}
+(2, \thai{๒}), this already allows us to identify day 298 in the lunar year, and
+gives us the date as *1566 January 3*.
+
+#+begin_latex
+\begin{marginfigure}[-1.5\baselineskip]
+\raggedright\footnotesize
+The code at sec. \ref{golang-mangrai} prints:
+
+\begin{verbatim}
+Day: 298
+Date: 1566 Jan 3
+Horakhun: 338865
+Tithi: 2
+True Sun: 8:25°29'
+True Moon: 9:20°50'
+\end{verbatim}
+
+$9:19\degree 13\minute$ notation represents \textit{rasi}, \textit{angsa} (degrees), \textit{lipda} (minutes).
+
+$r:a\degree l\minute = r*30 + a + l/60$,\\
+thus $289\degree 13\minute$ is $9:19\degree 13\minute$.
+\end{marginfigure}
+#+end_latex
+
+\clearpage
 
 *** notes                                                          :noexport:
 
-Horakhun\\
-Tithi
+https://encrypted.google.com/search?hl=en&q=Wat+Chai+Phra+kiat
 
-Aka horasat โหราศาสตร์
+Wat Kham
+https://www.renown-travel.com/temples/wat-phra-that-chang-kham.html
+https://en.wikipedia.org/wiki/Wat_Chang_Kham
+http://www.memoryofthailand.com/Wat-Phrathat-Chang-Kham-Worawihan.html
+https://en.wikivoyage.org/wiki/Nan
+http://www.orientalarchitecture.com/thailand/nan/wat-phra-that-chang-kham.php
 
 normal year: Prokkatimat ปรกติมาส
 
@@ -1531,9 +1601,6 @@ normal year: Prokkatimat ปรกติมาส
 อธิกวาร, rtgs: (pi) athikawan
 
 อธิกมาส, rtgs: (pi) athikamat
-
-Sun on Thai duang: \thai{๑}\\
-Moon on Thai duang: \thai{๒}
 
 Rasi is 0-11, Nakshatra is 1-27. Sun = \theSun, Moon = \theMoon.
 
@@ -1553,20 +1620,6 @@ https://th.wikipedia.org/wiki/%E0%B8%88%E0%B8%B1%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B
 
 http://www.thaiworldview.com/bouddha/animism4.htm
 
-p.9: tithi is 15:00 - sun and moon are 180 degrees apart, it is full moon. Tithi
-is reckoned in base 60, so 0:30 is half a tithi.
-
-p.27: nakshatra: which the moon will occupy at full moon
-
-p.31: raek: the reference is to the 27 segments into which the moon's orbit is divided
-
-each segment is 13 deg 20 min
-
-p.34: The names of the lunar months are derived from the name of nakshatra that the
-moon will normally be occupying at Full Moon.
-
-p.78: duang chata / zata
-
 ** Rasi
 
 #+latex: \marginpar{\vspace*{-\baselineskip} Thai: rasi \thai{ราศี}}
@@ -1575,7 +1628,13 @@ The circle is divided into 12 segments called /rasi/, each marking 30 degrees.
 Their numbering starts from 0, to express $x*30\degree$. See Table
 \ref{tbl-rasi-names}.
    
-#+attr_latex: :placement [h] :caption \caption{\label{tbl-rasi-names} Names of the 12 Rasi.}
+#+begin_latex
+\begin{table}[h]
+\caption{\label{tbl-rasi-names} Names of the 12 Rasi.}
+
+\begin{multicols}{2}
+#+end_latex
+
 |    | Western     | Sanskrit | Thai        |
 |----+-------------+----------+-------------|
 |  0 | Aries       | Meṣa     | \thai{เมษ}  |
@@ -1584,6 +1643,11 @@ Their numbering starts from 0, to express $x*30\degree$. See Table
 |  3 | Cancer      | Karkaṭa  | \thai{กรกฎ} |
 |  4 | Leo         | Siṃha    | \thai{สิงห์}  |
 |  5 | Virgo       | Kanyā    | \thai{กันย์}  |
+
+\columnbreak
+
+|    | Western     | Sanskrit | Thai        |
+|----+-------------+----------+-------------|
 |  6 | Libra       | Tulā     | \thai{ตุลย์}  |
 |  7 | Scorpio     | Vṛścika  | \thai{พิจิก}  |
 |  8 | Sagittarius | Dhanus   | \thai{ธนู}   |
@@ -1591,11 +1655,17 @@ Their numbering starts from 0, to express $x*30\degree$. See Table
 | 10 | Aquarius    | Kumbha   | \thai{กุมภ์}  |
 | 11 | Pisces      | Mīna     | \thai{มีน}   |
 
+#+begin_latex
+\end{multicols}
+\end{table}
+#+end_latex
+
 ** Nakshatra, lunar mansions
 
 #+latex: \marginpar{\vspace*{-\baselineskip} Thai: naksat \thai{นักษัตร}}
 
-#+begin_quote
+JC Eade in /Calendrical Systems/:
+
 The Thai term for nakshatra is "raek", and the Burmese term is "nekkhat". The
 reference is to the 27 segments into which the moon's orbit is
 divided.\footnote{The Southeast Asian system makes no use of a 28th raek.} Each
@@ -1604,46 +1674,50 @@ Moon's orbit relative to the Sun's orbit is not taken into account, so that the
 lunar mansions can be considered as lying in the same plane as the Sun's rasi.
 In very general terms, and since the Moon's average motion is $13\degree$ a day,
 the Moon can be considered to traverse one lunar mansion per day.\autocite[p. 31]{eade1995calendrical}
-#+end_quote
    
-#+begin_quote
 The names of the lunar month are derived from the name of the nakshatra that the
 Moon will normally be occupying at Full Moon. But caution is required: since the
 Moon's speed varies sharply, it may be that the mansion at Full Moon is one
 (even two) short of, or past, where it "ought" to be.\autocite[p. 34]{eade1995calendrical}
-#+end_quote
 
 #+begin_latex
 \begin{table}[h]
+\begin{extrafullwidth}
 \caption{\label{tbl-nakshatra-names} Names of the 27 Nakshatra.}
-\begin{multicols}{2}
+\begin{multicols}{3}
+\small
 #+end_latex
+
+|   | Sanskrit   | Thai           |
+|---+------------+----------------|
+| 1 | Ashvinī    | \thai{อัศวินี}    |
+| 2 | Bharanī    | \thai{ภรณี}     |
+| 3 | Kṛttikā    | \thai{กฤติกา}   |
+| 4 | Rohinī     | \thai{โรหิณี}    |
+| 5 | Mrigashīra | \thai{มฤคศีรษะ} |
+| 6 | Ārdrā      | \thai{อาทรา}   |
+| 7 | Punarvasu  | \thai{ปุนวสุ}    |
+| 8 | Pushya     | \thai{ปุษยะ}    |
+| 9 | Āshleshā   | \thai{อาศเลศา} |
+
+\columnbreak
 
 |    | Sanskrit        | Thai           |
 |----+-----------------+----------------|
-|  1 | Ashvinī         | \thai{อัศวินี}    |
-|  2 | Bharanī         | \thai{ภรณี}     |
-|  3 | Kṛttikā         | \thai{กฤติกา}   |
-|  4 | Rohinī          | \thai{โรหิณี}    |
-|  5 | Mrigashīra      | \thai{มฤคศีรษะ} |
-|  6 | Ārdrā           | \thai{อาทรา}   |
-|  7 | Punarvasu       | \thai{ปุนวสุ}    |
-|  8 | Pushya          | \thai{ปุษยะ}    |
-|  9 | Āshleshā        | \thai{อาศเลศา} |
 | 10 | Maghā           | \thai{มฆา}     |
 | 11 | Pūrva Phalgunī  | \thai{บูรพผลคุณี} |
 | 12 | Uttara Phalgunī | \thai{อุตรผลคุณี} |
 | 13 | Hasta           | \thai{หัสตะ}    |
 | 14 | Chitrā          | \thai{จิตรา}    |
+| 15 | Svātī           | \thai{สวาตี}    |
+| 16 | Vishākhā        | \thai{วิศาขา}   |
+| 17 | Anurādhā        | \thai{อนุราธา}  |
+| 18 | Jyeshtha        | \thai{เชษฐะ}   |
 
 \columnbreak
 
 |    | Sanskrit          | Thai            |
 |----+-------------------+-----------------|
-| 15 | Svātī             | \thai{สวาตี}     |
-| 16 | Vishākhā          | \thai{วิศาขา}    |
-| 17 | Anurādhā          | \thai{อนุราธา}   |
-| 18 | Jyeshtha          | \thai{เชษฐะ}    |
 | 19 | Mūla              | \thai{มูละ}      |
 | 20 | Pūrva Ashādhā     | \thai{บูรพาษาฒ}  |
 | 21 | Uttara Ashādhā    | \thai{อุตราษาฒ}  |
@@ -1656,6 +1730,7 @@ Moon's speed varies sharply, it may be that the mansion at Full Moon is one
 
 #+begin_latex
 \end{multicols}
+\end{extrafullwidth}
 \end{table}
 #+end_latex
 
@@ -1678,45 +1753,9 @@ phrase in Eade's /Calendrical Systems/: "Few would undertake cheerfully the
 task."\autocite{eade1995calendrical}
 
 Better tell the machine how to do it and let us get on with living. Let's
-import [[https://github.com/splendidmoons/suriya-go][suriya-go]] and ask the machine in Golang:
+import [[https://github.com/splendidmoons/suriya-go][suriya-go]] and ask the machine in Golang.
 
-#+begin_latex
-\begin{minted}{go}
-package main
-
-import "fmt"
-import "github.com/splendidmoons/suriya-go"
-
-func main() {
-	suYear := suriya.SuriyaYear{}
-	suYear.Init(1963) // CS 1325
-
-	dateFmt := "2006-01-02"
-	fmtStr := `Year: %v
-Tithi: %v
-Adhikamāsa: %v
-Adhikavāra: %v
-Āsāḷha: %v
-`
-	fmt.Printf(fmtStr,
-		suYear.Year,
-		suYear.Tithi,
-		suYear.Is_Adhikamasa(),
-		suYear.Is_Adhikavara(),
-		suYear.AsalhaPuja().Format(dateFmt))
-}
-\end{minted}
-#+end_latex
-
-Which will print:
-
-: Year: 1963
-: Tithi: 23
-: Adhikamāsa: false
-: Adhikavāra: true
-: Āsāḷha: 1963-07-06
-
-** 1288
+** Year 1288
 \label{golang-1288}
 
 We will investigate 14 April 1288, and while doing that, also 15 June 1288,
@@ -1724,15 +1763,47 @@ which should turn out to be the date of Āsāḷha Pūjā.
 
 #+latex: \inputminted{go}{./includes/print-1288.go}
 
+\clearpage
 
-\backmatter
+Which prints:
+
+: Year: 1288
+: Adhikamāsa: false
+: Adhikavāra: false
+: ---
+: Year, Day: 1288, 41
+: True Sun: 0:19°58'
+: True Moon: 5:11°27'
+: Tithi: 12
+: ---
+: Year, Day: 1288, 103
+: True Sun: 2:19°9'
+: True Moon: 8:19°1'
+: Tithi: 15
+
+** Date of Casting of the Mangrai Buddha
+\label{golang-mangrai}
+
+#+latex: \inputminted{go}{./includes/print-wat-kiat.go}
+
+\bigskip
+
+Which prints:
+
+#+begin_latex
+\begin{verbatim}
+Day: 298
+Date: 1566 Jan 3
+Horakhun: 338865
+Tithi: 2
+True Sun: 8:25°29'
+True Moon: 9:20°50'
+\end{verbatim}
+#+end_latex
+
+\clearpage
 
 * Gregorian leap years
-
-#+attr_latex: :placement [h] :caption \caption{\label{tbl-cycle-leap-years} Gregorian leap years}
-| 2004 | 2016 | 2028 | 2040 |
-| 2008 | 2020 | 2032 | 2044 |
-| 2012 | 2024 | 2036 | 2048 |
 
 #+begin_quote
 \logic{if} (/year/ is not exactly divisible by 4) \logic{then} (it is a common year)\\
@@ -1744,7 +1815,9 @@ which should turn out to be the date of Āsāḷha Pūjā.
 \autocite{wp-leap-year}
 #+end_quote
 
-* Reading the Thai calendar layout
+\backmatter
+
+* Reading the Thai calendar layout                                 :noexport:
 
 #+latex: \href{http://www.myhora.com/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99/%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%97%E0%B8%B4%E0%B8%99-100%E0%B8%9B%E0%B8%B5-%E0%B8%9E.%E0%B8%A8.2558.aspx}{myhora.com - 2015}
 
@@ -1822,7 +1895,7 @@ uposatha app
 
 * Glossary                                                         :noexport:
 
-Aka horasat โหราศาสตร์
+Aka 
 
 month: duean เดือน
 
@@ -1830,13 +1903,6 @@ month 8/8: เดือน ๘/๘
 
 Waxing : khang khuen (ข้างขึ้น), the period from new moon to full moon, is always 15 days long.
 Waning : khang raem (ข้างแรม), the period from full moon to new moon
-
-* Bibliography
-\label{bibliography}
-
-#+begin_latex
-\printbibliography
-#+end_latex
 
 * Colophon
 
@@ -1848,7 +1914,16 @@ Please send comments, corrections and further information to:
 
 Last updated on {{{modification-time(%Y-%m-%d)}}}.
 
-# Fullpage reference includes follow.
+* Bibliography
+\label{bibliography}
+
+#+begin_latex
+\printbibliography
+#+end_latex
+
+* Full page includes
+  
+Full page includes follow.
 
 #+begin_latex
 \fullpage{%

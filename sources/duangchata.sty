@@ -8,6 +8,8 @@
 
 \newcommand\theSun{\astrosun}
 \newcommand\theMoon{\leftmoon}
+\newcommand\theSunThai{1}
+\newcommand\theMoonThai{2}
 
 \newcommand\@dng@degree{\ensuremath{^\circ}}
 \newcommand\@dng@minute{\ensuremath{^\prime}}
@@ -175,11 +177,11 @@
   
   % Sun
   \setlength{\angle}{\SunAngle + 90pt - 15pt}
-  \pgfpointpolar{\angle}{135pt}
+  \pgfpointpolar{\angle}{120pt}
   \pgfgetlastxy{\co@x}{\co@y}
-  \draw [red, thick] (0,0) -- (\co@x,\co@y);
+  \draw [red, line width=2pt] (0,0) -- (\co@x,\co@y);
 
-  \pgfpointpolar{\angle}{140pt}
+  \pgfpointpolar{\angle}{125pt}
   \pgfgetlastxy{\co@x}{\co@y}
   \node at (\co@x,\co@y) [circle, fill=red!30, minimum width=15pt] {};
   \node (sun) at (\co@x,\co@y) {\theSun};
@@ -201,7 +203,7 @@
   \setlength{\angle}{\MoonAngle + 90pt - 15pt}
   \pgfpointpolar{\angle}{120pt}
   \pgfgetlastxy{\co@x}{\co@y}
-  \draw [blue, thick] (0,0) -- (\co@x,\co@y);
+  \draw [blue, line width=2pt] (0,0) -- (\co@x,\co@y);
 
   \pgfpointpolar{\angle}{125pt}
   \pgfgetlastxy{\co@x}{\co@y}
@@ -285,6 +287,18 @@
   \pgfpointpolar{\angle}{\@duang@innerRadius}
   \pgfgetlastxy{\co@xB}{\co@yB}
   \draw [gray, thin] (\co@xA,\co@yA) -- (\co@xB,\co@yB);
+
+  % Sun and Moon Thai mark
+
+  \setlength{\angle}{\SunAngle + 90pt - 15pt}
+  \pgfpointpolar{\angle}{50pt}
+  \pgfgetlastxy{\co@x}{\co@y}
+  \node (sun) at (\co@x,\co@y) {\Large\theSunThai};
+
+  \setlength{\angle}{\MoonAngle + 90pt - 15pt}
+  \pgfpointpolar{\angle}{50pt}
+  \pgfgetlastxy{\co@x}{\co@y}
+  \node (sun) at (\co@x,\co@y) {\Large\theMoonThai};
 
 \end{tikzpicture}%
 }

@@ -177,7 +177,15 @@
 \captiontitlefont{\footnotesize}
 
 \newenvironment{fullwidth}{%
-  \begin{minipage}{0.9\textwidth + \marginparsep + \marginparwidth}%
+  \begin{minipage}{\textwidth + \marginparsep + \marginparwidth}%
+}{%
+  \end{minipage}%
+}
+
+\newenvironment{extrafullwidth}{%
+  \hskip -\spinemargin
+  \hskip 5mm
+  \begin{minipage}{\paperwidth - 10mm}%
 }{%
   \end{minipage}%
 }
