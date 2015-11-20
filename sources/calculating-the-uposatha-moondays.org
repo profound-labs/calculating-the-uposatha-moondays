@@ -1,6 +1,6 @@
 #+LATEX_CLASS: memoir-article
 #+LATEX_HEADER: \usepackage{local}
-#+LATEX_HEADER: \renewcommand{\docVersion}{v1.0}
+#+LATEX_HEADER: \renewcommand{\docVersion}{v0.9}
 #+LATEX_HEADER: \renewcommand{\docUrl}{\href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{link}}
 #+LATEX_HEADER: \hypersetup{ pdfauthor={Gambhīro Bhikkhu, Hāsapañño Bhikkhu}, }
 #+OPTIONS: toc:nil tasks:nil ':t H:4
@@ -56,13 +56,13 @@ or see how we can ask the machine to do it in Golang at sec. \ref{suriya-go-exam
 
 #+begin_latex
 {\centering\large\bfseries
-Reading time:
+How long?
 \par}
 #+end_latex
 
-The first section (3 pages) is already informative if you just wish to have a
-better understanding of the /uposathas/. The sections get progressively more
-involved, drop it when you don't need more.
+The first section (3 pages) is already quite informative if you just wish to
+have a better understanding of the uposathas. The sections get progressively
+more involved, drop it when you don't need more.
 
 - 3 pages :: To understand how to construct the sequence of a given year's uposathas, see
   page \pageref{uposatha-tutorial}-\pageref{uposatha-tutorial-end}
@@ -70,14 +70,23 @@ involved, drop it when you don't need more.
 - +4 pages :: The formulas and conditions which determine the adhikamāsa and
   adhikavāra are described on page \pageref{suriyayatra-formulas}-\pageref{adhikavara-years-end} in
   sec. \ref{suriyayatra-formulas}.
-- +2 pages :: The formulas continue with calculating the angular position
+- +3 pages :: The formulas continue with calculating the angular position
   of the Sun and Moon on a given day at sec. \ref{calculating-the-sun-and-moon}, page
   \pageref{calculating-the-sun-and-moon}-\pageref{calculating-the-sun-and-moon-end}.
-- +2 pages :: A given day at the time of midnight is visualized with the zodiac
-  wheel diagrams (a.k.a /duang chata/). Making sense of these is in sec. \ref{duangchata},
-  page \pageref{duangchata}-\pageref{duangchata-end}.
+- +2 pages :: A day is visualized with the zodiac wheel diagrams (a.k.a /duang chata/).
+  Making sense of these is in sec. \ref{duangchata}, page \pageref{duangchata}-\pageref{duangchata-end}.
 
 \clearpage
+
+#+latex: \enlargethispage{2\baselineskip}
+
+\tableofcontents*
+
+\clearpage
+
+*** TODO before release
+
+frontpage footer
 
 *** TODO later
 
@@ -99,17 +108,6 @@ Download [[https://github.com/profound-labs/calculating-the-uposatha-moondays/ra
 
 small inconsistencies in the uposatha sequence diagrams, text not aligned with
 the center of the moons
-
-*** notes                                                          :noexport:
-
-Much appreciation for the answers from the Venerable Ajahns who endured my
-questions, in particular Ajahn Hāsapañño and Ajahn Amaro, and the many others
-who have helped to correct and improve it. Comprehension and consistency was
-only possible with their experience and understanding.
-
-Please send comments, corrections and further information to:
-
-=Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>=
 
 * Mahānikāya Uposatha Calendar Tutorial
 \label{uposatha-tutorial}
@@ -1803,7 +1801,9 @@ True Moon: 9:20°50'
 
 \clearpage
 
-* Gregorian leap years
+\backmatter
+
+* Gregorian leap years                                             :noexport:
 
 #+begin_quote
 \logic{if} (/year/ is not exactly divisible by 4) \logic{then} (it is a common year)\\
@@ -1814,8 +1814,6 @@ True Moon: 9:20°50'
 \logic{else} (it is a leap year)
 \autocite{wp-leap-year}
 #+end_quote
-
-\backmatter
 
 * Reading the Thai calendar layout                                 :noexport:
 
@@ -1906,7 +1904,12 @@ Waning : khang raem (ข้างแรม), the period from full moon to new mo
 
 * Colophon
 
-[[http://orgmode.org/][Org-mode]] and \LaTeX. Sources at [[https://github.com/profound-labs/calculating-the-uposatha-moondays/][Github]].
+Much appreciation for the answers from the Venerable Ajahns who endured my
+questions. In particular Ajahn Amaro and Ajahn Hāsapañño, and many others who
+helped to correct and improve this document. Comprehension and consistency was
+only possible with their experience and understanding.
+
+Made with [[http://orgmode.org/][Org-mode]] and \LaTeX. Sources at [[https://github.com/profound-labs/calculating-the-uposatha-moondays/][Github]].
 
 Please send comments, corrections and further information to:
 
@@ -1914,12 +1917,9 @@ Please send comments, corrections and further information to:
 
 Last updated on {{{modification-time(%Y-%m-%d)}}}.
 
-* Bibliography
-\label{bibliography}
+\clearpage
 
-#+begin_latex
 \printbibliography
-#+end_latex
 
 * Full page includes
   

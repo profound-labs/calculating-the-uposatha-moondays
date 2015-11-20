@@ -65,14 +65,6 @@
 \newcommand\mN{\GaNewmoon}
 \newcommand\mF{\GaFullmoon}
 
-\renewcommand{\@memb@bchap}{%
-  %\chapter*{\bibname}%
-  \bibmark
-  \ifnobibintoc\else
-    \phantomsection
-    \addcontentsline{toc}{chapter}{\bibname}%
-  \fi
-  \prebibhook}
-
 \usepackage[notes,short,autocite=footnote,isbn=false,backend=biber]{biblatex-chicago}
+
 \addbibresource{bibentries.bib}

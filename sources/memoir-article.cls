@@ -59,6 +59,20 @@
   Numbers = Lining,
 ]{Crimson Roman}
 
+\newfontfamily\crimsonRomanFont[
+  ItalicFont = Crimson Italic,
+  BoldFont = Crimson Bold,
+  BoldItalicFont = Crimson BoldItalic,
+  Numbers = Lining,
+]{Crimson Roman}
+
+\newfontfamily\crimsonRomanFontOldNum[
+  ItalicFont = Crimson Italic,
+  BoldFont = Crimson Bold,
+  BoldItalicFont = Crimson BoldItalic,
+  Numbers = OldStyle,
+]{Crimson Roman}
+
 \newfontfamily\logicFont[
   SmallCapsFont = Crimson Bold,
   SmallCapsFeatures= { Ligatures = TeX, Letters = SmallCaps, Scale = 0.8, LetterSpace = 0.2 },
@@ -68,10 +82,11 @@
 \RequirePackage{graphicx}
 \RequirePackage{enumitem}
 \RequirePackage{multicol}
+\RequirePackage{hyperref}
+\RequirePackage{titletoc}
+\RequirePackage{eso-pic}
 
 \graphicspath{{./includes/}}
-
-\RequirePackage{hyperref}
 
 \hypersetup{
   colorlinks=true,
@@ -86,8 +101,6 @@
   open,
   openlevel=2
 ]{bookmark}
-
-\RequirePackage{eso-pic}
 
 \setlist[itemize]{
   itemindent=0pt,
@@ -111,6 +124,11 @@
 \definecolor{linkred}{HTML}{DC322F}
 % Red is better for printing than blue or dark blue
 \colorlet{link}{linkred}
+
+\definecolor{tocleftside}{gray}{0.5}
+\definecolor{tocleftsidepart}{gray}{0.2}
+\definecolor{partname}{gray}{0.5}
+\definecolor{parttitle}{gray}{0.5}
 
 \def\BOOK@apt{11}
 \def\BOOK@bpt{14}
@@ -171,6 +189,71 @@
 }{%
   \end{abstract}%
 }
+
+% === TOC settings ===
+
+\maxtocdepth{subsection}
+
+% Fixes Undefined control sequence error for \@chapapp@head
+\renewcommand\chapternumberline[1]{\numberline{#1}}
+\renewcommand\partnumberline[1]{\numberline{#1}}
+
+% Fixes Missing number error when chapter number is not numeric, as in
+% Appendix A
+\let\ttll@appendix\ttll@chapter
+
+% the right TOC margin
+\contentsmargin{0pt}
+
+\newlength\tocLeftWidth
+\setlength\tocLeftWidth{6pc}
+
+\titlecontents{chapter}[\tocLeftWidth]
+{\addvspace{10pt}%
+\Large\crimsonRomanFont}%
+{%
+  \contentsmargin{0pt}%
+  \makebox[0pt][r]{%
+    {\color{tocleftside}%
+    \Large Section~{\crimsonRomanFont\thecontentslabel}}%
+    \hspace*{0.5em}$\cdot$\hspace*{0.5em}%
+  }%
+}
+{\contentsmargin{0pt}%
+\vspace*{-10pt}%
+\itshape}
+{\enspace\hfill\normalsize\crimsonRomanFont\thecontentspage}
+[\addvspace{5pt}]
+
+\titlecontents{section}[\tocLeftWidth]
+{\addvspace{2pt}%
+\normalsize\crimsonRomanFont}
+{%
+  \contentsmargin{0pt}%
+  \makebox[0pt][r]{%
+    {\color{tocleftside}%
+    \normalsize {\crimsonRomanFont\thecontentslabel}}%
+    \hspace*{1.53em}%
+  }%
+}
+{}
+{\hfill\normalsize\crimsonRomanFont\thecontentspage}
+
+\titlecontents{subsection}[\tocLeftWidth]
+{\addvspace{2pt}%
+\normalsize\crimsonRomanFont}
+{%
+  \contentsmargin{0pt}%
+  \makebox[0pt][r]{%
+    {\color{tocleftside}%
+    \normalsize {\crimsonRomanFont\thecontentslabel}}%
+    \hspace*{1.53em}%
+  }%
+}
+{}
+{\hfill\normalsize\crimsonRomanFont\thecontentspage}
+
+% === end of TOC settings ===
 
 %\setmarginfloatcaptionadjustment{figure}{\captionstyle{\mpjustification}}
 \captionnamefont{\footnotesize}

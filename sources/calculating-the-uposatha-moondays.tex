@@ -1,7 +1,7 @@
-% Created 2015-11-19 Thu 21:04
+% Created 2015-11-20 Fri 16:10
 \documentclass[11pt,oneside]{memoir-article}
 \usepackage{local}
-\renewcommand{\docVersion}{v1.0}
+\renewcommand{\docVersion}{v0.9}
 \renewcommand{\docUrl}{\href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{link}}
 \hypersetup{ pdfauthor={Gambhīro Bhikkhu, Hāsapañño Bhikkhu}, }
 \author{Hāsapañño Bhikkhu, Gambhīro Bhikkhu}
@@ -59,12 +59,12 @@ or see how we can ask the machine to do it in Golang at sec. \ref{suriya-go-exam
 }
 
 {\centering\large\bfseries
-Reading time:
+How long?
 \par}
 
-The first section (3 pages) is already informative if you just wish to have a
-better understanding of the \emph{uposathas}. The sections get progressively more
-involved, drop it when you don't need more.
+The first section (3 pages) is already quite informative if you just wish to
+have a better understanding of the uposathas. The sections get progressively
+more involved, drop it when you don't need more.
 
 \begin{description}
 \item[{3 pages}] To understand how to construct the sequence of a given year's uposathas, see
@@ -73,13 +73,18 @@ in sec. \ref{uposatha-tutorial}.
 \item[{+4 pages}] The formulas and conditions which determine the adhikamāsa and
 adhikavāra are described on page \pageref{suriyayatra-formulas}-\pageref{adhikavara-years-end} in
 sec. \ref{suriyayatra-formulas}.
-\item[{+2 pages}] The formulas continue with calculating the angular position
+\item[{+3 pages}] The formulas continue with calculating the angular position
 of the Sun and Moon on a given day at sec. \ref{calculating-the-sun-and-moon}, page
 \pageref{calculating-the-sun-and-moon}-\pageref{calculating-the-sun-and-moon-end}.
-\item[{+2 pages}] A given day at the time of midnight is visualized with the zodiac
-wheel diagrams (a.k.a \emph{duang chata}). Making sense of these is in sec. \ref{duangchata},
-page \pageref{duangchata}-\pageref{duangchata-end}.
+\item[{+2 pages}] A day is visualized with the zodiac wheel diagrams (a.k.a \emph{duang chata}).
+Making sense of these is in sec. \ref{duangchata}, page \pageref{duangchata}-\pageref{duangchata-end}.
 \end{description}
+
+\clearpage
+
+\enlargethispage{2\baselineskip}
+
+\tableofcontents*
 
 \clearpage
 
@@ -1745,40 +1750,30 @@ True Moon: 9:20°50'
 
 \clearpage
 
-\chapter{Gregorian leap years}
-\label{sec-7}
-
-\begin{quote}
-\logic{if} (\emph{year} is not exactly divisible by 4) \logic{then} (it is a common year)\\
-\logic{else}\\
-\logic{if} (\emph{year} is not exactly divisible by 100) \logic{then} (it is a leap year)\\
-\logic{else}\\
-\logic{if} (\emph{year} is not exactly divisible by 400) \logic{then} (it is a common year)\\
-\logic{else} (it is a leap year)
-\autocite{wp-leap-year}
-\end{quote}
-
 \backmatter
 
 \chapter{Colophon}
-\label{sec-8}
+\label{sec-7}
 
-\href{http://orgmode.org/}{Org-mode} and \LaTeX. Sources at \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{Github}.
+Much appreciation for the answers from the Venerable Ajahns who endured my
+questions. In particular Ajahn Amaro and Ajahn Hāsapañño, and many others who
+helped to correct and improve this document. Comprehension and consistency was
+only possible with their experience and understanding.
+
+Made with \href{http://orgmode.org/}{Org-mode} and \LaTeX. Sources at \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{Github}.
 
 Please send comments, corrections and further information to:
 
 \texttt{Gambhiro Bhikkhu <gambhiro.bhikkhu.85@gmail.com>}
 
-Last updated on 2015-11-19.
+Last updated on 2015-11-20.
 
-\chapter{Bibliography}
-\label{sec-9}
-\label{bibliography}
+\clearpage
 
 \printbibliography
 
 \chapter{Full page includes}
-\label{sec-10}
+\label{sec-8}
 
 Full page includes follow.
 
