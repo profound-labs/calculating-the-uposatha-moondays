@@ -11,7 +11,7 @@
   ItalicFont = Crimson Italic,
   BoldFont = Crimson Semibold,
   BoldItalicFont = Crimson SemiboldItalic,
-  Numbers = OldStyle,
+  Numbers = Lining,
 ]{Crimson Roman}
 
 \usepackage{geometry}
@@ -39,7 +39,8 @@
 \definecolor{violet}{HTML}{6C71C4}
 \definecolor{blue}{HTML}{268BD2}
 \definecolor{cyan}{HTML}{2AA198}
-\definecolor{green}{HTML}{859900}
+
+\definecolor{green}{HTML}{3a7404}
 
 \colorlet{background}{base3}
 \colorlet{primary-content}{base00}
@@ -81,17 +82,12 @@
   month list,
   day xshift=4.5mm,
   month yshift=10mm,
-  every month/.append style={anchor=base, inner xsep=0pt, xshift=-\widthof{\space}},
+  every month/.append style={anchor=base, inner xsep=0pt},
   month text={\monthFont\monthlabelsize\color{primary-content}\%y0 \%m.},
   day text={\datenumFont\datenumsize\%d-},
   every day/.append style={anchor=base, inner xsep=0pt},
   month label left,
   execute at begin day scope={
-    \ifdate{between=01-01 and 01-31}{
-      \def\l{\ifcase\pgfcalendarcurrentweekday \space\or \space\or \space\or \space\or \space\or \space\or Su\fi}%
-      \ifdate{weekend}{\def\daylabelcolor{primary-content}}{\def\daylabelcolor{black}}%
-      \node[anchor=south,yshift=5mm,inner sep=0pt]{\color{\daylabelcolor}\datedayFormat{\l}};%
-    }{}
     \ifdate{Sunday}{\color{black!60}}{}
   }
 ]
@@ -128,10 +124,35 @@ if (equals=2016-03-01) [day text=\GaWaningmoon]%
 \raggedright
 
 \resizebox{\linewidth}{!}{%
-\begin{tikzpicture}
+\begin{tikzpicture}[
+    cold-interval-line/.style={ draw=green },
+    cold-label/.style={ color=green },
+    rainy-interval-line/.style={ draw=blue },
+    rainy-label/.style={ color=blue },
+  ]
+
 \calendar (cal) [dates=2015-11-01 to 2016-01-31, planner] \moondays;
-\node [primary-content, above left=-3pt and 3pt of cal-2015-11-25.north west, anchor=south west] {last uposatha};
-\node [primary-content, above left=-3pt and 3pt of cal-2015-12-10.north west, anchor=south west] {first uposatha};
+\node [rainy-label, above left=7pt and 0pt of cal-2015-11-25.north east, anchor=south east] {Rainy Season, last};
+
+\node (katt-a) [below left=-3pt and 0pt of cal-2015-11-11.south west] {};
+\node (katt-b) [below=-3pt of cal-2015-11-30.south east] {};
+\node (katt-c) [below left=-3pt and 0pt of cal-2015-12-01.south west] {};
+\node (katt-d) [below right=-3pt and 0pt of cal-2015-12-10.south east] {};
+
+\draw [primary-content, thick, |->] (katt-a) -- (katt-b); 
+\draw [primary-content, thick, ->|] (katt-c) -- (katt-d);
+
+\node[primary-content, below right=-1pt and 3pt of cal-2015-11-11.south west] {Kattika month};
+
+\node (rainy-a) [above left=3pt and 68pt of cal-2015-11-01.north east] {};
+\node (rainy-b) [above right=3pt and 0pt of cal-2015-11-25.north east] {};
+
+\draw [rainy-interval-line, thick, ->|] (rainy-a) -- (rainy-b); 
+
+\node [cold-label, above left=-3pt and -3pt of cal-2015-12-10.north east, anchor=south east] {Cold Season, first};
+
+%\node [primary-content, below=-3pt of cal-2015-11-25.south, anchor=north] {Kattika New Moon};
+%\node [primary-content, below=-3pt of cal-2015-12-10.south, anchor=north] {Kattika New Moon};
 \end{tikzpicture}%
 }
 

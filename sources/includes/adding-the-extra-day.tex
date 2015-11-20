@@ -2,6 +2,7 @@
 
 \makeatletter
 
+\usepackage{calc}
 \usepackage{xcolor}
 
 \usepackage{fontspec}
@@ -11,7 +12,7 @@
   ItalicFont = Crimson Italic,
   BoldFont = Crimson Semibold,
   BoldItalicFont = Crimson SemiboldItalic,
-  Numbers = OldStyle,
+  Numbers = Lining,
 ]{Crimson Roman}
 
 \usepackage{geometry}
@@ -67,31 +68,22 @@
 \newcommand\GaFullmoon{\moonformat{\Circle}}
 \newcommand\GaWaningmoon{\moonformat{\RIGHTcircle}}
 
-% Dummy hooks, maybe we'll want \newfontfamily here sometime.
-\newcommand\monthFont{}
-\newcommand\datedayFont{}
-\newcommand\datenumFont{}
-
 \newcommand*\datenumsize{\@setfontsize\datenumsize{10}{12}}
 \newcommand*\monthlabelsize{\@setfontsize\monthlabelsize{10}{12}}
 \newcommand*\datedaysize{\@setfontsize\datedaysize{8}{11}}
 
-\newcommand*\datedayFormat[1]{\datedayFont\datedaysize #1}
+\newcommand*\datedayFormat[1]{\datedaysize #1}
+
 \tikzstyle{planner}=[
   month list,
   day xshift=4.5mm,
   month yshift=15mm,
-  every month/.append style={anchor=base, inner xsep=0pt, xshift=-\widthof{\space}},
-  month text={\monthFont\monthlabelsize\color{primary-content}\%y0 \%m.},
-  day text={\datenumFont\datenumsize\%d-},
+  every month/.append style={anchor=base, inner xsep=0pt},
+  month text={\monthlabelsize\color{primary-content}\%y0 \%m.},
+  day text={\datenumsize\%d-},
   every day/.append style={anchor=base, inner xsep=0pt},
   month label left,
   execute at begin day scope={
-    %\ifdate{between=01-01 and 01-31}{
-    %  \def\l{\ifcase\pgfcalendarcurrentweekday \space\or \space\or \space\or \space\or \space\or \space\or Su\fi}%
-    %  \ifdate{weekend}{\def\daylabelcolor{primary-content}}{\def\daylabelcolor{black}}%
-    %  \node[anchor=south,yshift=5mm,inner sep=0pt]{\color{\daylabelcolor}\datedayFormat{\l}};%
-    %}{}
     \ifdate{Sunday}{\color{black!60}}{}
   }
 ]

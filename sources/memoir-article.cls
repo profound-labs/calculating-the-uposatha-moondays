@@ -46,6 +46,7 @@
 
 \RequirePackage[british]{babel}
 
+%\RequirePackage{amssymb}% Does any symbol need it?
 \RequirePackage{amsmath}
 \RequirePackage[bitstream-charter]{mathdesign}
 
@@ -53,26 +54,46 @@
 \defaultfontfeatures{Ligatures={TeX}}
 \setmainfont[
   ItalicFont = Crimson Italic,
-  BoldFont = Crimson Semibold,
-  BoldItalicFont = Crimson SemiboldItalic,
+  BoldFont = Crimson Bold,
+  BoldItalicFont = Crimson BoldItalic,
+  Numbers = Lining,
+]{Crimson Roman}
+
+\newfontfamily\crimsonRomanFont[
+  ItalicFont = Crimson Italic,
+  BoldFont = Crimson Bold,
+  BoldItalicFont = Crimson BoldItalic,
+  Numbers = Lining,
+]{Crimson Roman}
+
+\newfontfamily\crimsonRomanFontOldNum[
+  ItalicFont = Crimson Italic,
+  BoldFont = Crimson Bold,
+  BoldItalicFont = Crimson BoldItalic,
   Numbers = OldStyle,
+]{Crimson Roman}
+
+\newfontfamily\logicFont[
+  SmallCapsFont = Crimson Bold,
+  SmallCapsFeatures= { Ligatures = TeX, Letters = SmallCaps, Scale = 0.8, LetterSpace = 0.2 },
 ]{Crimson Roman}
 
 \RequirePackage{xcolor}
 \RequirePackage{graphicx}
 \RequirePackage{enumitem}
 \RequirePackage{multicol}
+\RequirePackage{hyperref}
+\RequirePackage{titletoc}
+\RequirePackage{eso-pic}
 
 \graphicspath{{./includes/}}
 
-\RequirePackage{hyperref}
-
 \hypersetup{
   colorlinks=true,
-  linkcolor=blue,
-  citecolor=blue,
-  filecolor=blue,
-  urlcolor=blue,
+  linkcolor=link,
+  citecolor=link,
+  filecolor=link,
+  urlcolor=link,
   unicode=true,
 }
 
@@ -80,8 +101,6 @@
   open,
   openlevel=2
 ]{bookmark}
-
-\RequirePackage{eso-pic}
 
 \setlist[itemize]{
   itemindent=0pt,
@@ -93,13 +112,23 @@
   partopsep=0pt,
 }
 
+\hyphenation{under-lying astron-o-mer}
+
 % === penalties ===
 
 \midsloppy
 
 % === normalsize ===
 
-\definecolor{textbody}{gray}{0.1}
+\definecolor{textbody}{gray}{0}
+\definecolor{linkred}{HTML}{DC322F}
+% Red is better for printing than blue or dark blue
+\colorlet{link}{linkred}
+
+\definecolor{tocleftside}{gray}{0.5}
+\definecolor{tocleftsidepart}{gray}{0.2}
+\definecolor{partname}{gray}{0.5}
+\definecolor{parttitle}{gray}{0.5}
 
 \def\BOOK@apt{11}
 \def\BOOK@bpt{14}
@@ -120,8 +149,11 @@
 \setlength{\parindent}{0pt}
 
 \setlength{\columnsep}{18pt}
-\setlength{\columnseprule}{0.1pt}
-\flushcolumns
+\setlength{\columnseprule}{0pt}
+%\setlength{\columnseprule}{0.1pt}
+%\flushcolumns
+\raggedcolumns
+
 %\columnseprulecolor
 
 % === setup page layout ===
@@ -129,23 +161,116 @@
 \stockaiv
 \settrimmedsize{\stockheight}{\stockwidth}{*}
 \settrims{0pt}{0pt}
-\setlrmarginsandblock{0.15\paperwidth}{*}{1}
-\setulmarginsandblock{0.1\paperheight}{*}{1}
-\setheadfoot{\baselineskip}{2\baselineskip}
+\setlrmarginsandblock{0.1\paperwidth}{*}{3}
+\setulmarginsandblock{0.1\paperheight}{0.1\paperheight - 2\baselineskip}{*}
+\setheadfoot{\baselineskip}{\baselineskip}
 \setheaderspaces{*}{15pt}{*}
+\setfootins{2\baselineskip}{\bigskipamount}
+
+\setmarginnotes{17pt}{45mm}{20pt}
+%\addtolength{\marginparsep}{10pt}
+%\addtolength{\marginparwidth}{-18mm}
+
 \checkandfixthelayout
+
+\setcounter{secnumdepth}{4}
 
 %% abstract
 
 \setlength{\absparindent}{0pt}
-\setlength{\absleftindent}{0.15\linewidth}
-\setlength{\absrightindent}{0.15\linewidth}
+%\setlength{\absleftindent}{0.15\linewidth}
+%\setlength{\absrightindent}{0.15\linewidth}
+\setlength{\absleftindent}{2em}
+\setlength{\absrightindent}{2em}
 
-\newenvironment{tldr}{
-  \renewcommand\abstractname{TL,DR\marginpar{\footnotesize Too Long,\\ Didn't Read}}
-  \begin{abstract}
-}{
-  \end{abstract}
+\newenvironment{tldr}{%
+  \renewcommand\abstractname{TL,DR\marginpar{\footnotesize Too Long,\\ Didn't Read}}%
+  \begin{abstract}%
+}{%
+  \end{abstract}%
+}
+
+% === TOC settings ===
+
+\maxtocdepth{subsection}
+
+% Fixes Undefined control sequence error for \@chapapp@head
+\renewcommand\chapternumberline[1]{\numberline{#1}}
+\renewcommand\partnumberline[1]{\numberline{#1}}
+
+% Fixes Missing number error when chapter number is not numeric, as in
+% Appendix A
+\let\ttll@appendix\ttll@chapter
+
+% the right TOC margin
+\contentsmargin{0pt}
+
+\newlength\tocLeftWidth
+\setlength\tocLeftWidth{6pc}
+
+\titlecontents{chapter}[\tocLeftWidth]
+{\addvspace{10pt}%
+\Large\crimsonRomanFont}%
+{%
+  \contentsmargin{0pt}%
+  \makebox[0pt][r]{%
+    {\color{tocleftside}%
+    \Large Section~{\crimsonRomanFont\thecontentslabel}}%
+    \hspace*{0.5em}$\cdot$\hspace*{0.5em}%
+  }%
+}
+{\contentsmargin{0pt}%
+\vspace*{-10pt}%
+\itshape}
+{\enspace\hfill\normalsize\crimsonRomanFont\thecontentspage}
+[\addvspace{5pt}]
+
+\titlecontents{section}[\tocLeftWidth]
+{\addvspace{2pt}%
+\normalsize\crimsonRomanFont}
+{%
+  \contentsmargin{0pt}%
+  \makebox[0pt][r]{%
+    {\color{tocleftside}%
+    \normalsize {\crimsonRomanFont\thecontentslabel}}%
+    \hspace*{1.53em}%
+  }%
+}
+{}
+{\hfill\normalsize\crimsonRomanFont\thecontentspage}
+
+\titlecontents{subsection}[\tocLeftWidth]
+{\addvspace{2pt}%
+\normalsize\crimsonRomanFont}
+{%
+  \contentsmargin{0pt}%
+  \makebox[0pt][r]{%
+    {\color{tocleftside}%
+    \normalsize {\crimsonRomanFont\thecontentslabel}}%
+    \hspace*{1.53em}%
+  }%
+}
+{}
+{\hfill\normalsize\crimsonRomanFont\thecontentspage}
+
+% === end of TOC settings ===
+
+%\setmarginfloatcaptionadjustment{figure}{\captionstyle{\mpjustification}}
+\captionnamefont{\footnotesize}
+\captiontitlefont{\footnotesize}
+
+\newenvironment{fullwidth}{%
+  \begin{minipage}{\textwidth + \marginparsep + \marginparwidth}%
+}{%
+  \end{minipage}%
+}
+
+\newenvironment{extrafullwidth}{%
+  \hskip -\spinemargin
+  \hskip 5mm
+  \begin{minipage}{\paperwidth - 10mm}%
+}{%
+  \end{minipage}%
 }
 
 \newlength\marginDiff
@@ -156,8 +281,6 @@
   \includegraphics[width=0.98\paperwidth]{#1}
   \par}
 }
-
-\setcounter{secnumdepth}{2}
 
 \newcommand\mA\textasteriskcentered
 
@@ -208,20 +331,35 @@
 
 \makeheadstyles{vinaya-class}{%
   \chapterstyle{vinaya-class}
+
+  % Sec 1.2
+
   \setbeforesecskip{1\onelineskip
                     \@plus -0.5\onelineskip \@minus -.5\onelineskip}%
   \setaftersecskip{1\onelineskip \@plus 0.1\onelineskip}%
 %%%  \setsecheadstyle{\normalfont\raggedright\scshape\MakeLowercase}%
   \setsecheadstyle{\normalfont\memRTLraggedright\scshape}%
+
+  % Sub Sec 1.2.3
+
   \setbeforesubsecskip{-1.0\onelineskip
                        \@plus -0.25\onelineskip \@minus -0.25\onelineskip}%
   \setaftersubsecskip{1.0\onelineskip \@plus 0.1\onelineskip}%
-%%%  \setsubsecheadstyle{\sethangfrom{\noindent ####1}\normalfont\itshape\raggedright}%
   \setsubsecheadstyle{\sethangfrom{\noindent ####1}\normalfont\itshape\memRTLraggedright}%
-  \setbeforesubsubsecskip{1.0\onelineskip
-                          \@plus 0.5\onelineskip \@minus 0.2\onelineskip}%
-  \setaftersubsubsecskip{-1em}%
-  \setsubsubsecheadstyle{\normalfont\normalsize\scshape\MakeTextLowercase}%
+
+  % Sub Sub Sec 1.2.3.4
+
+  \setbeforesubsubsecskip{-1.0\onelineskip
+                       \@plus -0.25\onelineskip \@minus -0.25\onelineskip}%
+  \setaftersubsubsecskip{1.0\onelineskip \@plus 0.1\onelineskip}%
+  \setsubsubsecheadstyle{\sethangfrom{\noindent ####1}\normalfont\itshape\memRTLraggedright}%
+
+  %\setbeforesubsubsecskip{1.0\onelineskip
+  %                        \@plus 0.5\onelineskip \@minus 0.2\onelineskip}%
+  %\setaftersubsubsecskip{-1em}%
+  %\setsubsubsecheadstyle{\normalfont\normalsize\scshape\MakeTextLowercase}%
+
+  % Para
   \setbeforeparaskip{1.0\onelineskip
                      \@plus 0.5\onelineskip \@minus 0.2\onelineskip}%
   \setafterparaskip{-1em}%
@@ -253,8 +391,10 @@
 }}%
 }
 
-\newfontfamily\thaiFont{Kinnari}
+\newfontfamily\articleThaiFont{Kinnari}
 
-\newcommand*\thai[1]{{\thaiFont #1}}
+\newcommand*\thai[1]{{\articleThaiFont #1}}
+
+\newcommand*\logic[1]{\textsc{\logicFont \MakeTextUppercase{#1}}}
 
 \RequirePackage[final,babel=true]{microtype}
