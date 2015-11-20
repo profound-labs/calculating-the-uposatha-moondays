@@ -68,3 +68,14 @@
 \usepackage[notes,short,autocite=footnote,isbn=false,backend=biber]{biblatex-chicago}
 
 \addbibresource{bibentries.bib}
+
+\newlength\footermargin
+\setlength{\footermargin}{15mm}
+
+\tikzstyle{frontpage footer}=[
+  remember picture, overlay,
+  %color=primary-content,
+  background decor/.style={minimum width=\paperwidth, minimum height=55mm, anchor=south west, fill=blue!10},
+  ref/.style={minimum width={\paperwidth - 2\footermargin}, xshift=\footermargin, yshift=\footermargin, minimum height={55mm-\footermargin}, anchor=south west},
+  node distance=2mm,
+]

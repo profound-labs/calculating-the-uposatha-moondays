@@ -1,6 +1,6 @@
 #+LATEX_CLASS: memoir-article
 #+LATEX_HEADER: \usepackage{local}
-#+LATEX_HEADER: \renewcommand{\docVersion}{v0.9}
+#+LATEX_HEADER: \renewcommand{\docVersion}{v1.0}
 #+LATEX_HEADER: \renewcommand{\docUrl}{\href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{link}}
 #+LATEX_HEADER: \hypersetup{ pdfauthor={Gambhīro Bhikkhu, Hāsapañño Bhikkhu}, }
 #+OPTIONS: toc:nil tasks:nil ':t H:4
@@ -14,7 +14,7 @@
 - The method is based on a set of formulas called /suriyayatra/ (\thai{สุริยยาตร์}),
   originating from India and including additional rules observed in Southeast
   Asia.
-- These formulas are now implemented in [[https://github.com/splendidmoons/suriya-go][suriya-go]] for generating the /uposatha/
+- These formulas are now implemented in [[https://github.com/splendidmoons/suriya-go][suriya-go]] for generating the uposatha
   moondays for any arbitrary year.
 - The lunar year starts with Magasira month in November. The Seasons end on the
   Full Moon day. The lunar months end on the New Moon day, the Full Moon is in
@@ -47,14 +47,16 @@ JC Eade, \textit{Calendrical Systems}, p. 4.
 \spewnotes
 
 \marginpar{\vspace*{\baselineskip}%
-\textbf{Just here for the formulas?}
+\textbf{Them formulas}
 
-Dive in at sec. \ref{suriyayatra-formulas},
-or see how we can ask the machine to do it in Golang at sec. \ref{suriya-go-example}.
+Dive in at page \pageref{year-properties-formulas},
+or see how we can ask the machine to do it in Golang at page \pageref{suriya-go-example}.
 }
 #+end_latex
 
 #+begin_latex
+\vspace*{\baselineskip}
+
 {\centering\large\bfseries
 How long?
 \par}
@@ -64,9 +66,10 @@ The first section (3 pages) is already quite informative if you just wish to
 have a better understanding of the uposathas. The sections get progressively
 more involved, drop it when you don't need more.
 
-- 3 pages :: To understand how to construct the sequence of a given year's uposathas, see
-  page \pageref{uposatha-tutorial}-\pageref{uposatha-tutorial-end}
-  in sec. \ref{uposatha-tutorial}.
+#+latex: {\raggedright
+
+- 3 pages :: To understand the sequence of uposathas in a given year, see
+  page \pageref{uposatha-tutorial}-\pageref{uposatha-tutorial-end}.
 - +4 pages :: The formulas and conditions which determine the adhikamāsa and
   adhikavāra are described on page \pageref{suriyayatra-formulas}-\pageref{adhikavara-years-end} in
   sec. \ref{suriyayatra-formulas}.
@@ -76,6 +79,10 @@ more involved, drop it when you don't need more.
 - +2 pages :: A day is visualized with the zodiac wheel diagrams (a.k.a /duang chata/).
   Making sense of these is in sec. \ref{duangchata}, page \pageref{duangchata}-\pageref{duangchata-end}.
 
+#+latex: }
+
+#+latex: \AddToShipoutPictureFG*{\put(0,0){\input{./includes/frontpage-footer.tex}}}%
+
 \clearpage
 
 #+latex: \enlargethispage{2\baselineskip}
@@ -84,27 +91,7 @@ more involved, drop it when you don't need more.
 
 \clearpage
 
-*** TODO before release
-
-frontpage footer
-
 *** TODO later
-
-Footer on front page:
-
-#+begin_latex
-{\centering\large\bfseries
-Related:
-\par}
-#+end_latex
-
-- forestsangha.org wallcalendar and year planner
-- suriya-go
-- splendid moons
-- uposatha .ical link for Google Calendar
-
-Download [[https://github.com/profound-labs/calculating-the-uposatha-moondays/raw/master/calculating-the-uposatha-moondays.pdf][this PDF]] or a [[https://github.com/profound-labs/calculating-the-uposatha-moondays/archive/master.zip][ZIP archive]]. The ZIP contains the PDFs referenced in this document.
-
 
 small inconsistencies in the uposatha sequence diagrams, text not aligned with
 the center of the moons
@@ -515,8 +502,25 @@ adhikavāra is carried on to the following year.}
 Luni-solar calendars are constructed so as to count *years* according to the
 /solar/ cycle, but to count *months* according to the /lunar/ cycle.
 
-| tropical year[fn:tropicalyear]\space of the Earth | 365.24219 days                      |
-| synodic month[fn:synodicmonth]\space of the Moon  | ~29.53 days, can vary up to 7 hours |
+\savenotes
+
+# Truly, footnotes are not happy in tables.
+# At least the numbering is consistent.
+# The first one links to the last page no matter what.
+# The second one at least links to the footnotetext on the the page.
+
+#+begin_latex
+\begin{center}
+\begin{tabular}{ll}
+tropical year\footnote{tropical year: the time it takes the Earth to complete an orbit around the Sun}
+of the Earth & 365.24219 days\\
+synodic month\footnote{synodic month: the time it takes the Moon to reach the same visual phase}
+of the Moon & \textasciitilde{}29.53 days, can vary up to 7 hours\\
+\end{tabular}
+\end{center}
+#+end_latex
+
+\spewnotes
 
 #+begin_latex
 \begin{marginfigure}[-\baselineskip]
@@ -686,15 +690,6 @@ noticed by several astronomers at the time, who were using the "11 times in 57
 years" rule of thumb for adhikavāra years. This resulted in wrong dates being
 used on any inscriptions (carved into stone) until the error was corrected in
 the civil calendar.\autocite{eade2007irregular}
-
-# If this \clearpage is after the fn texts, it is included in them
-# \clearpage
-
-[fn:tropicalyear] tropical year: the time it takes the Earth to
-complete an orbit around the Sun
-
-[fn:synodicmonth] synodic month: the time it takes the Moon to reach
-the same visual phase
 
 ** Date of New Year in Thailand
 
@@ -1090,6 +1085,8 @@ $|-4.21| = 4.21$ and $|4.21| = |4.21|$.
 }
 
 Let's begin then:
+
+\label{year-properties-formulas}
 
 \cheatsheetPar
 
@@ -1924,6 +1921,8 @@ Last updated on {{{modification-time(%Y-%m-%d)}}}.
 * Full page includes
   
 Full page includes follow.
+
+\clearpage
 
 #+begin_latex
 \fullpage{%

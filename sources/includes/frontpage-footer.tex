@@ -1,0 +1,39 @@
+\begin{minipage}[b]{\paperwidth}%
+\begin{tikzpicture}[frontpage footer]
+\node (bg) [background decor] at (0,0) {};
+\node (ref) [ref] at (0,0) {};
+
+\node[below=13mm of ref.north west, anchor=north west] (related) {%
+\begin{minipage}[t]{0.5\linewidth}%
+\begin{itemize}
+  \item Forest Sangha Calendar\\
+        \href{https://forestsangha.org/calendar}{forestsangha.org/calendar}
+  \item suriya-go Golang package\\
+        \href{https://github.com/splendidmoons/suriya-go}{github.com/splendidmoons/suriya-go}
+\end{itemize}%
+\end{minipage}%
+\begin{minipage}[t]{0.5\linewidth}%
+\begin{itemize}
+  \item Splendid Moons online uposatha calendar\\
+        \href{http://splendidmoons.github.io/}{splendidmoons.github.io}
+  \item Uposatha .ical link for Google Calendar\\
+        \href{http://splendidmoons.github.io/}{splendidmoons.github.io}\\
+        (top-right corner, calendar icon)
+\end{itemize}%
+\end{minipage}%
+};
+
+\node (topbar) [right=0pt of bg.north west, anchor=north west, minimum width=\paperwidth, minimum height=10mm, fill=blue!20] {};
+\node (bottombar) [right=0pt of bg.south west, anchor=south west, minimum width=\paperwidth, minimum height=10mm, fill=blue!20] {};
+\draw [draw=black, line width=1pt] (topbar.north west) -- (topbar.north east);
+
+\node[right=\footermargin of topbar.west, anchor=west] {%
+\textbf{Related:}%
+};
+
+\node[left=of bottombar.east, anchor=east] {%
+Download \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/raw/master/calculating-the-uposatha-moondays.pdf}{this PDF} or a \href{https://github.com/profound-labs/calculating-the-uposatha-moondays/archive/master.zip}{ZIP archive} with the PDFs referenced in this document.
+};
+
+\end{tikzpicture}%
+\end{minipage}%

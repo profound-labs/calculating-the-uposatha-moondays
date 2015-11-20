@@ -1,7 +1,7 @@
-% Created 2015-11-20 Fri 16:10
+% Created 2015-11-20 Fri 20:29
 \documentclass[11pt,oneside]{memoir-article}
 \usepackage{local}
-\renewcommand{\docVersion}{v0.9}
+\renewcommand{\docVersion}{v1.0}
 \renewcommand{\docUrl}{\href{https://github.com/profound-labs/calculating-the-uposatha-moondays/}{link}}
 \hypersetup{ pdfauthor={Gambhīro Bhikkhu, Hāsapañño Bhikkhu}, }
 \author{Hāsapañño Bhikkhu, Gambhīro Bhikkhu}
@@ -19,8 +19,8 @@
 \item The method is based on a set of formulas called \emph{suriyayatra} (\thai{สุริยยาตร์}),
 originating from India and including additional rules observed in Southeast
 Asia.
-\item These formulas are now implemented in \href{https://github.com/splendidmoons/suriya-go}{suriya-go} for generating the \emph{uposatha}
-  moondays for any arbitrary year.
+\item These formulas are now implemented in \href{https://github.com/splendidmoons/suriya-go}{suriya-go} for generating the uposatha
+moondays for any arbitrary year.
 \item The lunar year starts with Magasira month in November. The Seasons end on the
 Full Moon day. The lunar months end on the New Moon day, the Full Moon is in
 the middle. Visākha 15, Āsāḷha 15, etc. is always Full Moon.
@@ -52,11 +52,13 @@ JC Eade, \textit{Calendrical Systems}, p. 4.
 \spewnotes
 
 \marginpar{\vspace*{\baselineskip}%
-\textbf{Just here for the formulas?}
+\textbf{Them formulas}
 
-Dive in at sec. \ref{suriyayatra-formulas},
-or see how we can ask the machine to do it in Golang at sec. \ref{suriya-go-example}.
+Dive in at page \pageref{year-properties-formulas},
+or see how we can ask the machine to do it in Golang at page \pageref{suriya-go-example}.
 }
+
+\vspace*{\baselineskip}
 
 {\centering\large\bfseries
 How long?
@@ -66,10 +68,11 @@ The first section (3 pages) is already quite informative if you just wish to
 have a better understanding of the uposathas. The sections get progressively
 more involved, drop it when you don't need more.
 
+{\raggedright
+
 \begin{description}
-\item[{3 pages}] To understand how to construct the sequence of a given year's uposathas, see
-page \pageref{uposatha-tutorial}-\pageref{uposatha-tutorial-end}
-in sec. \ref{uposatha-tutorial}.
+\item[{3 pages}] To understand the sequence of uposathas in a given year, see
+page \pageref{uposatha-tutorial}-\pageref{uposatha-tutorial-end}.
 \item[{+4 pages}] The formulas and conditions which determine the adhikamāsa and
 adhikavāra are described on page \pageref{suriyayatra-formulas}-\pageref{adhikavara-years-end} in
 sec. \ref{suriyayatra-formulas}.
@@ -79,6 +82,10 @@ of the Sun and Moon on a given day at sec. \ref{calculating-the-sun-and-moon}, p
 \item[{+2 pages}] A day is visualized with the zodiac wheel diagrams (a.k.a \emph{duang chata}).
 Making sense of these is in sec. \ref{duangchata}, page \pageref{duangchata}-\pageref{duangchata-end}.
 \end{description}
+
+}
+
+\AddToShipoutPictureFG*{\put(0,0){\input{./includes/frontpage-footer.tex}}}%
 
 \clearpage
 
@@ -542,14 +549,19 @@ CE year & BE year & K & A & T & nM & $\Delta$ M & nV & $\Delta$ V & Āsāḷha b
 Luni-solar calendars are constructed so as to count \textbf{years} according to the
 \emph{solar} cycle, but to count \textbf{months} according to the \emph{lunar} cycle.
 
+\savenotes
+
+
 \begin{center}
 \begin{tabular}{ll}
-tropical year\footnotemark\space of the Earth & 365.24219 days\\
-synodic month\footnotemark\space of the Moon & \textasciitilde{}29.53 days, can vary up to 7 hours\\
+tropical year\footnote{tropical year: the time it takes the Earth to complete an orbit around the Sun}
+of the Earth & 365.24219 days\\
+synodic month\footnote{synodic month: the time it takes the Moon to reach the same visual phase}
+of the Moon & \textasciitilde{}29.53 days, can vary up to 7 hours\\
 \end{tabular}
-\end{center}\footnotetext[1]{tropical year: the time it takes the Earth to
-complete an orbit around the Sun}\footnotetext[2]{synodic month: the time it takes the Moon to reach
-the same visual phase}
+\end{center}
+
+\spewnotes
 
 \begin{marginfigure}[-\baselineskip]
 \raggedright\footnotesize
@@ -1109,6 +1121,8 @@ $|-4.21| = 4.21$ and $|4.21| = |4.21|$.
 }
 
 Let's begin then:
+
+\label{year-properties-formulas}
 
 \cheatsheetPar
 
@@ -1776,6 +1790,8 @@ Last updated on 2015-11-20.
 \label{sec-8}
 
 Full page includes follow.
+
+\clearpage
 
 \fullpage{%
 \label{dia-common-adhikamasa-adhikavara}%
