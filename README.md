@@ -16,7 +16,7 @@ Sections:
 
 Related:
 
-- [Forest Sangha Calendar](https://forestsangha.org/calendar)
+- [Forest Sangha Calendar](https://forestsangha.org/community/calendars/)
 - [suriya-go Golang package](https://github.com/splendidmoons/suriya-go)
 - [Splendid Moons online uposatha calendar](http://splendidmoons.github.io/)
 - [Uposatha .ical link for Google Calendar](http://splendidmoons.github.io/) (top-right corner, calendar icon)
