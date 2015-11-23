@@ -1,7 +1,12 @@
 
 # Calculating the Uposatha Moondays
 
-Documenting the *suriyayatra* method of calculating the uposatha moondays.
+Documenting the method of calculating the uposatha moondays as practised by the
+Mahānikāya in Thailand.
+
+The method is based on a set of formulas called *suriyayatra* (สุริยยาตร์),
+originating from India and including additional rules observed in Southeast
+Asia.
 
 Download [the PDF](https://github.com/profound-labs/calculating-the-uposatha-moondays/raw/master/calculating-the-uposatha-moondays.pdf) or a [ZIP archive](https://github.com/profound-labs/calculating-the-uposatha-moondays/archive/master.zip) with the PDFs referenced in the document.
 
