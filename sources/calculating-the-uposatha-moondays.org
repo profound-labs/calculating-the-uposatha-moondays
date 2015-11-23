@@ -324,9 +324,9 @@ determined by the formulas at sec. \ref{suriyayatra-formulas}, which generate a 
 such that an adhikamāsa year is due in every 2 or 3 years.
 
 It is not sufficient to rely on a shorthand pattern to determine the variation
-of 2 or 3 years -- the pattern of 3-3-2 - 3-3-3-2 has been mentioned by Ajahn
-Khemanando\autocite{khemanando-adhikamasa}, but this doesn't always match the cycles
-produced by the formulas.
+of 2 or 3 years -- the pattern of 3-3-2 - 3-3-3-2 has been mentioned in some
+publications in Thailand, but this doesn't always match the cycles produced by
+the formulas.
 
 Table \ref{tbl-cycle-adhikamasa-adhikavara} shows adhikamāsa years for 1975-2030.
 
@@ -1829,6 +1829,9 @@ True Moon: 9:20°50'
 \label{pali-method}
 
 # TODO: error in Aj H's sheet. 2002 is not adhikamāsa, he concatenates the cycles too early.
+
+# Aj Hasapannyo informs that the source of Aj Khemanando's circular diagram with
+# the shorthand pattern is Dhammayut chanting books in Thailand.
 
 /The following is adapted from Ajahn Khemanando for recent
 years./\autocite{khemanando-adhikamasa}
