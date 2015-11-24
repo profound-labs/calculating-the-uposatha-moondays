@@ -212,7 +212,7 @@ The Full Moon is always on the 15th day. Every second New Moon is on the 14th da
 
 The \GaWaxingmoon{} Waxing- and \GaWaningmoon{} Waning Moons are on the 8th day.
 
-Keep alternating 30 and 29 day months. One season is four months, one year is
+Keep alternating 30 and 29 day months. One season is 8 uposathas, one year is
 three seasons: Cold-, Hot- and Rainy Season. See Figure \ref{fig-common-year} or
 Table \ref{tbl-month-names} for the Pāli names of months and seasons.
 
