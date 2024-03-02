@@ -1901,6 +1901,49 @@ month 8/8: เดือน ๘/๘
 
 Waxing : khang khuen (ข้างขึ้น), the period from new moon to full moon, is always 15 days long.
 Waning : khang raem (ข้างแรม), the period from full moon to new moon
+* The first day of a lunar month                                     :ATTACH:
+:PROPERTIES:
+:ID:       68af007b-a879-42b6-b425-92cd31ceb848
+:END:
+
+The first and last days of the lunar season and a lunar month is not on the same day.
+
+The last day of a season is a Full Moon.
+
+In Thai practice the last day of the month is the New Moon, with the Full Moon being the middle of the month.
+
+#+begin_quote
+In Thai practice, a lunar month is a wave: it has a waxing phase, its crest is
+in the middle at Full Moon, and has a waning phase ending with the New Moon on
+the last day.
+#+end_quote
+
+This way Māgasira is 29-day.
+
+Ven. Hāsapañño's PDF has a typo, which would make Māgasira 30 day.
+
+[[attachment:2024-03-02_09-32.png]]
+
+: Odd-numbered (1, 3, ...) = 30
+: Even-numbered (2, 4, ...) = 29
+
+Bhante Ānandajoti:
+
+#+begin_quote
+I checked the SL Govt calendar, and they also have the month starting after the New Moon.
+
+It does seem from this Thai app, that the month is beginning from the day after the New Moon:
+#+end_quote
+
+[[attachment:thai-app-moons-2023-june.jpg]]
+
+[[https://www.myhora.com/%e0%b8%9b%e0%b8%8f%e0%b8%b4%e0%b8%97%e0%b8%b4%e0%b8%99/%e0%b8%9b%e0%b8%8f%e0%b8%b4%e0%b8%97%e0%b8%b4%e0%b8%99-%e0%b8%9e.%e0%b8%a8.2566.aspx][Myhora.com 2023]] ([[https://www-myhora-com.translate.goog/%e0%b8%9b%e0%b8%8f%e0%b8%b4%e0%b8%97%e0%b8%b4%e0%b8%99/%e0%b8%9b%e0%b8%8f%e0%b8%b4%e0%b8%97%e0%b8%b4%e0%b8%99-%e0%b8%a1%e0%b8%b4%e0%b8%96%e0%b8%b8%e0%b8%99%e0%b8%b2%e0%b8%a2%e0%b8%99-%e0%b8%9e.%e0%b8%a8.2566.aspx?_x_tr_sl=th&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp][translated]])
+
+[[attachment:2024-03-02_10-09.png]]
+
+https://www.ancient-buddhist-texts.net/Reference/Days-Months-Seasons.htm
+
+[[attachment:Pali-Calendar-Months.jpg]]
 
 * Colophon
 
