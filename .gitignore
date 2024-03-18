@@ -8,6 +8,7 @@
 *.run.xml
 *~
 *.backup
+sources/.auctex-auto/
 sources/mwe.*
 sources/calculating-the-uposatha-moondays.pdf
 sources/auto
